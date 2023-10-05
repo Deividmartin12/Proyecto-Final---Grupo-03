@@ -9,6 +9,7 @@ import random
 app = Flask(__name__)
 
 @app.route("/")
+@app.route("/index")
 def index():
     return render_template('index.html')
 
@@ -16,7 +17,7 @@ def index():
 def login():
     return render_template('login.html')
 
-@app.route("/registro_usuario", methods=["GET", "POST"])
+@app.route("/registro_usuario")
 def registro_usuario():
     return render_template('registro.html')
 

@@ -21,7 +21,7 @@
                             aria-label="Toggle navigation">
                             <i class="fa-solid fa-bars fa-xl barras"></i>
                         </button>
-                        <a href="{{url_for('login')}}"><i class="fa-solid fa-user fa-xl barras"></i></a>
+                        <a href="{{url_for('index')}}"><i class="fa-solid fa-user fa-xl barras"></i></a>
                         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
                             aria-labelledby="offcanvasNavbarLabel">
                             <div class="offcanvas-header">
@@ -30,7 +30,7 @@
                             </div>
                             <div class="offcanvas-body">
                                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mnuLateral">
-                                    <a href="index.html">
+                                    <a href="{{url_for('index')}}">
                                         <li class="list-inline-item">Inicio</li>
                                     </a>
                                     <a href="categorias.html">
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div class="text-center text-lg-start">
-                        <a href="{{url_for('login')}}"><img class="img-fluid logo" src="{{url_for('static', filename='img/logo.png')}}"></a>
+                        <a href="{{url_for('index')}}"><img class="img-fluid logo" src="{{url_for('static', filename='img/logo.png')}}"></a>
                     </div>
                     <nav class="d-none d-lg-block">
                         <ul class="list-inline menuHeader">
