@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ficha de Reclamos</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/blog.css" />
+    <script src="https://kit.fontawesome.com/6005c71067.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+    <header class="container-fluid ">
+        <div class="row">
+            <div class="col">
+                <div class="d-flex justify-content-between align-items-center">
+
+
+                    <div class="d-md-block d-lg-none icon_ocultos">
+
+                        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
+                            aria-label="Toggle navigation">
+                            <i class="fa-solid fa-bars fa-xl barras"></i>
+                        </button>
+                        <a href="usuario.html"><i class="fa-solid fa-user fa-xl barras"></i></a>
+
+
+                        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+                            aria-labelledby="offcanvasNavbarLabel">
+
+                            <div class="offcanvas-header">
+                                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            </div>
+
+                            <div class="offcanvas-body">
+                                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3  mnuLateral">
+                                    <a href="index.html">
+                                        <li class="list-inline-item">Inicio</li>
+                                    </a>
+                                    <a href="categorias.html">
+                                        <li class="list-inline-item">Categorias</li>
+                                    </a>
+                                    <a href="Blog.html">
+                                        <li class="list-inline-item">Blog</li>
+                                    </a>
+                                    <a href="Sobre_Nosotros.html">
+                                        <li class="list-inline-item">Sobre Nosotros</li>
+                                    </a>
+                                    <a href="contacto.html">
+                                        <li class="list-inline-item">Contáctanos</li>
+                                    </a>
+                                </ul>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+
+                    <div class="text-center text-lg-start">
+                        <a href="index.html"><img class="img-fluid logo" src="img/logo.png"></a>
+                    </div>
+                    <nav class="d-none d-lg-block">
+                        <ul class="list-inline menuHeader">
+                            <a href="index.html">
+                                <li class="list-inline-item">Inicio</li>
+                            </a>
+                            <a href="categorias.html">
+                                <li class="list-inline-item">Categorias</li>
+                            </a>
+                            <a href="Blog.html">
+                                <li class="list-inline-item">Blog</li>
+                            </a>
+                            <a href="Sobre_Nosotros.html">
+                                <li class="list-inline-item">Sobre Nosotros</li>
+                            </a>
+                            <a href="contacto.html">
+                                <li class="list-inline-item">Contáctanos</li>
+                            </a>
+                        </ul>
+                    </nav>
+                    <div class="iconos">
+                        <a href=""><i class="fa-solid fa-magnifying-glass fa-xl icon"></i></a>
+                        <a href="usuario.html"><i class="fa-solid fa-user fa-xl icon d-none d-lg-inline-block"></i></a>
+                        <a href="carrito.html"><i class="fa-solid fa-cart-shopping fa-xl icon"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container-fluid">
+        <div class="row">
+            <div class="container-fluid titulo">
+                Ficha de Reclamo
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <h5>Hoja de reclamación virtual</h5>
+            </div>
+            <div class="row empresa">
+                <div class="row">
+                    <div class="col-md-9 col-sm-12">
+                        <p>Nombre Empresa:</p>
+                    </div>
+                    <div class="col-md-1 col-sm-5    ">
+                        <label for="fecha" class="form-label">Fecha:</label>
+                    </div>
+                    <div class="col-md-2 col-sm-7 ">
+
+                        <input type="date" id="fecha" name="fecha" class="form-control custom-date-picker">
+                    </div>
+
+                </div>
+                <div class="row mt-3">
+                    <p>RUC: </p>
+
+                </div>
+            </div>
+
+
+            <div class="row">
+                <h5>1. Identificación del cliente</h5>
+            </div>
+            <div class="row cliente">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="row">
+                            <p>Nombre</p>
+                        </div>
+
+                        <input type="text" class="form-control">
+
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="row">
+                            <p>Apellidos</p>
+
+                        </div>
+                        <input type="text" class="form-control">
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+
+                        <div class="row mt-3">
+                            <p>Domicilio</p>
+                        </div>
+
+                        <input type="text" class="form-control">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="row mt-3">
+                                <p>Tipo de Documento</p>
+                            </div>
+                            <div class="row ps-3">
+
+                                <select id="tipoDocumento" name="tipoDocumento" class="form-select">
+                                    <option value="dni">DNI</option>
+                                    <option value="pasaporte">Pasaporte</option>
+                                    <option value="carnet">Carnet de Identidad</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="row mt-3">
+                                <p>Numero de Documento</p>
+
+                            </div>
+                            <input type="text" class="form-control">
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="row mt-3">
+                                <p>Telefono</p>
+                            </div>
+
+                            <input type="text" class="form-control">
+
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="row mt-3">
+                                <p>Correo</p>
+
+                            </div>
+                            <input type="text" class="form-control">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="row mt-3">
+                <h5>2. Identificación del producto</h5>
+            </div>
+
+            <div class="row producto">
+                <div class="row">
+                    <p>Numero de orden</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+
+                        <input type="text" class="form-control" placeholder="Numero de orden">
+                    </div>
+
+                    <div class="col-md-6 col-sm-6">
+                        <input type="text" class="form-control" placeholder="Nombre producto">
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-sm-12">
+
+                    <div class="row mt-3">
+                        <p>Descripcion</p>
+                    </div>
+                    <input type="text" class="form-control">
+
+                </div>
+                <div class="col-md-4 col-sm-6">
+
+                    <div class="row mt-3">
+                        <p>Monto reclamado</p>
+                    </div>
+
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+
+
+
+
+
+            <div class="row mt-3">
+                <h5>2. Detalle del reclamo y pedido del cliente </h5>
+            </div>
+
+
+            <div class="row detalleReclamo align-items-center">
+                <div class="col-md-12 col-sm-12">
+                    <div class="row">
+                        <p>Detalle</p>
+                    </div>
+                    <div class="row">
+                        <textarea id="mensaje" name="mensaje" class="form-control" rows="5"></textarea>
+
+                    </div>
+
+                    <div class="row justify-content-center text-center">
+                        <button class="btn btn-success boton">Enviar</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="container-fluid">
+        <div class="row">
+            <div class="col text-center">
+                <div class="justify-content-between  d-lg-flex d-md-flex"> 
+                    <div class="block">
+
+                        <h4>Contacto</h4>
+                
+                        <div class="d-flex align-items-center">
+                            <i class="fa-solid fa-briefcase fa-lg"></i>
+                            <p>Las Ñustas 2029, La Victoria<br>14007 Chiclayo - Perú</p>
+                
+                        </div>
+                
+                        <div class="d-flex align-items-center ">
+                             <i class="fa-regular fa-envelope fa-lg"></i>
+                             <p>contacto@veterinariamips.com</p>
+                        </div>
+                
+                        <div class="d-flex align-items-center ">
+                            <i class="fa-solid fa-phone-volume fa-lg"></i> 
+                            <p>943 777 595<br>(30) 50 - 5358</p>
+                        </div>
+                    </div>
+                
+                    <div class="block">
+                        <h4>Categorias</h4>
+                        <a href=""><p>Perros</p></a>
+                        <a href=""><p>Gatos</p></a>
+                    </div>
+                
+                    <div class="block">
+                        <a href="preguntas.html"><h4>Preguntas Frecuentes</h4></a>
+                        <p>
+                            ¿Cuáles son los horarios de atención?<br>
+                            ¿Cómo puedo programar una cita para<br> mi mascota?<br>
+                            ¿Cuáles son los servicios que ofrece?
+                        </p>
+                        <h4>Visitanos</h4>
+                        <a href=""><img src="img/instagram 1.png" alt=""></a>
+                        <a href=""><img src="img/facebook 1.png" alt=""></a>
+                        <a href=""><img src="img/gorjeo 1.png" alt=""></a>
+                    </div>
+                
+                </div>
+
+                <p>@Copyright 2023 Veterinaria Mi Pequeño Sebastian Todos los derechos reservados</p>
+
+            </div>
+        </div>
+    </footer>
+    
+    <div class="container-fluid d-flex justify-content-center desarrolladora">
+        <div class="row">
+            
+        <div class="container-fluid d-flex justify-content-center ">
+            Fecha de creación: 29/06/2023
+        </div>
+        <div class="container-fluid d-flex justify-content-center ">
+            Ultima Actualización : 12/07/2023
+        </div>
+        </div>
+    </div>
+    
+    <div class="container-fluid d-flex justify-content-center desarrolladora">
+        Desarrollado por &nbsp;<a href="empresa.html"><Strong>CodexSING</Strong> </a>
+    </div>
+
+    <script src="js/bootstrap.bundle.js"></script>
+</body>
+</html>

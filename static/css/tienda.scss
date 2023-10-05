@@ -1,0 +1,80 @@
+@use "headerFooter";
+
+$encabezado: #3370DE;
+$footer: #283F7F;
+$letra: Source Sans 3;
+$titulos:  #D4E8FF;
+$bordes: rgba(83, 81, 81, 0.33);
+
+main{
+    margin: 0px;
+    padding: 20px;
+    font-family: $letra;
+
+    .combo, .search, p{
+        margin-left: 20px;
+        margin-bottom: 20px;
+    }
+
+    .orden{
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .btn-secondary, .form-control{
+        background-color: rgba(51, 112, 222, 0.06);
+        color: rgba(188, 182, 182, 1);
+        border: 2px solid  rgba(83, 81, 81, 0.33);
+        border-radius: 18px;
+        height: 35px;
+    }
+
+    .busca{
+        background-color: $encabezado;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 18px;
+        width: 200px;
+        height: 35px;
+    }
+
+    .tienda{
+        margin-top: 30px;
+        .sec{
+            margin-bottom: 50px;
+
+            .sec1{
+                margin: 30px;
+                font-family: $letra;
+                font-weight: bold;
+                font-size: 20px;
+                
+                a{
+                    color: black;
+                    text-decoration: none;
+                    p{
+                        margin-top: 10px;
+                    }
+                }
+
+                a:hover{
+                    color: $encabezado;
+                }
+            }
+        }
+    }
+
+}
+
+.titulo{
+    padding: 10px;
+    padding-left: 40px;
+    background-color: $titulos;
+    height: 60px;
+    color: black;
+    font-family: $letra;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
