@@ -21,5 +21,13 @@ def login():
 def registro_usuario():
     return render_template('registro.html')
 
+@app.route("/producto")
+def producto():
+    return render_template('producto.html')
+
+@app.route("/carrito")
+def carrito():
+    return render_template('carrito.html')
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=9000, debug=True)
