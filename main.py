@@ -16,5 +16,9 @@ def index():
 def login():
     return render_template('login.html')
 
+@app.route("/registro_usuario", methods=["GET", "POST"])
+def registro_usuario():
+    return render_template('registro.html')
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=9000, debug=True)
