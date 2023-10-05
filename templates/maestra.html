@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veterinaria MPS {% block titulo %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <script src="https://kit.fontawesome.com/6005c71067.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header class="container-fluid ">
+        <div class="row">
+            <div class="col">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-md-block d-lg-none icon_ocultos">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
+                            aria-label="Toggle navigation">
+                            <i class="fa-solid fa-bars fa-xl barras"></i>
+                        </button>
+                        <a href="iniciarSesion.html"><i class="fa-solid fa-user fa-xl barras"></i></a>
+                        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+                            aria-labelledby="offcanvasNavbarLabel">
+                            <div class="offcanvas-header">
+                                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            </div>
+                            <div class="offcanvas-body">
+                                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mnuLateral">
+                                    <a href="index.html">
+                                        <li class="list-inline-item">Inicio</li>
+                                    </a>
+                                    <a href="categorias.html">
+                                        <li class="list-inline-item">Categorias</li>
+                                    </a>
+                                    <a href="Blog.html">
+                                        <li class="list-inline-item">Blog</li>
+                                    </a>
+                                    <a href="Sobre_Nosotros.html">
+                                        <li class="list-inline-item">Sobre Nosotros</li>
+                                    </a>
+                                    <a href="contacto.html">
+                                        <li class="list-inline-item">Contáctanos</li>
+                                    </a>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center text-lg-start">
+                        <a href="{{url_for('login')}}"><img class="img-fluid logo" src="/img/logo.png"></a>
+                    </div>
+                    <nav class="d-none d-lg-block">
+                        <ul class="list-inline menuHeader">
+                            <a href="index.html">
+                                <li class="list-inline-item">Inicio</li>
+                            </a>
+                            <a href="categorias.html">
+                                <li class="list-inline-item">Categorias</li>
+                            </a>
+                            <a href="Blog.html">
+                                <li class="list-inline-item">Blog</li>
+                            </a>
+                            <a href="Sobre_Nosotros.html">
+                                <li class="list-inline-item">Sobre Nosotros</li>
+                            </a>
+                            <a href="contacto.html">
+                                <li class="list-inline-item">Contáctanos</li>
+                            </a>
+                        </ul>
+                    </nav>
+                    <div class="iconos">
+                        <a href=""><i class="fa-solid fa-magnifying-glass fa-xl icon"></i></a>
+                        <a href="{{url_for('login')}}"><i class="fa-solid fa-user fa-xl icon d-none d-lg-inline-block"></i></a>
+                        <a href="carrito.html"><i class="fa-solid fa-cart-shopping fa-xl icon"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {% block contenido %} {% endblock %}
+
+    <footer class="container-fluid">
+        <div class="row">
+            <div class="col text-center">
+                <div class="justify-content-between  d-lg-flex d-md-flex">
+                    <div class="block">
+
+                        <h4>Contacto</h4>
+
+                        <div class="d-flex align-items-center">
+                            <i class="fa-solid fa-briefcase fa-lg"></i>
+                            <p>Las Ñustas 2029, La Victoria<br>14007 Chiclayo - Perú</p>
+
+                        </div>
+
+                        <div class="d-flex align-items-center ">
+                            <i class="fa-regular fa-envelope fa-lg"></i>
+                            <p>contacto@veterinariamips.com</p>
+                        </div>
+
+                        <div class="d-flex align-items-center ">
+                            <i class="fa-solid fa-phone-volume fa-lg"></i>
+                            <p>943 777 595<br>(30) 50 - 5358</p>
+                        </div>
+                    </div>
+
+                    <div class="block">
+                        <h4>Categorias</h4>
+                        <a href="">
+                            <p>Perros</p>
+                        </a>
+                        <a href="">
+                            <p>Gatos</p>
+                        </a>
+                    </div>
+
+                    <div class="block">
+                        <a href="preguntas.html"><h4>Preguntas Frecuentes</h4></a>
+                        <p>
+                            ¿Cuáles son los horarios de atención?<br>
+                            ¿Cómo puedo programar una cita para<br> mi mascota?<br>
+                            ¿Cuáles son los servicios que ofrece?
+                        </p>
+                        <h4>Visitanos</h4>
+                        <a href=""><img src="/img/instagram 1.png" alt=""></a>
+                        <a href="https://www.facebook.com/veterinaria.mipequenosebastian" target="_blank"><img src="/img/facebook 1.png" alt=""></a>
+                        <a href=""><img src="/img/gorjeo 1.png" alt=""></a>
+                    </div>
+
+                </div>
+
+                <p>@Copyright 2023 Veterinaria Mi Pequeño Sebastian Todos los derechos reservados</p>
+
+            </div>
+        </div>
+    </footer>
+    <div class="container-fluid d-flex justify-content-center desarrolladora">
+        <div class="row">
+            
+        <div class="container-fluid d-flex justify-content-center ">
+            Fecha de creación: 29/06/2023
+        </div>
+        <div class="container-fluid d-flex justify-content-center ">
+            Ultima Actualización : 12/07/2023
+        </div>
+        </div>
+    </div>
+    
+    <div class="container-fluid d-flex justify-content-center desarrolladora">
+        Desarrollado por &nbsp;<a href="empresa.html"><Strong>CodexSING</Strong> </a>
+    </div>
+
+    <script src="/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>
