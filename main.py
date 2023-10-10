@@ -29,5 +29,9 @@ def producto():
 def carrito():
     return render_template('carrito.html')
 
+@app.route("/categoria")
+def  categoria():
+    return render_template('categorias.html')
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=9000, debug=True)
