@@ -8,6 +8,11 @@ import random
 
 app = Flask(__name__)
 
+#----APIS----
+
+
+
+#----NORMAL----
 @app.route("/")
 @app.route("/index")
 def index():
@@ -16,6 +21,10 @@ def index():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     return render_template('login.html')
+
+@app.route("/login_empleado", methods=["GET", "POST"])
+def login_empleado():
+    return render_template('login_empleado.html')
 
 @app.route("/registro_usuario")
 def registro_usuario():
