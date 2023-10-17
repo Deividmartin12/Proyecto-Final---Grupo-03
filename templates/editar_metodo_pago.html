@@ -1,0 +1,23 @@
+{% extends "maestra.html" %}
+{% block titulo %}
+Editar método de pago
+{% endblock %}
+{% block contenido %}
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            <h3 class="is-size-3">Editar método de pago</h3>
+            <form action="{{url_for('actualizar_metodo_pago')}}" method="post">
+                {# Enviar el id en un campo oculto #}
+                <input type="hidden" name="id" value="{{metodo_pago[0]}}">
+                <label for="nombre">Nombre:</label>
+                <input value="{{metodo_pago[1]}}" required type="text" class="input" placeholder="Nombre" name="nombre" id="nombre">
+                <label for="descripcion">Descripción:</label>
+                <input value="{{metodo_pago[2]}}" required type="text" class="input" placeholder="Descripción" name="descripcion" id="descripcion">
+                <button type="submit" class="button is-success mt-2">Guardar</button>
+                <a href="{{url_for('metodos_pago')}}" class="button is-primary mt-2">Volver</a>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}
