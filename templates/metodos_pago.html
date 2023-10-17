@@ -1,0 +1,41 @@
+{% extends "maestra.html" %}
+{% block titulo %} Métodos de Pago {% endblock %}
+{% block contenido %}
+
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            <h3 class="is-size-3">Métodos de Pago</h3>
+            <a href="{{url_for('formulario_agregar_metodo_pago')}}" class="button is-success">Agregar</a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for metodo_pago in metodos_pago %}
+                    <tr>
+                        <td>{{metodo_pago[1]}}</td>
+                        <td>{{metodo_pago[2]}}</td>
+                        <td>
+                            {# Pasar el id (lo que hay en metodo_pago[0]) #}
+                            <a href="{{url_for('editar_metodo_pago', id=metodo_pago[0])}}" class="button is-info">Editar</a>
+                        </td>
+                        <td>
+                            <form action="{{url_for('eliminar_metodo_pago')}}" method="POST">
+                                <input type="hidden" name="id" value="{{metodo_pago[0]}}">
+                                <button class="button is-danger">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}
