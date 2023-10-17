@@ -42,5 +42,41 @@ def carrito():
 def  categoria():
     return render_template('categorias.html')
 
+#metodo pago
+@app.route("/agregar_metodo_pago")
+def formulario_agregar_metodo_pago():
+    return render_template("agregar_metodo_pago.html")
+
+@app.route("/metodos_pago")
+def metodos_pago():
+    metodos_pago = controlador_metodoP.obtener_metodos_pago()
+    return render_template("metodos_pago.html", metodos_pago=metodos_pago)
+
+@app.route("/guardar_metodo_pago", methods=["POST"])
+def guardar_metodo_pago():
+    nombre = request.form["nombre"]
+    descripcion = request.form["descripcion"]
+    controlador_metodoP.insertar_metodo_pago(nombre, descripcion)
+    return redirect("/metodos_pago")
+
+@app.route("/eliminar_metodo_pago", methods=["POST"])
+def eliminar_metodo_pago():
+    controlador_metodoP.eliminar_metodo_pago(request.form["id"])
+    return redirect("/metodos_pago")
+
+@app.route("/formulario_editar_metodo_pago/<int:id>")
+def editar_metodo_pago(id):
+    metodo_pago = controlador_metodoP.obtener_metodo_pago_por_id(id)
+    return render_template("editar_metodo_pago.html", metodo_pago=metodo_pago)
+
+@app.route("/actualizar_metodo_pago", methods=["POST"])
+def actualizar_metodo_pago():
+    id = request.form["id"]
+    nombre = request.form["nombre"]
+    descripcion = request.form["descripcion"]
+    controlador_metodoP.actualizar_metodo_pago(nombre, descripcion, id)
+    return redirect("/metodos_pago")
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=9000, debug=True)
