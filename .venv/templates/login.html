@@ -1,0 +1,64 @@
+{% extends "maestra.html" %}
+{% block titulo %} Inicio de sesión{% endblock %}
+{% block contenido %}
+
+<section class="container-fluid ">
+    <div class="row justify-content-center">
+        <h3 class="mt-5 mb-4 text-center pb-4 pt-4 bg-primary-subtle"><Strong>Inicio de sesión</Strong></h3>
+
+        <div class="col-8 border-0 border-top border-dark-subtle">
+            <form class="form-inline-labels mt-5"   method="POST">
+                <div class="row">
+                    <div class="row mb-3 text-center text-md-end justify-content-center align-items-center">
+                        <label for="newPassword" class="col-sm-3 col-md-4 col-form-label"><Strong>Correo
+                                electronico:</Strong></label>
+                        <div class="col-sm-5">
+                            <input type="password" class="form-control border-dark-subtle" id="newPassword"
+                                placeholder="">
+                        </div>
+                    </div>
+                    <div class="row mb-3  text-center text-md-end justify-content-center align-items-center">
+                        <label for="confirmPassword"
+                            class="col-sm-3 col-md-4 col-form-label"><Strong>Contraseña:</Strong></label>
+                        <div class="col-sm-5">
+                            <input type="password" class="form-control border-dark-subtle" id="confirmPassword"
+                                placeholder="">
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+            <div class="row mb-3 justify-content-center">
+                <div class="col-12 text-center">
+                    <div class="container justify-content-center">
+                        <input class="form-check-input border-dark-subtle" type="checkbox" id="cbx">
+                        <label for="cbx"><Strong>Recuérdame</Strong></label>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3 justify-content-center">
+                <div class="col-12 text-center justify-content-center">
+                    <div class="container justify-content-center">
+                        <a href="olvideContraseña.html" class="text-dark text-decoration-none">
+                            <p><Strong>¿Olvidaste tu contraseña?</Strong></p>
+                        </a>
+                        <button type="submit" class="btn btn-primary">Ingresar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3 justify-content-center">
+                <div class="col-12 text-center">
+                    <div class="container justify-content-center d-grid d-md-flex">
+                        <p class="me-3">¿Eres nuevo por aquí?</p>
+                        <a href="{{url_for('registro_usuario')}}" class="text-dark">
+                            <p><Strong>Regístrate</Strong></p>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

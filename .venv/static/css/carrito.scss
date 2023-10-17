@@ -1,0 +1,148 @@
+@use "headerFooter";
+
+$encabezado: #3370DE;
+$footer: #283F7F;
+$letra: Source Sans 3;
+$titulos:  #D4E8FF;
+$bordes: rgba(83, 81, 81, 0.33);
+
+main{
+    margin: 0px;
+    padding: 20px;
+    font-family: $letra;
+
+    .productos{
+        box-shadow: 0px 0px 10px lightgray;
+        border-radius: 18px;
+        padding: 20px;
+    }
+
+    .cabecera{
+        background-color: lightgrey;
+        width: 90%;
+        padding: 10px;
+        margin-bottom: 5px;
+
+        span{
+            font-family: $letra;
+            font-weight: bold;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+        
+    }
+
+    .bloqueF{
+        margin-top: 40px;
+    }
+
+
+    .imgProCar{
+        width: 150px;
+        height: 150px;
+    }
+
+    .texto{
+        font-family: $letra;
+        color: black;
+        font-weight: bold;
+        font-size: 20px;
+        margin: 20px;
+    }
+
+    .btn{
+        background-color: #D4E8FF;
+        color: black;
+        font-family: $letra;
+        font-weight: bold;
+        font-size: 20px;
+        height: 40px;
+        width: 40px;
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+
+    .btn:hover{
+        background-color: $footer;
+        color: white;
+    }
+
+    .btnDel{
+        height: 40px;
+        width: 40px;
+        border-radius: 5px;
+        border: none;
+        background-color: red;
+        color: white;
+    }
+
+    .btnVaciar{
+        background-color: $encabezado;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-family: $letra;
+        font-weight: bold;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .btnVaciar:hover, .btnProPago:hover{
+        background-color: $footer;
+    }
+
+    #cupon{
+        margin: 0px;
+        background-color: green;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-family: $letra;
+        font-weight: bold;
+        padding: 10px;
+        margin-left: 10px;  
+    }
+
+    #cupon:hover{
+        background-color: darkgreen;
+    }
+
+    .btnProPago{
+        background-color: $encabezado;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-family: $letra;
+        font-weight: bold;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .tarjetas {
+        width: 55px;
+        height: 35px;
+        margin-bottom: 10px;
+    }
+    
+    .precios{
+        margin-right: 40px;
+    }
+
+}
+
+.titulo{
+    padding: 10px;
+    padding-left: 40px;
+    background-color: $titulos;
+    height: 60px;
+    color: black;
+    font-family: $letra;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.linea{
+    border: 1px solid black;
+    width: 100%;
+}

@@ -1,0 +1,125 @@
+@use "headerFooter";
+
+$encabezado: #3370DE;
+$footer: #283F7F;
+$letra: Source Sans 3;
+$titulos:  #D4E8FF;
+$precio: rgba(148,148,148,1);
+
+
+main{
+    margin: 0px;
+    margin-bottom: 20px;
+    padding: 20px;
+
+    section,aside{
+        margin-left: 40px;
+        margin-right: 40px;
+        margin-top: 30px;
+    }
+
+    .titulo2{
+        font-family: $letra;
+        font-weight: bold;
+        font-size: 25px;
+        margin: 20px;
+    }
+
+    .titulo3{
+        font-family: $letra;
+        font-weight: bold;
+        font-size: 25px;
+        margin-bottom: 30px;
+        margin-top: 10px;
+        text-decoration: underline;
+    }
+
+    .infoBlog{
+        background-color: rgba(245, 245, 245, 1);
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        margin: 10px;
+        padding: 10px;
+        
+    }
+
+    .customDiv{
+        width: 300px;
+        text-align: justify;
+        font-family: $letra;
+        font-weight: bold;
+    }
+
+    #botonLeerMas, .boton{
+        background-color: $encabezado;
+        border: none;
+        border-radius: 10px;
+        margin: 10px;
+        color: white;
+        font-family: $letra;
+        font-weight: bold;
+    }
+
+    .boton{
+        width: 80px;
+        height: 30px;
+    }
+
+    #botonLeerMas:hover, .boton:hover{
+        box-shadow: 0px 0px 10px $footer;
+    }
+
+    ul{
+        list-style-type: none;
+        a{
+            text-decoration: none;
+            color: black;
+            font-family: $letra;
+            font-weight: bold;
+        }
+
+        li{
+            margin-bottom: 10px;
+        }
+    }
+
+    .p1{
+        margin: 0px;
+        font-family: $letra;
+    }
+
+    .title{
+        font-weight: bold;
+    }
+
+    .size{
+        font-weight: bold;
+        font-size: 12px;
+    }
+
+    .precio{
+        color: $precio;
+        font-weight: bold;
+    }
+
+    .infoProd{
+        margin: 40px;
+    }
+
+    .caja{
+        margin-bottom: 20px;
+        margin-left: 20px;
+    }
+
+}
+
+.titulo{
+    padding: 10px;
+    padding-left: 40px;
+    background-color: $titulos;
+    height: 60px;
+    color: black;
+    font-family: $letra;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
