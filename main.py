@@ -11,7 +11,6 @@ app = Flask(__name__)
 #----APIS----
 
 @app.route("/api_guardar_metodo_pago")
-#soicaballero
 
 #----NORMAL----
 @app.route("/")
