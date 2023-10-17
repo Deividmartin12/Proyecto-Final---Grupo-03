@@ -8,6 +8,11 @@ import random
 
 app = Flask(__name__)
 
+#----APIS----
+
+
+
+#----NORMAL----
 @app.route("/")
 @app.route("/index")
 def index():
