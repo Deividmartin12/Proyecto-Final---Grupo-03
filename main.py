@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, flash, jsonify
 from markupsafe import escape
+import controladores.controlador_metodoP as controlador_metodoP
 import math
 from flask import url_for
 from flask import make_response
