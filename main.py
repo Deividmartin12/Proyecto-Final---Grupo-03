@@ -78,6 +78,11 @@ def actualizar_metodo_pago():
     controlador_metodoP.actualizar_metodo_pago(nombre, descripcion, id)
     return redirect("/metodos_pago")
 
+@app.route("/control_admin", methods=["POST"])
+def control():
+    return render_template("")
+
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=9000, debug=True)
