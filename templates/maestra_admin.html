@@ -12,17 +12,92 @@
 
 <body>
     <header class="container-fluid bs-primary">
-        <div class="row">
+        <nav class="navbar bg-primary" data-bs-theme="dark">
 
-        </div>
+        </nav>
     </header>
     <div class="container">
         <div class="row">
-            <div class="col-6 col-md-4 bs bs-primary">contenido</div>
-            <div class="col-md-8">Administrador</div>
-          </div>
+            <div class="col-3 col-md-3">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                PRODUCTOS
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Productos
+                            </div>
+                            <div class="accordion-body">
+                                Categorias productos
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                EMPLEADOS
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Administrador
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                CLIENTES
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Clientes
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                PEDIDOS
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Pedidos
+                            </div>
+                            <div class="accordion-body">
+                                Comprobantes
+                            </div>
+                            <div class="accordion-body">
+                                Metodos pago
+                            </div>
+                            <a href="{{url_for('admin_det_ped')}}">
+                                <div class="accordion-body">
+                                    Detalle pedido
+                                </div>
+
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=" col-9 col-md-9">
+                {% block admin_cont %}{% endblock %}
+            </div>
+        </div>
     </div>
-    
-<script src="{{url_for('static', filename='js/bootstrap.bundle.js')}}"></script>
+
+    <script src="{{url_for('static', filename='js/bootstrap.bundle.js')}}"></script>
 </body>
+
 </html>
