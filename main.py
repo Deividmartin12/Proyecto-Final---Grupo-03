@@ -80,7 +80,7 @@ def actualizar_metodo_pago():
 
 @app.route("/control_admin", methods=["POST"])
 def control():
-    return render_template("")
+    return render_template("maestra_admin.html")
 
 
 

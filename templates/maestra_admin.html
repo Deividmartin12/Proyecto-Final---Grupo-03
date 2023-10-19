@@ -6,57 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrador Veterinaria MPS {% block titulo %}{% endblock %}</title>
     <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/panelAdmin.css')}}">
     <script src="https://kit.fontawesome.com/6005c71067.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <header class="container-fluid">
-        <div class="row">
-            <div class="col">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-md-block d-lg-none icon_ocultos">
-                        <div class="d-flex align-items-center"> <!-- Agregamos un contenedor para alinear elementos -->
-                            <a href="{{url_for('index')}}"><i class="fa-solid fa-user fa-xl barras"></i></a>
-                            <button class="navbar-toggler ms-3" type="button" data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
-                                aria-label="Toggle navigation">
-                                <i class="fa-solid fa-bars fa-xl barras"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="text-center text-lg-start">
-                        <a href="{{url_for('index')}}"><img class="img-fluid logo" src="{{url_for('static', filename='img/logo.png')}}"></a>
-                    </div>
-                    <nav class="d-none d-lg-block">
-                        <ul class="list-inline menuHeader">
-                            <a href="{{url_for('index')}}">
-                                <li class="list-inline-item">Inicio</li>
-                            </a>
-                            <a href="{{url_for('categoria')}}">
-                                <li class="list-inline-item">Categorias</li>
-                            </a>
-                            <a href="Blog.html">
-                                <li class="list-inline-item">Blog</li>
-                            </a>
-                            <a href="Sobre_Nosotros.html">
-                                <li class="list-inline-item">Sobre Nosotros</li>
-                            </a>
-                            <a href="contacto.html">
-                                <li class="list-inline-item">Contáctanos</li>
-                            </a>
-                        </ul>
-                    </nav>
-                    <div class="iconos">
-                        <a href=""><i class="fa-solid fa-magnifying-glass fa-xl icon"></i></a>
-                        <a href="{{url_for('login')}}"><i class="fa-solid fa-user fa-xl icon d-none d-lg-inline-block"></i></a>
-                        <a href="{{url_for('carrito')}}"><i class="fa-solid fa-cart-shopping fa-xl icon"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <p>aa</p>
     </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 col-md-4">contenido</div>
+            <div class="col-md-8">Administrador</div>
+          </div>
+    </div>
     
+<script src="{{url_for('static', filename='js/bootstrap.bundle.js')}}"></script>
 </body>
-
 </html>
