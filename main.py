@@ -78,8 +78,8 @@ def actualizar_metodo_pago():
     controlador_metodoP.actualizar_metodo_pago(nombre, descripcion, id)
     return redirect("/metodos_pago")
 
-@app.route("/control_admin", methods=["POST"])
-def control():
+@app.route("/control_admin", methods=["GET", "POST"])
+def control_admin():
     return render_template("maestra_admin.html")
 
 
