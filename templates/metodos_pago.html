@@ -1,19 +1,15 @@
-{% extends "maestra.html" %}
-{% block titulo %} Métodos de Pago {% endblock %}
-{% block contenido %}
-
+{% extends "maestra_admin.html" %}
+{% block titulo %}Metodos de Pago{% endblock %}
+{%block admin_cont %}
 <section class="section">
-    <div class="columns">
-        <div class="column">
-            <h3 class="is-size-3">Métodos de Pago</h3>
-            <a href="{{url_for('formulario_agregar_metodo_pago')}}" class="button is-success">Agregar</a>
+    <div class="bs-primary">
+        Metodos de Pago
+    </div>
             <table class="table">
                 <thead>
                     <tr>
                         <th>Nombre</th>
                         <th>Descripción</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,10 +19,10 @@
                         <td>{{metodo_pago[2]}}</td>
                         <td>
                             {# Pasar el id (lo que hay en metodo_pago[0]) #}
-                            <a href="{{url_for('editar_metodo_pago', id=metodo_pago[0])}}" class="button is-info">Editar</a>
+                            <a href="" class="button is-info">Editar</a>
                         </td>
                         <td>
-                            <form action="{{url_for('eliminar_metodo_pago')}}" method="POST">
+                            <form action="" method="POST">
                                 <input type="hidden" name="id" value="{{metodo_pago[0]}}">
                                 <button class="button is-danger">Eliminar</button>
                             </form>
@@ -35,7 +31,5 @@
                     {% endfor %}
                 </tbody>
             </table>
-        </div>
-    </div>
 </section>
 {% endblock %}
