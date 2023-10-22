@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, flash, jsonify
 from markupsafe import escape
+import controladores.controlador_metodoP as controlador_metodoP
 import math
 from flask import url_for
 from flask import make_response
@@ -13,7 +14,8 @@ app = Flask(__name__)
 
 #----APIS----
 
-#soicaballero
+
+@app.route("/api_guardar_metodo_pago")
 
 #----NORMAL----
 @app.route("/")
@@ -44,6 +46,22 @@ def carrito():
 @app.route("/categoria")
 def  categoria():
     return render_template('categorias.html')
+
+#metodo pago
+
+
+@app.route("/metodos_pago")
+def metodos_pago():
+    return render_template("metodos_pago.html")
+
+@app.route("/control_admin", methods=["GET", "POST"])
+def control_admin():
+    return render_template("maestra_admin.html")
+
+@app.route("/admin_det_ped")
+def admin_det_ped():
+    return render_template("admin_det_ped.html")
+
 
 #####################     MASCOTA     ############################
 @app.route("/mascotas")
