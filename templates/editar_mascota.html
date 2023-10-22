@@ -1,0 +1,20 @@
+{% extends "maestra.html" %}
+{% block titulo %} Editar mascota{% endblock %}
+{% block contenido %}
+
+<section class="p-5">
+    <h3 class="is-size-3 mb-3">Editar mascota</h3>
+    <section class="input-group mb-3">
+        <form action="{{url_for('metodo_actualizar_mascota')}}" method="post" >
+            <input type="hidden" name="id" value="{{mascota[0]}}">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input value="{{mascota[1]}}" required type="text" class="form-control" name="nombre" id="nombre" placeholder="">
+            <div class="pt-4">
+                <button type="submit" class="btn btn-primary" style="width: 100px;">Guardar</button>
+            <a href="{{url_for('formulario_mascotas')}}" class="btn bg-primary-subtle" style="width: 100px;">Volver</a>
+            </div>
+        </form>
+    </section>   
+</section>
+
+{% endblock %}

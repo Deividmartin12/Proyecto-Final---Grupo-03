@@ -1,0 +1,67 @@
+{% extends "maestra.html" %}
+{% block titulo %} Editar producto{% endblock %}
+{% block contenido %}
+
+<section class="p-5">
+    <h3 class="is-size-3 mb-3">Editar producto</h3>
+    <section class="input-group mb-3">
+        <form action="{{url_for('metodo_actualizar_producto')}}" method="post" >
+                <input type="hidden" name="id" id="id"  value="{{producto[0]}}">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input value="{{producto[1]}}" required type="text" class="form-control mb-3" name="nombre" id="nombre" placeholder="">
+                <label for="descripcion" class="form-label">Descripcion</label>
+                <input value="{{producto[2]}}" required type="text" class="form-control mb-3" name="descripcion" id="descripcion" placeholder="">
+                <label for="precio" class="form-label">Precio</label>
+                <input value="{{producto[3]}}" required type="number" class="form-control mb-3" name="precio" id="precio" placeholder="">
+                <label for="stock" class="form-label">Stock</label>
+                <input value="{{producto[4]}}" required type="number" class="form-control mb-3" name="stock" id="stock" placeholder="">
+                <label for="estado" class="form-label">Estado</label>
+                <select name="estado" id="estado" class="form-select mb-4" style="width: 200px;">
+                    {% if producto[0] == 1 %}
+                    <option value="SI" selected>Vigente</option>
+                    <option value="NO">No vigente</option> 
+                    {% else %}
+                    <option value="SI">Vigente</option>
+                    <option value="NO" selected>No vigente</option> 
+                    {% endif %}      
+                </select>
+                <label for="categoria_id" class="form-label">Categoria</label>
+                <select name="categoria_id" id="categoria_id" class="form-select mb-4" style="width: 200px;">
+                    {% for categoria in categorias %}
+                    {% if categoria[0] == producto[6] %}
+                    <option value="{{categoria[0]}}" selected>{{categoria[1]}}</option>
+                    {% else %}
+                    <option value="{{categoria[0]}}">{{categoria[1]}}</option>
+                    {% endif %}        
+                    {% endfor %}
+                </select>
+                <label for="mascota_id" class="form-label">Mascota</label>
+                <select name="mascota_id" id="mascota_id" class="form-select mb-4" style="width: 200px;">
+                    {% for mascota in mascotas %}
+                    {% if mascota[0] == producto[7] %}
+                    <option value="{{mascota[0]}}" selected>{{mascota[1]}}</option>
+                    {% else %}
+                    <option value="{{mascota[0]}}">{{mascota[1]}}</option>
+                    {% endif %}        
+                    {% endfor %}
+                </select>
+                <label for="imagen" class="form-label">Imagen</label>
+                <input value="{{producto[8]}}" required type="file" class="form-control mb-4" name="imagen" id="imagen" placeholder="{{producto[8]}}">
+            <div class="pt-4">
+                <button type="submit" class="btn btn-primary" style="width: 100px;">Guardar</button>
+            <a href="{{url_for('formulario_productos')}}" class="btn bg-primary-subtle" style="width: 100px;">Volver</a>
+            </div>
+        </form>
+    </section>   
+</section>
+
+{% endblock %}
+<!-- <select name="mascota" id="mascota" class="form-select" style="width: 200px;">
+    {% for mascota in mascotas %}
+    {% if mascota[1] == producto[7] %}
+    <option value="{{mascota[1]}}" selected>{{producto[7]}}</option>
+    {% else %}
+    <option value="{{mascota[1]}}">{{producto[7]}}</option>
+    {% endif %}           
+    {% endfor %}
+</select> -->
