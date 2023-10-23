@@ -1,0 +1,88 @@
+{% extends "maestra.html" %}
+{% block titulo %} Editar producto{% endblock %}
+{% block contenido %}
+
+<section class="p-4">
+    <section class="pb-5 pt-3">
+        <ul class="nav justify-content-center">
+            <form class="d-flex" role="search">
+                <input class="form-control me-3" style="width: 80%;" type="search" placeholder="Producto" aria-label="Search">
+                <button class="btn btn-outline-secondary" type="submit">Buscar</button>
+            </form>
+        </ul>
+    </section>
+
+    <div class="">
+        <div class="float-sm-start float-md-start float-xl-start w-25 px-3 text-center">
+            <ul class="nav flex-column">
+
+                <li class="nav-item dropdown border border-primary py-3">
+                    <a class="nav-link text-primary-emphasis fw-bold" role="button" type="submit">VER TODOS</a>
+                </li>
+                
+                <li class="nav-item dropdown border-start border-end border-primary py-3">
+                    <a class="nav-link dropdown-toggle fw-bold" data-bs-toggle="collapse" href="#lista_mascotas" role="button" aria-expanded="false">MASCOTAS</a>
+                    <div class="collapse" id="lista_mascotas">
+                        <div class="card card-body border-0">
+                            <ul class="nav flex-column nav-underline">
+                                {% for mascota in mascotas %}
+                                <li class="nav-item">
+                                    <a class="nav-link text-black" href="#">{{mascota[1]}}</a>
+                                </li>
+                                {% endfor %}
+                            </ul>          
+                        </div>
+                      </div>
+                </li>
+                
+                <li class="nav-item dropdown border border-primary py-3">
+                    <a class="nav-link dropdown-toggle fw-bold" data-bs-toggle="collapse" href="#lista_categorias" role="button" aria-expanded="false">CATEGORIAS</a>
+                    <div class="collapse" id="lista_categorias">
+                        <div class="card card-body border-0">
+                            <ul class="nav flex-column nav-underline">
+                                {% for categoria in categorias %}
+                                <li class="nav-item">
+                                    <a class="nav-link text-black" href="#">{{categoria[1]}}</a>
+                                </li>
+                                {% endfor %}
+                            </ul>   
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4">
+            {% for producto in productos %}
+            <div class="col">
+                <div class="card h-100 text-center shadow">
+                  <img src="/static/img/{{producto[8]}}" class="card-img-top img-thumbnail mx-auto d-block object-fit-contain" style="height: 300px;width: 300px;" alt="{{producto[1]}}">
+                  <div class="card-body">
+                    <h5 class="card-title">{{producto[1]}}</h5>
+                    <p class="card-text">{{producto[2]}}</p>
+                    <p class="card-text">S/. {{producto[3]}}</p>
+                    <a href="#" class="btn btn-primary rounded-5">Añadir al carrito</a>
+                  </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    
+    <!-- <div class="animacion">
+        <div class="text-center">
+            {% for producto in productos %}
+            <div class="d-inline-block text-center product">
+                <a href="{{url_for('producto')}}">
+                    <img class="prod" style="height: 300px;width: 220px;" src="/static/img/{{producto[8]}}" alt="{{producto[1]}}">
+                    <p>{{producto[1]}}<br> {{producto[2]}} <br>S/. {{producto[3]}}</p>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div> -->
+    
+</section>
+
+{% endblock %}

@@ -100,6 +100,13 @@ def metodo_eliminar_mascota():
 
 
 #####################     PRODUCTO     ############################
+@app.route("/catalogo_productos")
+def catalogo_productos():
+    productos = controlador_producto.obtener_productos()
+    categorias = controlador_producto.obtener_categorias()
+    mascotas = controlador_mascota.obtener_mascotas()
+    return render_template("catalogo_productos.html",productos=productos,categorias=categorias, mascotas=mascotas)
+
 @app.route("/productos")
 def formulario_productos():
     productos = controlador_producto.obtener_productos_formateado()
@@ -158,6 +165,12 @@ def metodo_eliminar_producto():
     return redirect("/productos")
 #####################     PRODUCTO     ############################
 
+
+#####################     INTERFAZ ADMIN     ############################
+@app.route("/index_admin")
+def interfaz_admin():
+    return render_template("index_admin.html")
+#####################     INTERFAZ ADMIN     ############################
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=9000, debug=True)
