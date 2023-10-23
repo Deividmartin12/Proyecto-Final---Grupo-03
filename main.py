@@ -105,7 +105,13 @@ def catalogo_productos():
     productos = controlador_producto.obtener_productos()
     categorias = controlador_producto.obtener_categorias()
     mascotas = controlador_mascota.obtener_mascotas()
-    return render_template("catalogo_productos.html",productos=productos,categorias=categorias, mascotas=mascotas)
+    productos_2 = jsonify(controlador_producto.obtener_productos())
+    return render_template("catalogo_productos.html",productos=productos,categorias=categorias, mascotas=mascotas,productos_2=productos_2)
+
+@app.route("/datos_producto/<int:id>")
+def datos_producto(id):
+    producto = controlador_producto.obtener_producto_por_id(id)
+    return render_template("datos_producto.html",producto=producto)
 
 @app.route("/productos")
 def formulario_productos():
