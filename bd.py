@@ -9,4 +9,4 @@ def obtenerConexion():
                            port=3306,
                            user='root',
                            password='',
-                           db='project_veterinaria')
+                           db='petshop')
