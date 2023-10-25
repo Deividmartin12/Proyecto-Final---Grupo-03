@@ -2,6 +2,7 @@
 {% block titulo %}Producto{% endblock %}
 
 {%block contenido%}
+<link rel="stylesheet" href="{{url_for('static', filename='css/producto.css')}}">
 <main class="container-fluid mt-3">
     <div class="row">
         <div class="col-lg-12 mainBody d-flex flex-column justify-content-center align-items-center">
@@ -23,7 +24,9 @@
                             </p>
                         </div>
                         <div class="preProd text-center py-3">
-                            <span id="precioPro" class="fw-bold text-primary">S/. {{producto[3]}}</span>
+                            <span>Precio:</span>
+                            <span>S/.</span>
+                            <span id="precioPro" class="">{{producto[3]}}</span>
                         </div>
                         <div class="btnComp d-flex justify-content-center my-3">
                             <button type="button" class="btn btn-primary me-3" data-bs-toggle="modal" data-bs-target="#exampleModal" id="addCarrito">Agregar al Carrito</button>
@@ -63,5 +66,5 @@
         </div>
     </div>
 </main>
-
+<script src="{{url_for('static', filename='js/producto.js')}}"></script>
 {% endblock %}

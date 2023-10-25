@@ -1,8 +1,7 @@
 {% extends "maestra.html" %}
-{% block titulo %} Editar producto{% endblock %}
+{% block titulo %} Catalogo producto{% endblock %}
 {% block contenido %}
-
-<section class="p-4">
+<main class="p-4">
     <section class="pb-5 pt-3">
         <ul class="nav justify-content-center">
             <form class="d-flex" role="search">
@@ -92,6 +91,6 @@
         </div>
     </div> -->
     
-</section>
-
+</main>
+<script src="{{url_for('static', filename='js/producto.js')}}"></script>
 {% endblock %}
