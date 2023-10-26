@@ -7,8 +7,8 @@ from flask import make_response
 import hashlib
 import random
 
-import controlador_mascota
-import controlador_producto
+import controladores.controlador_mascota as controlador_mascota
+import controladores.controlador_producto as controlador_producto
 
 app = Flask(__name__)
 
