@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, flash, jsonify
+from flask import Flask, render_template, request, redirect, flash, jsonify,json
 from markupsafe import escape
 import controladores.controlador_metodoP as controlador_metodoP
 import math
@@ -198,6 +198,26 @@ def metodo_eliminar_producto():
     producto_id = request.form["id"]
     controlador_producto.eliminar_producto(producto_id)
     return redirect("/productos")
+
+@app.route("/lista_productos")
+def lista_productos():
+    respuesta = []
+    productos = controlador_producto.obtener_productos_formateado()
+    for producto in productos:
+        dict_producto = dict()
+        dict_producto["id"] = producto[0]
+        dict_producto["nombre"] = producto[1]
+        dict_producto["descripcion"] = producto[2]
+        dict_producto["precio"] = producto[3]
+        dict_producto["stock"] = producto[4]
+        dict_producto["estado"] = producto[5]
+        dict_producto["categoria"] = producto[6]
+        dict_producto["mascota"] = producto[7]
+        dict_producto["imagen"] = producto[8]
+
+        respuesta.append(dict_producto)
+
+    return respuesta
 #####################     PRODUCTO     ############################
 
 
