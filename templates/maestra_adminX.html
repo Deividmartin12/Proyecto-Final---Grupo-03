@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veterinaria MPS {% block titulo %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <script src="https://kit.fontawesome.com/6005c71067.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark border-bottom" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a href="{{url_for('interfaz_admin')}}" class="pe-5">
+                <img class="img-fluid logo" src="{{url_for('static', filename='img/logo.png')}}">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            PRODUCTOS
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{url_for('formulario_productos')}}">Productos</a></li>
+                            <li><a class="dropdown-item" href="#">Categorias</a></li>
+                            <li><a class="dropdown-item" href="{{url_for('formulario_mascotas')}}">Mascotas</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        USUARIOS
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Administrador</a></li>
+                        <li><a class="dropdown-item" href="#">Clientes</a></li>
+                    </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        PEDIDOS
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Pedidos</a></li>
+                        <li><a class="dropdown-item" href="#">Comprobantes</a></li>
+                        <li><a class="dropdown-item" href="{{url_for('metodos_pago')}}">Métodos de pago</a></li>
+                        <li><a class="dropdown-item" href="#">Detalle pedido</a></li>
+                    </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="btn btn btn-outline-secondary" href="{{url_for('index')}}" role="button">VOLVER</a>
+                    </li>
+                </div>
+            </div>
+        </div>
+      </nav>
+
+    {% block contenido %} {% endblock %}
+
+    <footer class="container-fluid">
+        <div class="row">
+            <div class="col text-center">
+                <div class="justify-content-between  d-lg-flex d-md-flex">
+                    <div class="block">
+
+                        <h4>Contacto</h4>
+
+                        <div class="d-flex align-items-center">
+                            <i class="fa-solid fa-briefcase fa-lg"></i>
+                            <p>Las Ñustas 2029, La Victoria<br>14007 Chiclayo - Perú</p>
+
+                        </div>
+
+                        <div class="d-flex align-items-center ">
+                            <i class="fa-regular fa-envelope fa-lg"></i>
+                            <p>contacto@veterinariamips.com</p>
+                        </div>
+
+                        <div class="d-flex align-items-center ">
+                            <i class="fa-solid fa-phone-volume fa-lg"></i>
+                            <p>943 777 595<br>(30) 50 - 5358</p>
+                        </div>
+                    </div>
+
+                    <div class="block">
+                        <h4>Mascotas</h4>
+                        <a href="">
+                            <p>Perros</p>
+                        </a>
+                        <a href="">
+                            <p>Gatos</p>
+                        </a>
+                    </div>
+
+                    <div class="block">
+                        <a href="preguntas.html"><h4>Preguntas Frecuentes</h4></a>
+                        <p>
+                            ¿Cuáles son los horarios de atención?<br>
+                            ¿Cómo puedo programar una cita para<br> mi mascota?<br>
+                            ¿Cuáles son los servicios que ofrece?
+                        </p>
+                        <h4>Visitanos</h4>
+                        <a href=""><img src="/img/instagram 1.png" alt=""></a>
+                        <a href="https://www.facebook.com/veterinaria.mipequenosebastian" target="_blank"><img src="/img/facebook 1.png" alt=""></a>
+                        <a href=""><img src="/img/gorjeo 1.png" alt=""></a>
+                        <a href="{{url_for('login_empleado')}}" class="text-dark">
+                            <p><Strong>Login empleado</Strong></p>
+                        </a>
+                    </div>
+
+                </div>
+
+                <p>@Copyright 2023 Veterinaria Mi Pequeño Sebastian Todos los derechos reservados</p>
+
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{url_for('static', filename='js/bootstrap.bundle.js')}}"></script> 
+</body>
+
+</html>

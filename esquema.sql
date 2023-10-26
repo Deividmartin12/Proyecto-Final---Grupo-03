@@ -8,23 +8,42 @@ create table cliente(
     password varchar(255) not null
 );
 
+
+--CAMBIOS CABALLERO
 create table categoria(
-	categoria_id serial primary key,
+	categoria_id bigint unsigned not null auto_increment primary key,
     nombre varchar(255) not null,
     descripcion varchar(255) not null
 );
 
+create table mascota(
+    mascota_id bigint unsigned not null auto_increment primary key,
+    nombre varchar(255) not null
+); 
+
 create table producto(
-	producto_id serial primary key,
+	producto_id bigint unsigned not null auto_increment primary key,
     nombre varchar(255) not null,
-    descipcion varchar(255) not null,
+    descripcion varchar(255) not null,
     precio numeric(8,2) not null,
     stock integer not null,
     estado boolean not null,
-    categoria_id integer not null,
-    constraint fk_categoria foreign key (categoria_id) references categoria(categoria_id)
+    categoria_id bigint unsigned not null,
+    mascota_id bigint unsigned not null,
+    link_imagen varchar(255) not null,
+    constraint fk_categoria foreign key (categoria_id) references categoria(categoria_id),
+    constraint fk_mascota foreign key (mascota_id) references mascota(mascota_id)
 );
- 
+
+INSERT INTO mascota(nombre) VALUES ('Genérico');
+INSERT INTO mascota(nombre) VALUES ('Perro');
+INSERT INTO mascota(nombre) VALUES ('Gato');
+
+INSERT INTO categoria(nombre, descripcion) VALUES ('Alimento','Productos para el consumo animal');
+INSERT INTO categoria(nombre, descripcion) VALUES ('Limpieza','Productos para el aseo animal');
+INSERT INTO categoria(nombre, descripcion) VALUES ('Juguete','Productos para el entretenimiento animal');
+
+--CAMBIOS CABALLERO FIN
 
 create table pedido(
 	pedido_id serial primary key,
@@ -60,3 +79,4 @@ create table comprobante(
     constraint fk_pedido foreign key (pedido_id) references pedido(pedido_id),
     constraint fk_metodo foreign key (metodo_id) references metodo_pago(metodo_id)
 );
+

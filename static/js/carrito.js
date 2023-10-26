@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
         // Crear la columna para la imagen del producto
         var imagenColumn = document.createElement("div");
-        imagenColumn.innerHTML = '<img class="img-fluid imgProCar" src="' + producto.imagen + '" alt="">';
+        imagenColumn.innerHTML = '<img class="img-fluid object-fit-contain imgProCar" src="' + producto.imagen + '" alt="">';
   
         // Crear la columna para la información del producto
         var infoColumn = document.createElement("div");

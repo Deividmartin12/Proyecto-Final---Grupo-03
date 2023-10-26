@@ -1,8 +1,8 @@
 {% extends "maestra.html"%}
 {% block titulo %}Carrito de compra{% endblock %}
 {% block contenido %}
-
-<section class="container-fluid">
+<link rel="stylesheet" href="{{url_for('static', filename='css/carrito.css')}}">
+<main class="container-fluid">
     <div class="row">
         <div class="container-fluid titulo">Carrito de Compras</div>
     </div>
@@ -38,9 +38,9 @@
             <ul>
                 <p class="title">Aceptamos</p>
                 <div>
-                    <img src="img/american.png" class="img-fluid tarjetas">
-                    <img src="img/visa.png" class="img-fluid  tarjetas">
-                    <img src="img/ms.png" class="img-fluid tarjetas">
+                    <img src="/static/img/american.png" class="img-fluid  object-fit-contain tarjetas">
+                    <img src="/static/img/visa.png" class="img-fluid  object-fit-contain tarjetas">
+                    <img src="/static/img/ms.png" class="img-fluid  object-fit-contain tarjetas">
                 </div>
             </ul>
         </div>
@@ -64,6 +64,6 @@
 
         </div>
     </div>
-</section>
+</main>
 <script src="{{url_for('static', filename='js/carrito.js')}}"></script>
 {% endblock %}

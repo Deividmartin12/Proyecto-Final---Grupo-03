@@ -2,51 +2,40 @@
 {% block titulo %}Producto{% endblock %}
 
 {%block contenido%}
-<main class="container-fluid">
+<link rel="stylesheet" href="{{url_for('static', filename='css/producto.css')}}">
+<main class="container-fluid mt-3">
     <div class="row">
-        <div class=" mnuNav d-none d-lg-block">
-            <nav class="menuNavI" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
-                    <li class="breadcrumb-item"><a href="tienda.html">Tienda</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Hill's SD Snacks Jerky Dog Treats</li>
-                </ol>
-            </nav>
-        </div>
-
-        <div class="col-lg-12 mainBody d-flex flex-column justify-content-center align-items-center  ">
+        <div class="col-lg-12 mainBody d-flex flex-column justify-content-center align-items-center">
             <div class="d-block justify-content-center">
                 <div class="d-lg-flex">
-                    <div class="text-sm-center">
-                        <img class="img-fluid imgProduct mx-2" id="imgProducto" src="/static/img/Producto 1.png" alt="">
+                    <div class="text-sm-center position-relative px-5">
+                        <img class="img-fluid imgProduct object-fit-contain col-5" style="height: 60vh;width: 30vw;" id="imgProducto" src="/static/img/{{producto[8]}}" alt="">
                     </div>
-                    <div class="d-block justify-content-center">
+                    <div class="d-flex flex-column justify-content-center max-w-50">
                         <div>
                             <div class="d-flex justify-content-center align-items-center">
-                                <p id="proTitle">Hill's SD Snacks Jerky Dog Treats</p>
+                                <p id="proTitle" class="fw-bold fs-2 ">{{producto[1]}}</p>
                                 <button class="boton"><i class="fa-solid fa-heart fa-1x"></i></button>
                             </div>
                         </div>
-                        <div class="justify-content-center align-items-center">
-                            <p class="descript text-center">
-                                Los premios para perros Hill's Natural Jerky Strips<br>
-                                with Real Chicken son deliciosos premios naturales<br>
-                                hechos con solamente los mejores ingredientes.
+                        <div class="justify-content-center align-items-center mt-3">
+                            <p class="descript text-center border-bottom border-black py-4">
+                                {{producto[2]}}<br>
                             </p>
                         </div>
-                        <div class="preProd text-center">
+                        <div class="preProd text-center py-3">
                             <span>Precio:</span>
                             <span>S/.</span>
-                            <span id="precioPro">30.00</span>
+                            <span id="precioPro" class="">{{producto[3]}}</span>
                         </div>
-                        <div class="btnComp d-flex justify-content-center">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="addCarrito">Agregar al Carrito</button>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#comprarAhoraModal" id="comprarAhoraID" >Comprar Ahora</button>
+                        <div class="btnComp d-flex justify-content-center my-3">
+                            <button type="button" class="btn btn-primary me-3" data-bs-toggle="modal" data-bs-target="#exampleModal" id="addCarrito">Agregar al Carrito</button>
+                            <button type="button" class="btn btn-primary ms-3" data-bs-toggle="modal" data-bs-target="#comprarAhoraModal" id="comprarAhoraID" >Comprar Ahora</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="d-flex cont1">
+            <div class="d-flex cont1 mt-5">
                 <h5>Calificación:</h5>
                 <div class="contStart">
                     <i class="fas fa-star star"></i>
@@ -77,5 +66,5 @@
         </div>
     </div>
 </main>
-
+<script src="{{url_for('static', filename='js/producto.js')}}"></script>
 {% endblock %}
