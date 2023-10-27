@@ -181,7 +181,6 @@ function mostrar_num_carrito(event){
     var numcarrito = localStorage.getItem("carrito");
     var numcarritoJson = JSON.parse(numcarrito);
     document.getElementById("numCarrito").innerHTML=numcarritoJson.length;
-    alert("Se presionó el botón");
 }
 
 
