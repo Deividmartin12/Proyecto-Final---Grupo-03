@@ -64,6 +64,10 @@ def admin_det_ped():
 def pago():
     return render_template("pago.html")
 
+@app.route("/misOrdenes")
+def mis_ordenes():
+    return render_template("misOrdenes.html")
+
 
 #####################     MASCOTA     ############################
 @app.route("/mascotas")
