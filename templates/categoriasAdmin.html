@@ -1,4 +1,4 @@
-{% extends "maestra_adminx.html" %}
+{% extends "maestra_adminX.html" %}
 {% block titulo %} Categorías {% endblock %}
 {% block contenido %}
 
@@ -27,7 +27,7 @@
                     <td>
                         <form action="{{url_for('eliminar_categoria')}}" method="POST">
                             <input type="hidden" name="id" value="{{categoria[0]}}">
-                            <button class="button btn-danger">Eliminar</button>
+                            <button class="btn btn-danger">Eliminar</button>
                         </form>
                     </td>
                 </tr>

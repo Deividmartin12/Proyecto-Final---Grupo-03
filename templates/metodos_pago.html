@@ -1,4 +1,4 @@
-{% extends "maestra_adminx.html" %}
+{% extends "maestra_adminX.html" %}
 {% block titulo %} Métodos de Pago {% endblock %}
 {% block contenido %}
 
@@ -28,7 +28,7 @@
                         <td>
                             <form action="{{url_for('eliminar_metodo_pago')}}" method="POST">
                                 <input type="hidden" name="id" value="{{metodo_pago[0]}}">
-                                <button class="button btn-danger">Eliminar</button>
+                                <button class="btn btn-danger">Eliminar</button>
                             </form>
                         </td>
                     </tr>
