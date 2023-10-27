@@ -144,6 +144,10 @@ def guardar_categoria():
     controlador_categorias.insertar_categoria(nombre, descripcion)
     return redirect("/categoriasAdmin")
 
+@app.route("/direccion_pago", methods=["POST"])
+def direccion_pago():
+    return render_template("direccion_pago.html")
+
 @app.route("/eliminar_categoria", methods=["POST"])
 def eliminar_categoria():
     controlador_categorias.eliminar_categoria(request.form["id"])
