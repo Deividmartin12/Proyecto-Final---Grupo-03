@@ -15,7 +15,7 @@
                     <div class="izq">
                         <div class="container-fluid">
                             <a class="navbar-brand" href="#">
-                                <img src="img/numero-uno.png" alt="Logo" width="30" height="30"
+                                <img src="{{url_for('static', filename='img/numero-uno.png')}} " alt="Logo" width="30" height="30"
                                     class="d-inline-block align-text-top">
                                 Información de contacto
                             </a>
@@ -26,7 +26,7 @@
                                 </p>
                             </div>
                             <a class="navbar-brand" href="#">
-                                <img src="img/numero-2.png" alt="Logo" width="30" height="30"
+                                <img src="{{url_for('static', filename='img/numero-2.png')}}" alt="Logo" width="30" height="30"
                                     class="d-inline-block align-text-top">
                                 Envío
                             </a>
@@ -38,7 +38,7 @@
                                 </p>
 
                                 <div class="d-grid gap-2 col-12 mx-auto">
-                                    <a href="direccion_pago.html" class="btn btn-primary">Cambiar opciones de
+                                    <a href="{{url_for('static', filename='direccion_pago.html')}}" class="btn btn-primary">Cambiar opciones de
                                         entrega</a>
                                 </div>
                             </div>
@@ -46,7 +46,7 @@
                         <br>
                         <div class="container-fluid">
                             <a class="navbar-brand" href="#">
-                                <img src="img/numero-3.png" alt="Logo" width="30" height="30"
+                                <img src="{{url_for('static', filename='img/numero-3.png')}}" alt="Logo" width="30" height="30"
                                     class="d-inline-block align-text-top">
                                 Pago
                             </a>
@@ -127,9 +127,9 @@
                                         <form class="row g-3">
                                             <!-- imagenes de tarjetas -->
                                             <div class="tarj-pos">
-                                                <img src="img/american.png" class="tarj">
-                                                <img src="img/visa.png" class="tarj">
-                                                <img src="img/ms.png" class="tarj">
+                                                <img src="{{url_for('static', filename='img/american.png')}}" class="tarj">
+                                                <img src="{{url_for('static', filename='img/visa.png')}}" class="tarj">
+                                                <img src="{{url_for('static', filename='img/ms.png')}}" class="tarj">
                                             </div>
 
                                             <div class="col-md-12">
@@ -191,7 +191,7 @@
                         <div class="col">
                             <div class="container-fluid">
                                 <a class="navbar-brand" href="#">
-                                    <img src="img/bolsa-de-la-compra (1).png" alt="Logo" width="30" height="30"
+                                    <img src="{{url_for('static', filename='img/bolsa-de-la-compra (1).png')}}" alt="Logo" width="30" height="30"
                                         class="d-inline-block align-text-top">
                                     Resumen de la compra
                                 </a>
@@ -261,7 +261,7 @@
                 Enviaremos el comprobante de pago a tu correo electrónico.
             </div>
             <div class="modal-footer">
-              <a href="index.html"><button type="button" class="btn btn-primary">Inicio</button></a>
+              <a href="{{url_for('index')}}"><button type="button" class="btn btn-primary">Inicio</button></a>
               <a href="misOrdenes.html"><button type="button" class="btn btn-primary">Mis Ordenes</button></a>
             </div>
           </div>
