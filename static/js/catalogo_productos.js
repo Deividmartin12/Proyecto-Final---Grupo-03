@@ -8,7 +8,7 @@ fetch('/lista_productos')
 
     mostrar_productos();
 
-    document.querySelector('a[name="boton_agregar_carrito"]').addEventListener('click',mostrar_num_carrito)
+    document.querySelector('a[name="boton_agregar_carrito"]').addEventListener('click',mostrar_num_carrito);
 })
 
 
