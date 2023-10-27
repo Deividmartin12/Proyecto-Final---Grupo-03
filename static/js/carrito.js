@@ -1,4 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll('a[name="boton_agregar_carrito"]').forEach(boton => {
+    boton.addEventListener('click',mostrar_num_carrito);
+})
     // Obtener el elemento del carrito
     var carritoElement = document.getElementById("carrito");
   
@@ -153,3 +156,8 @@ document.addEventListener("DOMContentLoaded", function() {
     actualizarTotal();
   });
 
+  function mostrar_num_carrito(event){
+    var numcarrito = localStorage.getItem("carrito");
+    var numcarritoJson = JSON.parse(numcarrito);
+    document.getElementById("numCarrito").innerHTML=numcarritoJson.length;
+}
