@@ -7,7 +7,7 @@
         <!-- <img src="{{url_for('static', filename='discos.jpg')}}"> -->
         <h2 class="is-size-3">Mascotas</h2>
         <a href="{{url_for('formulario_registrar_mascota')}}" class="btn btn-primary px-4 my-2">Agregar</a>
-        <table class="table table-hover table-group-divider">
+        <table class="table table-hover table-group-divider table-bordered border-light">
             <thead class="table-light">
                 <tr class="text-center">
                     <th scope="col" class="col-2">Nombre</th>
@@ -18,7 +18,7 @@
             <tbody class="table-group-divider">
                 {% for mascota in mascotas %}
                 <tr class="text-center">
-                    <td>{{mascota[1]}}</td>
+                    <td class="text-start">{{mascota[1]}}</td>
                     <td>
                         <a href="{{url_for('formulario_editar_mascota', id=mascota[0])}}" class="btn btn-secondary">Editar</a>
                     </td>
