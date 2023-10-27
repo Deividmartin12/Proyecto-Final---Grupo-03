@@ -144,7 +144,7 @@ def guardar_categoria():
     controlador_categorias.insertar_categoria(nombre, descripcion)
     return redirect("/categoriasAdmin")
 
-@app.route("/direccion_pago", methods=["POST"])
+@app.route("/direccion_pago")
 def direccion_pago():
     return render_template("direccion_pago.html")
 
