@@ -151,3 +151,11 @@
 </body>
 
 </html>
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+        var numcarrito = localStorage.getItem("carrito");
+    var numcarritoJson = JSON.parse(numcarrito);
+    
+    document.getElementById("numCarrito").innerHTML=numcarritoJson.length;
+    });
+</script>
