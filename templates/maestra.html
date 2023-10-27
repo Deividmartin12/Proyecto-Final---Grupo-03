@@ -152,8 +152,9 @@
 
 </html>
 <script>
+    location.reload();
     document.addEventListener("DOMContentLoaded", function(){
-        var numcarrito = localStorage.getItem("carrito");
+    var numcarrito = localStorage.getItem("carrito");
     var numcarritoJson = JSON.parse(numcarrito);
     
     document.getElementById("numCarrito").innerHTML=numcarritoJson.length;
