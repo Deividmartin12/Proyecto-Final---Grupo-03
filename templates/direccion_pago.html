@@ -13,7 +13,7 @@
                     <div class="izq">
                         <div class="container-fluid">
                             <a class="navbar-brand" href="#">
-                                <img src="img/numero-uno.png" alt="Logo" width="30" height="30"
+                                <img src="{{url_for('static', filename='img/numero-uno.png')}}" alt="Logo" width="30" height="30"
                                     class="d-inline-block align-text-top">
                                 Información de contacto
                             </a>
@@ -24,7 +24,7 @@
                                 </p>
                             </div>
                             <a class="navbar-brand" href="#">
-                                <img src="img/numero-2.png" alt="Logo" width="30" height="30"
+                                <img src="{{url_for('static', filename='img/numero-2.png')}}" alt="Logo" width="30" height="30"
                                     class="d-inline-block align-text-top">
                                 Envío
                             </a>
@@ -107,14 +107,14 @@
                                                 existir retrasos en tu pedido. (S/. 15.00)</p>
                                         </div>
                                     </div>
-                                    <a href="pago.html" class="btn btn-primary">Ir al pago</a>
+                                    <a href="{{url_for('pago')}} " class="btn btn-primary">Ir al pago</a>
                                 </form>
                             </div>
                         </div>
                         <br>
                         <div class="container-fluid">
                             <a class="navbar-brand" href="#">
-                                <img src="img/numero-3.png" alt="Logo" width="30" height="30"
+                                <img src="{{url_for('static', filename='img/numero-3.png')}}" alt="Logo" width="30" height="30"
                                     class="d-inline-block align-text-top">
                                 Pago
                             </a>
@@ -126,7 +126,7 @@
                         <div class="col">
                             <div class="container-fluid">
                                 <a class="navbar-brand" href="#">
-                                    <img src="img/bolsa-de-la-compra (1).png" alt="Logo" width="30" height="30"
+                                    <img src="{{url_for('static', filename='img/img/bolsa-de-la-compra (1).png')}}" alt="Logo" width="30" height="30"
                                         class="d-inline-block align-text-top">
                                     Resumen de la compra
                                 </a>
@@ -175,8 +175,7 @@
 
     
 
-    <script src="{{url_for('static', filname='js/bootstrap.min.js')}}"></script>
-    <script src="{{url_for('static', filname='js/js/envio.js')}}"></script>
-</section>
 
+</section>
+<script src="{{url_for('static', filname='js/envio.js')}}"></script>
 {% endblock %}

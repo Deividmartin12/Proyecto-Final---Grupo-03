@@ -18,6 +18,7 @@ app = Flask(__name__)
 @app.route("/api_guardar_metodo_pago")
 
 #----NORMAL----
+
 @app.route("/")
 @app.route("/index")
 def index():
@@ -56,6 +57,12 @@ def control_admin():
 @app.route("/admin_det_ped")
 def admin_det_ped():
     return render_template("admin_det_ped.html")
+
+
+##################### Cornejo ##########################
+@app.route("/pago")
+def pago():
+    return render_template("pago.html")
 
 
 #####################     MASCOTA     ############################
