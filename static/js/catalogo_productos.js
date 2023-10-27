@@ -8,7 +8,9 @@ fetch('/lista_productos')
 
     mostrar_productos();
 
-    document.querySelector('a[name="boton_agregar_carrito"]').addEventListener('click',mostrar_num_carrito);
+    document.querySelectorAll('a[name="boton_agregar_carrito"]').forEach(boton => {
+        boton.addEventListener('click',mostrar_num_carrito);
+    })
 })
 
 
@@ -179,7 +181,6 @@ function mostrar_num_carrito(event){
     var numcarrito = localStorage.getItem("carrito");
     var numcarritoJson = JSON.parse(numcarrito);
     document.getElementById("numCarrito").innerHTML=numcarritoJson.length;
-    alert("Se presionó el botón");
 }
 
 
