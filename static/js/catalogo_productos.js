@@ -41,7 +41,7 @@ function mostrar_productos() {
                             <span>S/. </span>
                             <span>${productos[i].precio}</span>
                         </p>
-                        <a class="btn btn-primary rounded-5 w-75" name="boton_agregar_carrito" onclick="agregar_carrito(${productos[i].id});" onclick="mostrar_num_carrito;">Agregar al carrito</a>
+                        <a class="btn btn-primary rounded-5 w-75" name="boton_agregar_carrito" onclick="agregar_carrito(${productos[i].id});">Agregar al carrito</a>
                     </div>
                 </div>
             </div>
@@ -179,3 +179,6 @@ function mostrar_num_carrito(event){
     document.getElementById("numCarrito").innerHTML=numcarritoJson.length;
     alert("Se presionó el botón");
 }
+
+
+document.querySelector('a[name="boton_agregar_carrito"]').addEventListener('click',mostrar_num_carrito)
