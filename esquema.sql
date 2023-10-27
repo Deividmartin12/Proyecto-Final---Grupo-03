@@ -69,14 +69,15 @@ create table metodo_pago(
     descripcion varchar(255) not null
 );
 
-create table comprobante(
-	numero_boleta bigint unsigned not null auto_increment primary key,
-    fecha_hora_emision timestamp not null,
-    monto_total numeric(8,2) not null,
-    tipo_comprobante char(1) not null,
-    pedido_id bigint unsigned not null,
-    metodo_id bigint unsigned not null,
-    constraint fk_pedido foreign key (pedido_id) references pedido(pedido_id),
-    constraint fk_metodo foreign key (metodo_id) references metodo_pago(metodo_id)
+CREATE TABLE comprobante(
+    numero_boleta BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    fecha_hora_emision TIMESTAMP NOT NULL,
+    monto_total NUMERIC(8,2) NOT NULL,
+    tipo_comprobante CHAR(1) NOT NULL,
+    pedido_id BIGINT UNSIGNED NOT NULL,
+    metodo_id BIGINT UNSIGNED NOT NULL,
+    FOREIGN KEY (pedido_id) REFERENCES pedido(pedido_id),
+    FOREIGN KEY (metodo_id) REFERENCES metodo_pago(metodo_id)
 );
+
 

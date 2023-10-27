@@ -6,7 +6,7 @@ from flask import url_for
 from flask import make_response
 import hashlib
 import random
-
+import controladores.controlador_categorias as controlador_categorias
 import controladores.controlador_mascota as controlador_mascota
 import controladores.controlador_producto as controlador_producto
 
@@ -127,6 +127,42 @@ def actualizar_metodo_pago():
     controlador_metodoP.actualizar_metodo_pago(nombre, descripcion, id)
     return redirect("/metodos_pago")
 #####################     METODO PAGO     ############################
+#####################     CATEGORIAS    ############################
+@app.route("/agregar_categoria")
+def formulario_agregar_categoria():
+    return render_template("agregar_categoria.html")
+
+@app.route("/categoriasAdmin")
+def categoriasAdmin():
+    categorias = controlador_categorias.obtener_categorias()
+    return render_template("categoriasAdmin.html", categorias=categorias)
+
+@app.route("/guardar_categoria", methods=["POST"])
+def guardar_categoria():
+    nombre = request.form["nombre"]
+    descripcion = request.form["descripcion"]
+    controlador_categorias.insertar_categoria(nombre, descripcion)
+    return redirect("/categoriasAdmin")
+
+@app.route("/eliminar_categoria", methods=["POST"])
+def eliminar_categoria():
+    controlador_categorias.eliminar_categoria(request.form["id"])
+    return redirect("/categoriasAdmin")
+
+@app.route("/formulario_editar_categoria/<int:id>")
+def editar_categoria(id):
+    # Obtener la categoría por ID
+    categoria = controlador_categorias.obtener_categoria_por_id(id)
+    return render_template("editar_categoria.html", categoria=categoria)
+
+@app.route("/actualizar_categoria", methods=["POST"])
+def actualizar_categoria():
+    id = request.form["id"]
+    nombre = request.form["nombre"]
+    descripcion = request.form["descripcion"]
+    controlador_categorias.actualizar_categoria(nombre, descripcion, id)
+    return redirect("/categoriasAdmin")
+#####################     CATEGORIAS     ############################
     
 #####################     PRODUCTO     ############################
 @app.route("/catalogo_productos")
