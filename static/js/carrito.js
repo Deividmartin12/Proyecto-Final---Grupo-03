@@ -13,6 +13,9 @@ document.addEventListener("DOMContentLoaded", function() {
       carritoElement.innerHTML = "Carrito vacío";
       actualizarTotal();
       localStorage.setItem("carrito", JSON.stringify([])); // Eliminar el contenido del carrito en el localStorage
+      var numcarrito = localStorage.getItem("carrito");
+      var numcarritoJson = JSON.parse(numcarrito);
+      document.getElementById("numCarrito").innerHTML=numcarritoJson.length;
     });
   
     // Recorrer los productos en el carrito y agregarlos al DOM
