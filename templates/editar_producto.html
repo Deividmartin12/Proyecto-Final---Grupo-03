@@ -17,7 +17,7 @@
                 <input value="{{producto[4]}}" required type="number" class="form-control mb-3" name="stock" id="stock" placeholder="">
                 <label for="estado" class="form-label">Estado</label>
                 <select name="estado" id="estado" class="form-select mb-4" style="width: 200px;">
-                    {% if producto[5] != 1 %}
+                    {% if producto[5] == 1 %}
                     <option value="SI" selected>Vigente</option>
                     <option value="NO">No vigente</option> 
                     {% else %}
