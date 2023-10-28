@@ -19,10 +19,10 @@
                 {% for mascota in mascotas %}
                 <tr class="text-center">
                     <td class="text-start border">{{mascota[1]}}</td>
-                    <td>
+                    <td class="border">
                         <a href="{{url_for('formulario_editar_mascota', id=mascota[0])}}" class="btn btn-secondary">Editar</a>
                     </td>
-                    <td>
+                    <td class="border">
                         <form action="{{url_for('metodo_eliminar_mascota')}}" method="POST">
                             <input type="hidden" name="id" value="{{mascota[0]}}">
                             <button class="btn btn-danger">Eliminar</button>
