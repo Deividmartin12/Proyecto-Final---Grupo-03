@@ -182,11 +182,9 @@ def actualizar_categoria():
 #####################     PRODUCTO     ############################
 @app.route("/catalogo_productos")
 def catalogo_productos():
-    productos = controlador_producto.obtener_productos()
     categorias = controlador_producto.obtener_categorias()
     mascotas = controlador_mascota.obtener_mascotas()
-    productos_2 = jsonify(controlador_producto.obtener_productos())
-    return render_template("catalogo_productos.html",productos=productos,categorias=categorias, mascotas=mascotas,productos_2=productos_2)
+    return render_template("catalogo_productos.html",categorias=categorias, mascotas=mascotas)
 
 @app.route("/datos_producto/<int:id>")
 def datos_producto(id):
@@ -253,7 +251,7 @@ def metodo_eliminar_producto():
 @app.route("/lista_productos")
 def lista_productos():
     respuesta = []
-    productos = controlador_producto.obtener_productos_formateado()
+    productos = controlador_producto.obtener_productos_vigentes_formateado()
     for producto in productos:
         dict_producto = dict()
         dict_producto["id"] = producto[0]

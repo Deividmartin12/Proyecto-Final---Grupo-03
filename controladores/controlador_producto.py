@@ -54,6 +54,22 @@ def obtener_productos_formateado():
     conexion.close()
     return productos
 
+def obtener_productos_vigentes_formateado():
+    conexion = obtenerConexion()
+    productos = []
+    with conexion.cursor() as cursor:
+        cursor.execute(
+            """SELECT pro.producto_id, pro.nombre, pro.descripcion, pro.precio, pro.stock, 
+                CASE
+                WHEN pro.estado is true THEN 'Vigente'
+                ELSE 'No vigente'
+                END AS estado
+                , cat.nombre AS categoria, mas.nombre AS mascota, link_imagen FROM producto as pro 
+                INNER JOIN categoria AS cat ON cat.categoria_id = pro.categoria_id
+                INNER JOIN mascota AS mas ON mas.mascota_id = pro.mascota_id WHERE pro.estado = true""")
+        productos = cursor.fetchall()
+    conexion.close()
+    return productos
 
 def eliminar_producto(id):
     conexion = obtenerConexion()
