@@ -17,7 +17,7 @@
                 <input value="{{producto[4]}}" required type="number" class="form-control mb-3" name="stock" id="stock" placeholder="">
                 <label for="estado" class="form-label">Estado</label>
                 <select name="estado" id="estado" class="form-select mb-4" style="width: 200px;">
-                    {% if producto[0] == 0 %}
+                    {% if producto[0] == true %}
                     <option value="SI" selected>Vigente</option>
                     <option value="NO">No vigente</option> 
                     {% else %}
@@ -45,8 +45,8 @@
                     {% endif %}        
                     {% endfor %}
                 </select>
-                <label for="imagen" class="form-label">Imagen</label>
-                <input value="{{producto[8]}}" required type="file" class="form-control mb-4" name="imagen" id="imagen" placeholder="">
+                <!-- <label for="imagen" class="form-label">Imagen</label>
+                <input value="{{producto[8]}}" required type="file" class="form-control mb-4" name="imagen" id="imagen" placeholder=""> -->
             <div class="pt-4">
                 <button type="submit" class="btn btn-primary" style="width: 100px;">Guardar</button>
             <a href="{{url_for('formulario_productos')}}" class="btn bg-primary-subtle" style="width: 100px;">Volver</a>
