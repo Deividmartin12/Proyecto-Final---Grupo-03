@@ -1,6 +1,6 @@
-{% extends "maestra_admin.html" %}
+{% extends "maestra_adminX.html" %}
 {% block titulo %} Editar producto{% endblock %}
-{% block admin_cont %}
+{% block contenido %}
 
 <section class="p-5">
     <h3 class="is-size-3 mb-3">Editar producto</h3>
@@ -17,7 +17,7 @@
                 <input value="{{producto[4]}}" required type="number" class="form-control mb-3" name="stock" id="stock" placeholder="">
                 <label for="estado" class="form-label">Estado</label>
                 <select name="estado" id="estado" class="form-select mb-4" style="width: 200px;">
-                    {% if producto[0] == 1 %}
+                    {% if producto[5] == 1 %}
                     <option value="SI" selected>Vigente</option>
                     <option value="NO">No vigente</option> 
                     {% else %}
@@ -45,8 +45,8 @@
                     {% endif %}        
                     {% endfor %}
                 </select>
-                <label for="imagen" class="form-label">Imagen</label>
-                <input value="{{producto[8]}}" required type="file" class="form-control mb-4" name="imagen" id="imagen" placeholder="">
+                <!-- <label for="imagen" class="form-label">Imagen</label>
+                <input value="{{producto[8]}}" required type="file" class="form-control mb-4" name="imagen" id="imagen" placeholder=""> -->
             <div class="pt-4">
                 <button type="submit" class="btn btn-primary" style="width: 100px;">Guardar</button>
             <a href="{{url_for('formulario_productos')}}" class="btn bg-primary-subtle" style="width: 100px;">Volver</a>
