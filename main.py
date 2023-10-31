@@ -107,8 +107,9 @@ def api_actualizar_mascota():
 
 @app.route("/api_productos", methods=["GET"])
 def api_productos():
-    productos = controlador_producto.obtener_productos_formateado()
+    productos = controlador_producto.obtener_productos()
     return jsonify({'Mensaje': 'Productos obtenidos correctamente', 'Codigo': '1', 'Productos': productos})
+
 @app.route("/api_actualizar_producto", methods=["POST"])
 def api_actualizar_producto():
     producto_id = request.json["id"]
@@ -122,6 +123,7 @@ def api_actualizar_producto():
     link_imagen = request.json["imagen"]
     controlador_producto.actualizar_producto(nombre, descripcion, precio, stock, estado, categoria_id, mascota_id, link_imagen, producto_id)
     return jsonify({'Mensaje': 'Actualización correcta', 'Codigo': '1'})
+
 @app.route("/api_insertar_producto", methods=["POST"])
 def api_insertar_producto():
     nombre = request.json["nombre"]
