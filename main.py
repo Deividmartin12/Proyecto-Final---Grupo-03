@@ -17,6 +17,12 @@ app = Flask(__name__)
 
 @app.route("/api_guardar_metodo_pago")
 
+
+
+
+
+
+
 #----NORMAL----
 
 @app.route("/")
