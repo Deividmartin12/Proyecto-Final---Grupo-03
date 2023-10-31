@@ -12,10 +12,130 @@ import controladores.controlador_producto as controlador_producto
 
 app = Flask(__name__)
 
-#----APIS----
+#########Comprobantes########
+@app.route("/api_comprobantes", methods=["GET"])
+def api_comprobantes():
+    comprobantes = controlador_comprobantes.obtener_comprobantes()
+    return jsonify({'Mensaje': 'Comprobantes obtenidos correctamente', 'Codigo': '1', 'Comprobantes': comprobantes})
+
+@app.route("/api_agregar_comprobante", methods=["POST"])
+def api_guardar_comprobante():
+    try:
+        fechaE = request.json["fechaE"]
+        monto = request.json["monto"]
+        tipoC = request.json["tipoC"]
+        pedidoId = request.json["pedidoId"]
+        metodoPId = request.json["metodoPId"]
+        controlador_comprobantes.insertar_comprobante(fechaE, monto, tipoC, pedidoId, metodoPId)
+        return jsonify({'Mensaje': 'Registro correcto', 'Codigo': '1'})
+    except Exception as e:
+        return jsonify({'Mensaje': 'Error interno del servidor', 'Codigo': '500', 'Error': str(e)}), 500
+
+@app.route("/api_editar_comprobante", methods=["POST"])
+def api_actualizar_comprobante():
+    id = request.json["id"]
+    fechaE = request.json["fechaE"]
+    monto = request.json["monto"]
+    tipoC = request.json["tipoC"]
+    pedidoId = request.json["pedidoId"]
+    metodoPId = request.json["metodoPId"]
+    controlador_comprobantes.actualizar_comprobante(id, fechaE, monto, tipoC, pedidoId, metodoPId)
+    return jsonify({'Mensaje': 'Actualización correcta', 'Codigo': '1'})
+
+#########MetodosPago########
+@app.route("/api_metodos_pago", methods=["GET"])
+def api_metodos_pago():
+    metodos_pago = controlador_metodoP.obtener_metodos_pago()
+    return jsonify({'Mensaje': 'Métodos de pago obtenidos correctamente', 'Codigo': '1', 'Metodos_pago': metodos_pago})
+
+@app.route("/api_actualizar_metodo_pago", methods=["POST"])
+def api_actualizar_metodo_pago():
+    id = request.json["id"]
+    nombre = request.json["nombre"]
+    descripcion = request.json["descripcion"]
+    controlador_metodoP.actualizar_metodo_pago(nombre, descripcion, id)
+    return jsonify({'Mensaje': 'Actualización correcta', 'Codigo': '1'})
+
+@app.route("/api_guardar_metodo_pago", methods=["POST"])
+def api_guardar_metodo_pago():
+    nombre = request.json["nombre"]
+    descripcion = request.json["descripcion"]
+    controlador_metodoP.insertar_metodo_pago(nombre, descripcion)
+    return jsonify({'Mensaje': 'Registro correcto', 'Codigo': '1'})
 
 
-@app.route("/api_guardar_metodo_pago")
+#########Categorias########
+@app.route("/api_guardar_categoria", methods=["POST"])
+def api_guardar_categoria():
+    nombre = request.json["nombre"]
+    descripcion = request.json["descripcion"]
+    controlador_categorias.insertar_categoria(nombre, descripcion)
+    return jsonify({'Mensaje': 'Registro correcto', 'Codigo': '1'})
+
+@app.route("/api_actualizar_categoria", methods=["POST"])
+def api_actualizar_categoria():
+    id = request.json["id"]
+    nombre = request.json["nombre"]
+    descripcion = request.json["descripcion"]
+    controlador_categorias.actualizar_categoria(nombre, descripcion, id)
+    return jsonify({'Mensaje': 'Actualización correcta', 'Codigo': '1'})
+
+@app.route("/api_categorias", methods=["GET"])
+def api_categorias():
+    categorias = controlador_categorias.obtener_categorias()
+    return jsonify({'Mensaje': 'Categorías obtenidas correctamente', 'Codigo': '1', 'Categorias': categorias})
+
+#########Mascotas########
+
+@app.route("/api_mascotas", methods=["GET"])
+def api_obtener_mascotas():
+    mascotas = controlador_mascota.obtener_mascotas()
+    return jsonify({'Mensaje': 'Mascotas obtenidas correctamente', 'Codigo': '1', 'Mascotas': mascotas})
+@app.route("/api_insertar_mascota", methods=["POST"])
+def api_insertar_mascota():
+    nombre = request.json["nombre"]
+    controlador_mascota.insertar_mascota(nombre)
+    return jsonify({'Mensaje': 'Inserción correcta', 'Codigo': '1'})
+@app.route("/api_actualizar_mascota", methods=["POST"])
+def api_actualizar_mascota():
+    mascota_id = request.json["id"]
+    nombre = request.json["nombre"]
+    controlador_mascota.actualizar_mascota(nombre, mascota_id)
+    return jsonify({'Mensaje': 'Actualización correcta', 'Codigo': '1'})
+
+#########Productos########
+
+@app.route("/api_productos", methods=["GET"])
+def api_productos():
+    productos = controlador_producto.obtener_productos_formateado()
+    return jsonify({'Mensaje': 'Productos obtenidos correctamente', 'Codigo': '1', 'Productos': productos})
+@app.route("/api_actualizar_producto", methods=["POST"])
+def api_actualizar_producto():
+    producto_id = request.json["id"]
+    nombre = request.json["nombre"]
+    descripcion = request.json["descripcion"]
+    precio = request.json["precio"]
+    stock = request.json["stock"]
+    estado = request.json["estado"]
+    categoria_id = request.json["categoria_id"]
+    mascota_id = request.json["mascota_id"]
+    link_imagen = request.json["imagen"]
+    controlador_producto.actualizar_producto(nombre, descripcion, precio, stock, estado, categoria_id, mascota_id, link_imagen, producto_id)
+    return jsonify({'Mensaje': 'Actualización correcta', 'Codigo': '1'})
+@app.route("/api_insertar_producto", methods=["POST"])
+def api_insertar_producto():
+    nombre = request.json["nombre"]
+    descripcion = request.json["descripcion"]
+    precio = request.json["precio"]
+    stock = request.json["stock"]
+    estado = request.json["estado"]
+    categoria_id = request.json["categoria_id"]
+    mascota_id = request.json["mascota_id"]
+    link_imagen = request.json["imagen"]
+    controlador_producto.insertar_producto(nombre, descripcion, precio, stock, estado, categoria_id, mascota_id, link_imagen)
+    return jsonify({'Mensaje': 'Inserción correcta', 'Codigo': '1'})
+############# WEB #########################################
+
 
 
 
