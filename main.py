@@ -9,6 +9,7 @@ import random
 import controladores.controlador_categorias as controlador_categorias
 import controladores.controlador_mascota as controlador_mascota
 import controladores.controlador_producto as controlador_producto
+import controladores.controlador_cliente as controlador_cliente
 
 app = Flask(__name__)
 
@@ -20,6 +21,9 @@ app = Flask(__name__)
 #----NORMAL----
 
 @app.route("/")
+
+
+
 @app.route("/index")
 def index():
     return render_template('index.html')
@@ -27,6 +31,7 @@ def index():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     return render_template('login.html')
+
 
 @app.route("/login_empleado", methods=["GET", "POST"])
 def login_empleado():
@@ -40,6 +45,9 @@ def registro_usuario():
 def producto():
     return render_template('producto.html')
 
+
+
+
 @app.route("/carrito")
 def carrito():
     return render_template('carrito.html')
@@ -48,6 +56,9 @@ def carrito():
 def  categoria():
     return render_template('categorias.html')
 
+@app.route("/usuario")
+def  usuario():
+    return render_template('usuario.html')
 
 
 @app.route("/control_admin", methods=["GET", "POST"])
@@ -58,6 +69,13 @@ def control_admin():
 def admin_det_ped():
     return render_template("admin_det_ped.html")
 
+@app.route("/Blog")
+def Blog():
+    return render_template('Blog.html')
+
+@app.route("/Sobre_Nosotros")
+def Sobre_Nosotros():
+    return render_template('Sobre_Nosotros.html')
 
 ##################### Cornejo ##########################
 @app.route("/pago")
@@ -268,7 +286,84 @@ def lista_productos():
 
     return respuesta
 #####################     PRODUCTO     ############################
+#####################     CLIENTE    ############################
 
+
+@app.route("/clientes")
+def formulario_clientes():
+    clientes = controlador_cliente.obtener_clientes()
+    return render_template("clientes.html", clientes=clientes)
+
+@app.route("/agregar_cliente")
+def formulario_registrar_cliente():
+    return render_template('registrar_cliente.html')
+
+@app.route("/registro_cliente", methods=["POST"])
+def metodo_registro_cliente():
+    nombre = request.form["nombre"]
+    email = request.form["email"]
+    telefono = request.form["telefono"]
+    direccion = request.form["direccion"]
+    cliente_dni = request.form["cliente_dni"]
+    password = request.form["password"]
+
+    controlador_cliente.insertar_cliente(nombre,email,telefono,direccion,cliente_dni,password)
+    return redirect("/login")
+
+
+@app.route("/insertar_cliente", methods=["POST"])
+def metodo_insertar_cliente():
+    nombre = request.form["nombre"]
+    email = request.form["email"]
+    telefono = request.form["telefono"]
+    direccion = request.form["direccion"]
+    cliente_dni = request.form["cliente_dni"]
+    password = request.form["password"]
+
+    controlador_cliente.insertar_cliente(nombre,email,telefono,direccion,cliente_dni,password)
+    return redirect("/clientes")
+
+@app.route("/editar_cliente/<int:id>")
+def formulario_editar_cliente(id):
+    cliente = controlador_cliente.obtener_cliente_por_id(id)
+    return render_template("editar_cliente.html",cliente=cliente)
+
+@app.route("/actualizar_cliente",methods=["POST"])
+def metodo_actualizar_cliente():
+    cliente_id = request.form["id"]
+    nombre = request.form["nombre"]
+    email = request.form["email"]
+    telefono = request.form["telefono"]
+    direccion = request.form["direccion"]
+    cliente_dni = request.form["cliente_dni"]
+    password = request.form["password"]
+    controlador_cliente.actualizar_cliente(nombre,email,telefono,direccion,cliente_dni,password,cliente_id)
+    return redirect("/clientes")
+
+@app.route("/eliminar_cliente",methods=["POST"])
+def metodo_eliminar_cliente():
+    cliente_id = request.form["id"]
+    controlador_cliente.eliminar_cliente(cliente_id)
+    return redirect("/clientes")
+
+@app.route("/lista_clientes")
+def lista_clientes():
+    respuesta = []
+    clientes = controlador_cliente.obtener_clientes()
+    for cliente in clientes:
+        dict_cliente = dict()
+        dict_cliente["id"] = cliente[0]
+        dict_cliente["nombre"] = cliente[1]
+        dict_cliente["email"] = cliente[2]
+        dict_cliente["telefono"] = cliente[3]
+        dict_cliente["direccion"] = cliente[4]
+        dict_cliente["cliente_dni"] = cliente[5]
+        dict_cliente["password"] = cliente[6]
+     
+
+        respuesta.append(dict_cliente)
+
+    return respuesta
 
 #####################     INTERFAZ ADMIN     ############################
 @app.route("/index_admin")

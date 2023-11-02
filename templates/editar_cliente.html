@@ -1,0 +1,40 @@
+{% extends "maestra_adminX.html" %}
+{% block titulo %} Editar cliente{% endblock %}
+{% block contenido %}
+
+<section class="p-5">
+    <h3 class="is-size-3 mb-3">Editar cliente</h3>
+    <section class="input-group mb-3">
+        <form action="{{url_for('metodo_actualizar_cliente')}}" method="post" >
+                <input type="hidden" name="id" id="id"  value="{{cliente[0]}}">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input value="{{cliente[1]}}" required type="text" class="form-control mb-3" name="nombre" id="nombre" placeholder="">
+                <label for="email" class="form-label">Email</label>
+                <input value="{{cliente[2]}}" required type="text" class="form-control mb-3" name="email" id="email" placeholder="">
+                <label for="telefono" class="form-label">Telefono</label>
+                <input value="{{cliente[3]}}" required type="text" class="form-control mb-3" name="telefono" id="telefono" placeholder="">
+                <label for="direccion" class="form-label">Direccion</label>
+                <input value="{{cliente[4]}}" required type="text" class="form-control mb-3" name="direccion" id="direccion" placeholder="">
+                <label for="cliente_dni" class="form-label">DNI</label>
+                <input value="{{cliente[4]}}" required type="text" class="form-control mb-3" name="cliente_dni" id="cliente_dni" placeholder="">
+                <label for="password" class="form-label">Password</label>
+                <input value="{{cliente[4]}}" required type="text" class="form-control mb-3" name="password" id="password" placeholder="">              
+               
+            <div class="pt-4">
+                <button type="submit" class="btn btn-primary" style="width: 100px;">Guardar</button>
+            <a href="{{url_for('formulario_clientes')}}" class="btn bg-primary-subtle" style="width: 100px;">Volver</a>
+            </div>
+        </form>
+    </section>   
+</section>
+
+{% endblock %}
+<!-- <select name="mascota" id="mascota" class="form-select" style="width: 200px;">
+    {% for mascota in mascotas %}
+    {% if mascota[1] == producto[7] %}
+    <option value="{{mascota[1]}}" selected>{{producto[7]}}</option>
+    {% else %}
+    <option value="{{mascota[1]}}">{{producto[7]}}</option>
+    {% endif %}           
+    {% endfor %}
+</select> -->
