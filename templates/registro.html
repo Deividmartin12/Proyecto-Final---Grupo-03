@@ -1,47 +1,71 @@
 {% extends "maestra.html" %}
-{% block titulo %} Registrar usuario{% endblock %}
+{% block titulo %} Registrar cliente{% endblock %}
 
 {% block contenido %}
-    <main class="container-fluid">
-        <div class="row justify-content-center">
-            <h3 class="mt-4 mb-4 text-center pb-3 pt-3 bg-primary-subtle" id="titulo"><strong>Regístrate</strong></h3>
-    
-            <div class="col-8 border-0 border-top border-dark-subtle">
-                <form class="form-inline-labels mt-4">
-                    <div class="row">
-                        <div class="row mb-3 text-center text-md-end justify-content-center align-items-center">
-                            <label for="firstName" class="col-sm-3 col-md-4 col-form-label"><strong>Nombres:</strong></label>
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control border-dark-subtle" id="firstName" placeholder="Nombres">
-                            </div>
-                        </div>
-                        <div class="row mb-3 text-center text-md-end justify-content-center align-items-center">
-                            <label for="lastName" class="col-sm-3 col-md-4 col-form-label"><strong>Apellidos:</strong></label>
-                            <div class="col-sm-5">
-                                <input type="text" class="form-control border-dark-subtle" id="lastName" placeholder="">
-                            </div>
-                        </div>
-                        
-                        <div class="row mb-3 text-center text-md-end justify-content-center align-items-center">
-                            <label for="email" class="col-sm-3 col-md-4 col-form-label"><strong>Correo Electrónico:</strong></label>
-                            <div class="col-sm-5">
-                                <input type="email" class="form-control border-dark-subtle" id="email" placeholder="">
-                            </div>
-                        </div>
-                        <div class="row mb-3 text-center text-md-end justify-content-center align-items-center">
-                            <label for="password" class="col-sm-3 col-md-4 col-form-label"><strong>Contraseña:</strong></label>
-                            <div class="col-sm-5">
-                                <input type="password" class="form-control border-dark-subtle" id="password" placeholder="">
-                            </div>
-                        </div>
-                        <div class="row mb-3 text-center text-md-end justify-content-center align-items-center">
-                            <label for="confirmPassword" class="col-sm-3 col-md-4 col-form-label"><strong>Confirmar Contraseña:</strong></label>
-                            <div class="col-sm-5">
-                                <input type="password" class="form-control border-dark-subtle" id="confirmPassword" placeholder="">
-                            </div>
+<main class="container-fluid">
+    <div class="row justify-content-center">
+        <h3 class="mt-4 mb-4 text-center pb-3 pt-3 bg-primary-subtle" id="titulo"><strong>Regístrate</strong></h3>
+
+        <div class="col-8 border-0 border-top border-dark-subtle">
+            <form action="{{url_for('metodo_registro_cliente')}}" method="post">
+                <div class="row">
+                    <div class="row mb-3 text-center text-md-end justify-content-center align-items-center">
+                        <label for="nombre" class="col-sm-3 col-md-4 col-form-label"><strong>Nombres y
+                                Apellidos:</strong></label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control border-dark-subtle" name="nombre" id="nombre"
+                                placeholder="Nombres y Apellidos">
                         </div>
                     </div>
-                </form>
+                    <div class="row mb-3 text-center text-md-end justify-content-center align-items-center">
+                        <label for="email" class="col-sm-3 col-md-4 col-form-label"><strong>Email:</strong></label>
+                        <div class="col-sm-5">
+                            <input type="email" class="form-control border-dark-subtle" name="email" id="email"
+                                placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 text-center text-md-end justify-content-center align-items-center">
+                        <label for="telefono"
+                            class="col-sm-3 col-md-4 col-form-label"><strong>Telefono:</strong></label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control border-dark-subtle" name="telefono" id="telefono"
+                                placeholder="">
+                        </div>
+                    </div>
+                    <div class="row mb-3 text-center text-md-end justify-content-center align-items-center">
+                        <label for="direccion" class="col-sm-3 col-md-4 col-form-label"><strong>DNI:</strong></label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control border-dark-subtle" name="direccion" id="direccion"
+                                placeholder="">
+                        </div>
+                    </div>
+                    <div class="row mb-3 text-center text-md-end justify-content-center align-items-center">
+                        <label for="cliente_dni"
+                            class="col-sm-3 col-md-4 col-form-label"><strong>Direccion:</strong></label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control border-dark-subtle" name="cliente_dni"
+                                id="cliente_dni" placeholder="">
+                        </div>
+                    </div>
+                    <div class="row mb-3 text-center text-md-end justify-content-center align-items-center">
+                        <label for="password"
+                            class="col-sm-3 col-md-4 col-form-label"><strong>Contraseña:</strong></label>
+                        <div class="col-sm-5">
+                            <input type="password" class="form-control border-dark-subtle" name="password" id="password"
+                                placeholder="">
+                        </div>
+                    </div>
+                    <div class="row mb-3 text-center text-md-end justify-content-center align-items-center">
+                        <label for="confirmPassword" class="col-sm-3 col-md-4 col-form-label" ><strong>Confirmar
+                                Contraseña:</strong></label>
+                        <div class="col-sm-5">
+                            <input type="password" class="form-control border-dark-subtle" id="confirmPassword" name="confirmPassword"
+                                placeholder="">
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row mb-3 justify-content-center">
                     <div class="col-12 text-center">
                         <div class="container justify-content-center">
@@ -59,8 +83,25 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
-    </main>
-    
-{% endblock %}    
+    </div>
+</main>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const passwordInput = document.getElementById("password");
+        const confirmPasswordInput = document.getElementById("confirmPassword");
+
+        confirmPasswordInput.addEventListener("input", function () {
+            if (passwordInput.value !== confirmPasswordInput.value) {
+                confirmPasswordInput.setCustomValidity("Las contraseñas no coinciden");
+            } else {
+                confirmPasswordInput.setCustomValidity("");
+            }
+        });
+    });
+</script>
+
+
+{% endblock %}
