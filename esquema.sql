@@ -5,21 +5,46 @@ create table cliente(
     telefono varchar(20) not null,
     direccion varchar(255) not null,
     cliente_dni char(8) unique not null,
-    password varchar(255) not null
+    password varchar(255) not null,
+    token varchar(255)
 );
 
 
 --CAMBIOS CABALLERO
+create table usuario(
+	id bigint unsigned not null auto_increment primary key,
+    nombres varchar(255) not null,
+    apellidos varchar(255) not null,
+    email varchar(255),
+    telefono varchar(20),
+    direccion varchar(255),
+    dni char(8) unique not null,
+    username varchar(100),
+    password varchar(255),
+    token varchar(255),
+    tipo_usuario bigint unsigned not null,
+    vigencia boolean not null,
+    FOREIGN KEY (tipo_usuario) REFERENCES tipo_usuario(id)
+);
+
+INSERT INTO usuario(nombres,apellidos,email,telefono,direccion,dni,username,password,token,tipo_usuario)
+VALUES
+('Elton','Tito Ramirez',null,null,null,'98567423','admin','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918',null,1),
+('Juan','Pérez Rodríguez','juanpr@gmail.com','658321475','Calle Chichuan #254','12345678',null,'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f',null,2);
+
+
 create table categoria(
 	categoria_id bigint unsigned not null auto_increment primary key,
     nombre varchar(255) not null,
-    descripcion varchar(255) not null
+    descripcion varchar(255) not null,
+    estado boolean not null
 );
 
 create table mascota(
     mascota_id bigint unsigned not null auto_increment primary key,
-    nombre varchar(255) not null
-); 
+    nombre varchar(255) not null,
+    estado boolean not null
+);
 
 create table producto(
 	producto_id bigint unsigned not null auto_increment primary key,

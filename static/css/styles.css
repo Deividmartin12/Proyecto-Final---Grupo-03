@@ -5,6 +5,23 @@ header {
   margin: 0px;
 }
 
+#image-user-icon {
+
+padding: 20px;
+position: relative;
+display: flex;
+width: auto;
+height: 128px !important;
+
+
+
+
+
+}
+
+
+
+
 .icon_ocultos {
   margin-left: 10px;
 }
@@ -58,13 +75,20 @@ header {
 }
 
 .iconos {
-  margin-right: 10px;
+  margin-right: 5px;
+
 }
 .iconos .icon {
   color: white;
   margin: 5px;
   transition: transform 0.3s ease;
 }
+
+
+
+
+
+
 .iconos :hover {
   transform: scale(1.3);
 }

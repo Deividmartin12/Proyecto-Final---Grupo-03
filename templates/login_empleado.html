@@ -2,53 +2,23 @@
 {% block titulo %} Inicio de sesión{% endblock %}
 {% block contenido %}
 
-<section class="container-fluid ">
-    <div class="row justify-content-center">
-        <h3 class="mt-5 mb-4 text-center pb-4 pt-4 bg-primary-subtle"><Strong>Inicio de sesión</Strong></h3>
+<section class="container-fluid m-5">
 
-        <div class="col-8 border-0 border-top border-dark-subtle">
-            <form class="form-inline-labels mt-5"   method="POST">
-                <div class="row">
-                    <div class="row mb-3 text-center text-md-end justify-content-center align-items-center">
-                        <label for="newPassword" class="col-sm-3 col-md-4 col-form-label"><Strong>Correo
-                                electronico:</Strong></label>
-                        <div class="col-sm-5">
-                            <input type="password" class="form-control border-dark-subtle" id="newPassword"
-                                placeholder="">
-                        </div>
-                    </div>
-                    <div class="row mb-3  text-center text-md-end justify-content-center align-items-center">
-                        <label for="confirmPassword"
-                            class="col-sm-3 col-md-4 col-form-label"><Strong>Contraseña:</Strong></label>
-                        <div class="col-sm-5">
-                            <input type="password" class="form-control border-dark-subtle" id="confirmPassword"
-                                placeholder="">
-                        </div>
-                    </div>
-
-                </div>
-            </form>
-            <div class="row mb-3 justify-content-center">
-                <div class="col-12 text-center">
-                    <div class="container justify-content-center">
-                        <input class="form-check-input border-dark-subtle" type="checkbox" id="cbx">
-                        <label for="cbx"><Strong>Recuérdame</Strong></label>
-                    </div>
-                </div>
+    <form action="{{url_for('procesar_login')}}" method="post">
+        <h3 class="is-size-3 mb-5 text-center">LOGIN</h3>
+        <div class="col-3 mx-auto">
+            <div class="mb-4">
+                <input required type="text" class="form-control" id="username" name="username" placeholder="Nombre de usuario">
             </div>
-            <div class="row mb-3 justify-content-center">
-                <div class="col-12 text-center justify-content-center">
-                    <div class="container justify-content-center">
-                        <a href="{{url_for('interfaz_admin')}}">
-                            <button type="submit" class="btn btn-primary">Ingresar</button>
-                        </a>
-                        
-                    </div>
-                </div>
+            <div class="mb-4">
+                <input required type="password" id="password" name="password" class="form-control" aria-describedby="passwordHelpBlock" placeholder="Contraseña">
             </div>
-            
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary mb-3">INGRESAR</button>
+                <a class="btn btn-secondary mb-3" href="{{url_for('index')}}">VOLVER</a>
+            </div>
         </div>
-    </div>
+    </form>
 </section>
 
 {% endblock %}

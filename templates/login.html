@@ -7,44 +7,44 @@
         <h3 class="mt-5 mb-4 text-center pb-4 pt-4 bg-primary-subtle"><Strong>Inicio de sesión</Strong></h3>
 
         <div class="col-8 border-0 border-top border-dark-subtle">
-            <form class="form-inline-labels mt-5"   method="POST">
+
+<form action="{{ url_for('procesar_login') }}" method="POST" class="mt-3">
                 <div class="row">
                     <div class="row mb-3 text-center text-md-end justify-content-center align-items-center">
-                        <label for="newPassword" class="col-sm-3 col-md-4 col-form-label"><Strong>Numero DNI:</Strong></label>
+                        <label for="username" class="col-sm-3 col-md-4 col-form-label"><Strong>Usuario:</Strong></label>
                         <div class="col-sm-5">
-                            <input type="password" class="form-control border-dark-subtle" id="newPassword"
+                            <input required type="text" class="form-control border-dark-subtle" id="username" name="username"
                                 placeholder="">
                         </div>
                     </div>
                     <div class="row mb-3  text-center text-md-end justify-content-center align-items-center">
-                        <label for="confirmPassword"
+                        <label for="password"
                             class="col-sm-3 col-md-4 col-form-label"><Strong>Contraseña:</Strong></label>
                         <div class="col-sm-5">
-                            <input type="password" class="form-control border-dark-subtle" id="confirmPassword"
+                            <input required type="password" class="form-control border-dark-subtle" id="password" name="password"
                                 placeholder="">
                         </div>
                     </div>
 
                 </div>
-            </form>
-            <div class="row mb-3 justify-content-center">
-                <div class="col-12 text-center">
-                    <div class="container justify-content-center">
-                        <input class="form-check-input border-dark-subtle" type="checkbox" id="cbx">
-                        <label for="cbx"><Strong>Recuérdame</Strong></label>
-                    </div>
-                </div>
-            </div>
-            <div class="row mb-3 justify-content-center">
+
+
+
+                <div class="row mb-3 justify-content-center">
                 <div class="col-12 text-center justify-content-center">
                     <div class="container justify-content-center">
                         <a href="olvideContraseña.html" class="text-dark text-decoration-none">
                             <p><Strong>¿Olvidaste tu contraseña?</Strong></p>
                         </a>
-                        
+
                         <button type="submit" class="btn btn-primary">Ingresar</button>
+
                     </div>
                 </div>
+            </form>
+    </div>
+
+
             </div>
             <div class="row mb-3 justify-content-center">
                 <div class="col-12 text-center">
@@ -57,7 +57,6 @@
                 </div>
             </div>
         </div>
-    </div>
 </section>
 
 {% endblock %}

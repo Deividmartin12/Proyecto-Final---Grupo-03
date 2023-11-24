@@ -14,7 +14,7 @@ def obtener_clientes():
     conexion = obtenerConexion()
     clientes = []
     with conexion.cursor() as cursor:
-        cursor.execute("SELECT cliente_id, nombre, email, telefono, direccion, cliente_dni, password FROM cliente")
+        cursor.execute("SELECT cliente_id, nombre, email, telefono, direccion, cliente_dni, password, token FROM cliente")
         clientes = cursor.fetchall()
     conexion.close()
     return clientes
@@ -33,7 +33,7 @@ def obtener_cliente_por_id(id):
     cliente = None
     with conexion.cursor() as cursor:
         cursor.execute(
-            "SELECT cliente_id, nombre, email, telefono, direccion, cliente_dni, password FROM cliente WHERE cliente_id = %s", (id,))
+            "SELECT cliente_id, nombre, email, telefono, direccion, cliente_dni, password, token FROM cliente WHERE cliente_id = %s", (id,))
         cliente = cursor.fetchone()
     conexion.close()
     return cliente
@@ -43,7 +43,7 @@ def obtener_cliente_por_dni(dni):
     cliente = None
     with conexion.cursor() as cursor:
         cursor.execute(
-            "SELECT cliente_id, nombre, email, telefono, direccion, cliente_dni, password FROM cliente WHERE cliente_dni = %s", (dni,))
+            "SELECT cliente_id, nombre, email, telefono, direccion, cliente_dni, password, token FROM cliente WHERE cliente_dni = %s", (dni,))
         cliente = cursor.fetchone()
     conexion.close()
     return cliente
@@ -54,5 +54,15 @@ def actualizar_cliente(nombre, email, telefono, direccion, cliente_dni, password
     with conexion.cursor() as cursor:
         cursor.execute("UPDATE cliente SET nombre = %s, email = %s, telefono = %s, direccion = %s, cliente_dni = %s, password = %s WHERE cliente_id = %s",
                        (nombre, email, telefono, direccion, cliente_dni, password, id))
+    conexion.commit()
+    conexion.close()
+
+
+
+def actualizar_token(cliente_dni,token):
+    conexion = obtenerConexion()
+    with conexion.cursor() as cursor:
+        cursor.execute("UPDATE cliente SET token = %s WHERE cliente_dni = %s",
+                       (token,cliente_dni))
     conexion.commit()
     conexion.close()

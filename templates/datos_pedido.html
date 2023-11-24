@@ -1,0 +1,43 @@
+{% extends "maestra_adminX.html" %}
+{% block titulo %} Pedidos{% endblock %}
+{% block contenido %}
+
+<section class="section p-5">
+    <div class="col-11">
+        <h2 class="is-size-3">Pedidos</h2>
+        <a href="{{url_for('formulario_registrar_pedido')}}" class="btn btn-primary px-4 my-2">Agregar</a>
+        <table class="table table-hover table-group-divider table align-middle">
+            <thead class="table-light">
+                <tr class="text-center">
+                    <th scope="col" class="border">ID</th>
+                    <th scope="col" class="border">Fecha</th>
+                    <th scope="col" class="border">Estado</th>
+                    <th scope="col" class="border">Cliente</th>
+                    <th scope="col" class="border">Editar</th>
+                    <th scope="col" class="border">Eliminar</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                {% for pedido in pedidos %}
+                <tr>
+                    <td class="border text-start">{{pedido[0]}}</td>
+                    <td class="border text-start">{{pedido[1]}}</td>
+                    <td class="border text-start">{{pedido[2]}}</td>
+                    <td class="border text-start">{{pedido[3]}}</td>
+                    <td class="text-center border">
+                        <a href="{{url_for('formulario_editar_pedido', id=pedido[0])}}" class="btn btn-secondary">Editar</a>
+                    </td>
+                    <td class="text-center border">
+                        <form action="{{url_for('metodo_eliminar_pedido')}}" method="POST">
+                            <input type="hidden" name="id" value="{{pedido[0]}}">
+                            <button class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>    
+</section>
+
+{% endblock %}

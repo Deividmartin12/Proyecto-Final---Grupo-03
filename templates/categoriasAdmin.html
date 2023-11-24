@@ -9,17 +9,23 @@
         <table class="table table-hover table-group-divider table align-middle">
             <thead class="table-light">
                 <tr class="text-center">
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Descripción</th>
-                    <th scope="col">Editar</th>
-                    <th scope="col">Eliminar</th>
+                    <th scope="col" class="col-1 border">Nombre</th>
+                    <th scope="col" class="col-3 border">Descripción</th>
+                    <th scope="col" class="col-1 border">Estado</th>
+                    <th scope="col" class="col-1 border">Editar</th>
+                    <th scope="col" class="col-1 border">Eliminar</th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
                 {% for categoria in categorias %}
                 <tr class="text-center">
-                    <td>{{categoria[1]}}</td>
-                    <td>{{categoria[2]}}</td>
+                    <td class="text-start border">{{categoria[1]}}</td>
+                    <td class="text-start border">{{categoria[2]}}</td>
+                    {% if categoria[3]==True %}
+                    <td class="text-start border">Vigente</td>
+                    {% else %}
+                    <td class="text-start border">No vigente</td>
+                    {% endif %}
                     <td>
                         {# Pasar el id (lo que hay en categoria[0]) #}
                         <a href="{{url_for('editar_categoria', id=categoria[0])}}" class="btn btn-secondary">Editar</a>
