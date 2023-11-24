@@ -1,0 +1,47 @@
+{% extends "maestra_adminX.html" %}
+{% block titulo %} Clientes{% endblock %}
+{% block contenido %}
+
+<section class="section p-5">
+    <div class="col-11">
+        <h2 class="is-size-3">Clientes</h2>
+        <a href="{{url_for('formulario_registrar_cliente')}}" class="btn btn-primary px-4 my-2">Agregar</a>
+        <table class="table table-hover table-group-divider table align-middle">
+            <thead class="table-light">
+                <tr class="text-center">
+                    <th scope="col" class="border">Nombre</th>
+                    <th scope="col" class="border">Email</th>
+                    <th scope="col" class="border">Telefono</th>
+                    <th scope="col" class="border">Direccion</th>
+                    <th scope="col" class="border">Dni</th>
+                    <th scope="col" class="border">Password</th>
+                    <th scope="col" class="border">Editar</th>
+                    <th scope="col" class="border">Eliminar</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                {% for cliente in clientes %}
+                <tr>
+                    <td class="border text-start">{{cliente[1]}}</td>
+                    <td class="col-3 border text-start">{{cliente[2]}}</td>
+                    <td class="border text-end">{{cliente[3]}}</td>
+                    <td class="border text-start">{{cliente[4]}}</td>
+                    <td class="border text-start">{{cliente[5]}}</td>
+                    <td class="border text-start">{{cliente[6]}}</td>
+                    <td class="border">
+                        <a href="{{url_for('formulario_editar_cliente', id=cliente[0])}}" class="btn btn-secondary">Editar</a>
+                    </td>
+                    <td class="text-center border">
+                        <form action="{{url_for('metodo_eliminar_cliente')}}" method="POST">
+                            <input type="hidden" name="id" value="{{cliente[0]}}">
+                            <button class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+{% endblock %}

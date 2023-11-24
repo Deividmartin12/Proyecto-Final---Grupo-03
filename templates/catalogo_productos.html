@@ -1,0 +1,98 @@
+{% extends "maestra.html" %}
+{% block titulo %} Catalogo producto{% endblock %}
+{% block contenido %}
+<main class="p-4" style="min-height: 50vh;">
+    <section class="pb-5 pt-3">
+        <ul class="nav justify-content-center">
+            <form class="d-flex" role="search">
+                <input class="form-control me-3" style="width: 100%;" type="search" placeholder="Buscar por nombre" aria-label="Search" id="buscador">
+            </form>
+        </ul>
+    </section>
+
+    <div class="">
+        <div class="float-sm-start float-md-start float-xl-start px-3 justify-content-center">
+            <ul class="nav flex-column text-center">
+
+                <li class="nav-item dropdown border border-primary py-3 bg-secondary-subtle">
+                    <a class="nav-link text-primary-emphasis fw-bold" role="button" type="submit" onclick="limpiar();">VER TODOS</a>
+                </li>
+                
+                <li class="nav-item dropdown border border-top-0 border-primary py-3">
+                    <a class="nav-link dropdown-toggle fw-bold" data-bs-toggle="collapse" href="#lista_mascotas" role="button" aria-expanded="false">MASCOTAS</a>
+                    <div class="collapse" id="lista_mascotas">
+                        <div class="card card-body border-0">
+                            <ul class="nav flex-column nav-underline text-start mx-auto">
+                                {% for mascota in mascotas %}
+                                <li class="nav-item">
+                                    <input class="form-check-input p-2 me-2 border border-dark rounded-0" type="checkbox" value="" id="{{mascota[1]}}" name="check_mascota" onchange="filtrar_productos_mascota()">
+                                    <label class="form-check-label" for="{{mascota[1]}}">
+                                        {{mascota[1]}}
+                                    </label>
+                                </li>
+                                {% endfor %}
+                            </ul>          
+                        </div>
+                      </div>
+                </li>
+                
+                <li class="nav-item dropdown border border-top-0 border-primary py-3">
+                    <a class="nav-link dropdown-toggle fw-bold" data-bs-toggle="collapse" href="#lista_categorias" role="button" aria-expanded="false">CATEGORIAS</a>
+                    <div class="collapse" id="lista_categorias">
+                        <div class="card card-body border-0">
+                            <ul class="nav flex-column nav-underline text-start mx-auto">
+                                {% for categoria in categorias %}
+                                <li class="nav-item">
+                                    <input class="form-check-input p-2 me-2 border-dark rounded-0" type="checkbox" value="" id="{{categoria[1]}}" name="check_categoria" onchange="filtrar_productos_categoria()">
+                                    <label class="form-check-label" for="{{categoria[1]}}">
+                                        {{categoria[1]}}
+                                    </label>
+                                </li>
+                                {% endfor %}
+                            </ul>   
+                        </div>
+                    </div>
+                </li>
+                
+            </ul>
+        </div>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4" id="catalogo_productos">
+            <!-- {% for producto in productos %}
+            <div class="col pb-3">
+                <div class="card h-100 text-center shadow">
+                    <a href="{{url_for('datos_producto', id=producto[0])}}">
+                        <img src="/static/img/{{producto[8]}}" class="card-img-top img-thumbnail mx-auto d-block object-fit-contain" style="height: 300px;width: 300px;" alt="{{producto[1]}}">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title fs-3 mb-4">{{producto[1]}}</h5>
+                        <p class="card-text">{{producto[2]}}</p>
+                        <p class="card-text text-primary fw-bold fs-4">
+                            <span>S/. </span>
+                            <span>{{producto[3]}}</span>
+                        </p>
+                        <a href="#" class="btn btn-primary rounded-5 w-75" id="agregar_carrito">Agregar al carrito</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %} -->
+        </div>
+    </div>
+    
+    
+    <!-- <div class="animacion">
+        <div class="text-center">
+            {% for producto in productos %}
+            <div class="d-inline-block text-center product">
+                <a href="{{url_for('producto')}}">
+                    <img class="prod" style="height: 300px;width: 220px;" src="/static/img/{{producto[8]}}" alt="{{producto[1]}}">
+                    <p>{{producto[1]}}<br> {{producto[2]}} <br>S/. {{producto[3]}}</p>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div> -->
+    
+</main>
+<script src="{{url_for('static', filename='js/catalogo_productos.js')}}"></script>
+{% endblock %}

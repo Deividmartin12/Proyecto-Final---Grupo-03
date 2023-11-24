@@ -1,0 +1,44 @@
+{% extends "maestra_adminX.html" %}
+{% block titulo %} Registrar producto{% endblock %}
+{% block contenido %}
+
+<section class="p-5">
+    <h3 class="is-size-3 mb-3">Agregar producto</h3>
+    <section class="input-group mb-3">
+        <form action="{{url_for('metodo_insertar_producto')}}" method="post" >
+            <label for="nombre" class="form-label">Nombre</label>
+            <input required type="text" class="form-control mb-3" name="nombre" id="nombre" placeholder="">
+            <label for="descripcion" class="form-label">Descripcion</label>
+            <input required type="text" class="form-control mb-3" name="descripcion" id="descripcion" placeholder="">
+            <label for="precio" class="form-label">Precio</label>
+            <input required type="number" class="form-control mb-3" name="precio" id="precio" placeholder="">
+            <label for="stock" class="form-label">Stock</label>
+            <input required type="number" class="form-control mb-3" name="stock" id="stock" placeholder="">
+            <label for="estado" class="form-label">Estado</label>
+            <select name="estado" id="estado" class="form-select mb-4" style="width: 200px;">
+                <option value="SI">Vigente</option>
+                <option value="NO">No vigente</option>       
+            </select>
+            <label for="categoria_id" class="form-label">Categoria</label>
+            <select name="categoria_id" id="categoria_id" class="form-select mb-4" style="width: 200px;">
+                {% for categoria in categorias %}
+                <option value="{{categoria[0]}}">{{categoria[1]}}</option>       
+                {% endfor %}
+            </select>
+            <label for="mascota_id" class="form-label">Mascota</label>
+            <select name="mascota_id" id="mascota_id" class="form-select mb-4" style="width: 200px;">
+                {% for mascota in mascotas %}
+                <option value="{{mascota[0]}}">{{mascota[1]}}</option>       
+                {% endfor %}
+            </select>
+            <label for="imagen" class="form-label">Imagen</label>
+            <input required type="file" class="form-control mb-4" name="imagen" id="imagen" placeholder="">
+            <div class="pt-4">
+                <button type="submit" class="btn btn-primary" style="width: 100px;">Guardar</button>
+                <a href="{{url_for('formulario_productos')}}" class="btn bg-primary-subtle" style="width: 100px;">Volver</a>
+            </div>
+        </form>
+    </section>   
+</section>
+
+{% endblock %}

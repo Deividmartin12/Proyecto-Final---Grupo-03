@@ -1,0 +1,48 @@
+@use "headerFooter";
+
+// Paleta de colores y letras
+$encabezado: #3370DE;
+$footer: #283F7F;
+$letra: Source Sans 3;
+$titulos:  #D4E8FF;
+
+
+main{
+    color: $footer;
+    font-family: $letra;
+    margin: 0px;
+    margin-bottom: 20px;
+    padding: 20px;
+
+    p{
+        font-weight: bold;
+        font-size: 20px;
+        margin: 0px;
+        margin-top: 30px;
+    }
+
+    a{
+        text-decoration: none;
+        color: $footer;
+    }
+
+    img{
+        border-radius: 19px;
+    }
+
+    .img1, .img2{
+        margin: 20px;
+    }
+}
+
+.titulo{
+    padding: 10px;
+    padding-left: 40px;
+    background-color: $titulos;
+    height: 60px;
+    color: black;
+    font-family: $letra;
+    font-weight: bold;
+    font-size: 20px;
+}
+
