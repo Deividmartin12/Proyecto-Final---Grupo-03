@@ -20,9 +20,9 @@
                                 Información de contacto
                             </a>
                             <div class="info">
-                                <p><strong>Correo electronico:</strong> alvaro@gmail.com<br>
-                                    <strong>Nombre del cliente:</strong> Alvaro Javier Yong Bartolini<br>
-                                    <strong>Teléfono:</strong>+51 987654321
+                                <p><strong>Correo electronico:</strong> {{cliente[3]}}<br>
+                                    <strong>Nombre del cliente:</strong> {{cliente[1]}} {{cliente[2]}}<br>
+                                    <strong>Teléfono:</strong>+51 {{cliente[4]}}
                                 </p>
                             </div>
                             <a class="navbar-brand" href="#">
@@ -31,7 +31,7 @@
                                 Envío
                             </a>
                             <div class="info">
-                                <p><strong>Dirección:</strong> Urb. Los parques<br>
+                                <p><strong>Dirección:</strong> {{cliente[5]}}<br>
                                     <strong>Distrito</strong> Chiclayo<br>
                                     <strong>Provincia:</strong> Chiclayo, Lambayeque<br>
                                     <strong>En hasta 5 días hábiles:</strong>
@@ -50,6 +50,11 @@
                                     class="d-inline-block align-text-top">
                                 Pago
                             </a>
+                            <select class="form-select mb-4" name="metodo_id" id="metodo_id">
+                                {% for metodo in metodos %}
+                                    <option value="{{metodo[0]}}">{{metodo[1]}}</option>
+                                {% endfor %}
+                            </select>
                             <div class="tarjeta-opcion">
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                                     <li class="nav-item" role="presentation">
@@ -119,6 +124,7 @@
                                                 <input type="text" class="form-control" id="inputAddress"
                                                     placeholder="">
                                             </div>
+                                            <button type="submit" class="btn btn-primary mt-3" id="realizar_venta">Comprar</button>
                                         </form>
                                     </div>
                                     <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel"
@@ -130,8 +136,12 @@
                                                 <img src="{{url_for('static', filename='img/american.png')}}" class="tarj">
                                                 <img src="{{url_for('static', filename='img/visa.png')}}" class="tarj">
                                                 <img src="{{url_for('static', filename='img/ms.png')}}" class="tarj">
-                                            </div>
 
+                                            </div type="hidden">
+                                                <input type="hidden" class="form-control" id="cliente_id" value="{{cliente[0]}}">
+                                                <input type="hidden" class="form-control" id="estado_pedido" value="Entregado">
+                                                <input type="hidden" class="form-control" id="tipo_comprobante" value="B">
+                                            </div>
                                             <div class="col-md-12">
                                                 <label for="inputEmail4" class="form-label">Número</label>
                                                 <input type="text" class="form-control" id="inputEmail4">
@@ -249,7 +259,7 @@
 
 
     <!--Modal-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!--<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -266,7 +276,21 @@
             </div>
           </div>
         </div>
-      </div>
+      </div>-->
+      {% if error==True %}
+      <div class="toast-container p-3" id="toastPlacement">
+        <div class="toast">
+            <div class="toast-header">
+                <img src="..." class="rounded me-2" alt="...">
+                <strong class="me-auto">Bootstrap</strong>
+                <small>11 mins ago</small>
+            </div>
+            <div class="toast-body">
+                La venta se realizó con éxito
+            </div>
+        </div>
+    </div>
+    {% endif %}
 
 
 
@@ -276,5 +300,5 @@
      <link rel="stylesheet" href="{{url_for('static', filename='css/pago.css')}}">
 
 </section>
-
+<script src="{{url_for('static', filename='js/venta.js')}}"></script>
 {% endblock %}

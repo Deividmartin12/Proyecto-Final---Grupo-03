@@ -5,6 +5,42 @@ $letra: Source Sans 3;
 
 @use "headerFooter";
 
+
+
+  .nav-link {
+        display: inline-block;
+        padding: 5px 10px;
+        animation-duration: 0.3s; /* Duración de la animación */
+        animation-name: animation-hover; /* Nombre de la animación */
+        animation-fill-mode: forwards; /* Mantiene el estado final de la animación */
+    }
+
+    .nav-link i {
+        margin-right: 5px;
+    }
+
+    @keyframes animation-hover {
+        0% {
+            transform: scale(1); /* Tamaño normal al inicio */
+        }
+        100% {
+            transform: scale(1.1); /* Tamaño al 110% al final de la animación */
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .carousel-indicators{
     button{
         border-radius: 50%;

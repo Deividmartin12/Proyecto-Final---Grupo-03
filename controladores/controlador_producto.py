@@ -42,12 +42,12 @@ def obtener_productos_formateado():
     productos = []
     with conexion.cursor() as cursor:
         cursor.execute(
-            """SELECT pro.producto_id, pro.nombre, pro.descripcion, pro.precio, pro.stock, 
+            """SELECT pro.producto_id, pro.nombre, pro.descripcion, pro.precio, pro.stock,
                 CASE
                 WHEN pro.estado is true THEN 'Vigente'
                 ELSE 'No vigente'
                 END AS estado
-                , cat.nombre AS categoria, mas.nombre AS mascota, link_imagen FROM producto as pro 
+                , cat.nombre AS categoria, mas.nombre AS mascota, link_imagen FROM producto as pro
                 INNER JOIN categoria AS cat ON cat.categoria_id = pro.categoria_id
                 INNER JOIN mascota AS mas ON mas.mascota_id = pro.mascota_id""")
         productos = cursor.fetchall()
@@ -59,12 +59,12 @@ def obtener_productos_vigentes_formateado():
     productos = []
     with conexion.cursor() as cursor:
         cursor.execute(
-            """SELECT pro.producto_id, pro.nombre, pro.descripcion, pro.precio, pro.stock, 
+            """SELECT pro.producto_id, pro.nombre, pro.descripcion, pro.precio, pro.stock,
                 CASE
                 WHEN pro.estado is true THEN 'Vigente'
                 ELSE 'No vigente'
                 END AS estado
-                , cat.nombre AS categoria, mas.nombre AS mascota, link_imagen FROM producto as pro 
+                , cat.nombre AS categoria, mas.nombre AS mascota, link_imagen FROM producto as pro
                 INNER JOIN categoria AS cat ON cat.categoria_id = pro.categoria_id
                 INNER JOIN mascota AS mas ON mas.mascota_id = pro.mascota_id WHERE pro.estado = true""")
         productos = cursor.fetchall()
@@ -90,10 +90,26 @@ def obtener_producto_por_id(id):
     return producto
 
 
-def actualizar_producto(nombre,descripcion,precio,stock,estado,categoria_id,mascota_id,link_imagen, id):
+def actualizar_producto(nombre,descripcion,precio,stock,estado,categoria_id,mascota_id, id):
     conexion = obtenerConexion()
     with conexion.cursor() as cursor:
-        cursor.execute("UPDATE producto SET nombre = %s,descripcion = %s,precio = %s,stock = %s,estado = %s,categoria_id = %s,mascota_id = %s,link_imagen = %s  WHERE producto_id = %s",
-                       (nombre,descripcion,precio,stock,estado,categoria_id,mascota_id,link_imagen, id))
+        cursor.execute("UPDATE producto SET nombre = %s,descripcion = %s,precio = %s,stock = %s,estado = %s,categoria_id = %s,mascota_id = %s  WHERE producto_id = %s",
+                       (nombre,descripcion,precio,stock,estado,categoria_id,mascota_id, id))
+    conexion.commit()
+    conexion.close()
+
+def actualizar_imagen_producto(link_imagen, id):
+    conexion = obtenerConexion()
+    with conexion.cursor() as cursor:
+        cursor.execute("UPDATE producto SET link_imagen = %s  WHERE producto_id = %s",
+                       (link_imagen, id))
+    conexion.commit()
+    conexion.close()
+
+def actualizar_estado(estado, id):
+    conexion = obtenerConexion()
+    with conexion.cursor() as cursor:
+        cursor.execute("UPDATE producto SET estado = %s WHERE producto_id = %s",
+                       (estado, id))
     conexion.commit()
     conexion.close()

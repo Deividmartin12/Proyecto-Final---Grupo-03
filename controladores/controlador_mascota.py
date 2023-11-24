@@ -4,8 +4,8 @@ from bd import obtenerConexion
 def insertar_mascota(nombre):
     conexion = obtenerConexion()
     with conexion.cursor() as cursor:
-        cursor.execute("INSERT INTO mascota(nombre) VALUES (%s)",
-                       (nombre))
+        cursor.execute("INSERT INTO mascota(nombre,estado) VALUES (%s,%s)",
+                       (nombre,True))
     conexion.commit()
     conexion.close()
 
@@ -14,7 +14,7 @@ def obtener_mascotas():
     conexion = obtenerConexion()
     mascotas = []
     with conexion.cursor() as cursor:
-        cursor.execute("SELECT mascota_id, nombre FROM mascota")
+        cursor.execute("SELECT mascota_id, nombre,estado FROM mascota")
         mascotas = cursor.fetchall()
     conexion.close()
     return mascotas
@@ -33,7 +33,7 @@ def obtener_mascota_por_id(id):
     mascota = None
     with conexion.cursor() as cursor:
         cursor.execute(
-            "SELECT mascota_id,nombre FROM mascota WHERE mascota_id = %s", (id,))
+            "SELECT mascota_id,nombre,estado FROM mascota WHERE mascota_id = %s", (id,))
         mascota = cursor.fetchone()
     conexion.close()
     return mascota
@@ -44,5 +44,13 @@ def actualizar_mascota(nombre, id):
     with conexion.cursor() as cursor:
         cursor.execute("UPDATE mascota SET nombre = %s WHERE mascota_id = %s",
                        (nombre, id))
+    conexion.commit()
+    conexion.close()
+
+def actualizar_estado(estado, id):
+    conexion = obtenerConexion()
+    with conexion.cursor() as cursor:
+        cursor.execute("UPDATE mascota SET estado = %s WHERE mascota_id = %s",
+                       (estado, id))
     conexion.commit()
     conexion.close()

@@ -1,0 +1,30 @@
+{% extends "maestra_adminX.html" %}
+{% block titulo %} Registrar pedido{% endblock %}
+{% block contenido %}
+
+<section class="p-5">
+    <h3 class="is-size-3 mb-3">Agregar pedido</h3>
+    <section class="input-group mb-3">
+        <form action="{{url_for('metodo_insertar_pedido')}}" method="post">
+            <label for="fecha_pedido" class="form-label">Fecha de Pedido</label>
+            <input required type="date" class="form-control mb-3" name="fecha_pedido" id="fecha_pedido" placeholder="">
+            <label for="estado_pedido" class="form-label">Estado del Pedido</label>
+            <input required type="text" class="form-control mb-3" name="estado_pedido" id="estado_pedido"
+                placeholder="">
+            <label for="cliente_id" class="form-label">ID del Cliente</label>
+            <select name="cliente_id" id="cliente_id" class="form-select mb-3" style="width: 200px;">
+                {% for cliente in clientes %}
+                <option value="{{cliente[0]}}">{{cliente[0]}} - {{cliente[1]}}</option>
+                {% endfor %}
+            </select>
+
+            <div class="pt-4">
+                <button type="submit" class="btn btn-primary" style="width: 100px;">Guardar</button>
+                <a href="{{url_for('formulario_pedidos')}}" class="btn bg-primary-subtle"
+                    style="width: 100px;">Volver</a>
+            </div>
+        </form>
+    </section>
+</section>
+
+{% endblock %}

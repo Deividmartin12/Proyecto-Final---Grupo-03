@@ -5,8 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mis Ordenes</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/misOrdenes.css">
+
+
+
+        <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/misOrdenes.css')}}">
+
+
+
+
     <script src="https://kit.fontawesome.com/6005c71067.js" crossorigin="anonymous"></script>
 </head>
 
@@ -61,7 +69,7 @@
                     </div>
 
                     <div class="text-center text-lg-start">
-                        <a href="index.html"><img class="img-fluid logo" src="img/logo.png"></a>
+                        <a href="index.html"><img class="img-fluid logo" src="./static/img/logo.png"></a>
                     </div>
                     <nav class="d-none d-lg-block">
                         <ul class="list-inline menuHeader">
@@ -84,7 +92,7 @@
                     </nav>
                     <div class="iconos">
                         <a href=""><i class="fa-solid fa-magnifying-glass fa-xl icon"></i></a>
-                        <a href="usuario.html"><i class="fa-solid fa-user fa-xl icon d-none d-lg-inline-block"></i></a>
+                        <a href="/usuario"><i class="fa-solid fa-user fa-xl icon d-none d-lg-inline-block"></i></a>
                         <a href="carrito.html"><i class="fa-solid fa-cart-shopping fa-xl icon"></i></a>
                     </div>
                 </div>
@@ -308,7 +316,7 @@
 
     <div class="container-fluid d-flex justify-content-center desarrolladora">
         <div class="row">
-            
+
         <div class="container-fluid d-flex justify-content-center ">
             Fecha de creación: 29/06/2023
         </div>
@@ -317,7 +325,7 @@
         </div>
         </div>
     </div>
-    
+
     <div class="container-fluid d-flex justify-content-center desarrolladora">
         Desarrollado por &nbsp;<a href="empresa.html"><Strong>CodexSING</Strong> </a>
     </div>

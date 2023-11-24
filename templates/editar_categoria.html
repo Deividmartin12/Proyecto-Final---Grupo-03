@@ -4,19 +4,29 @@ Editar Categoria
 {% endblock %}
 {% block contenido %}
 <section class="p-5">
-    <h3 class="is-size-3 mb-3">Editar Categoria</h3>
+    <h3 class="is-size-3 mb-3">Editar categoria</h3>
     <section class="input-group mb-3">
-        <form action="{{url_for('actualizar_categoria')}}" method="post">
+        <form action="{{url_for('actualizar_categoria')}}" class="col-3" method="post">
             {# Enviar el id en un campo oculto #}
             <input type="hidden" name="id" value="{{categoria[0]}}">
             <label for="nombre">Nombre:</label>
-            <input value="{{categoria[1]}}" required type="text" class="form-control" placeholder="Nombre" name="nombre" id="nombre">
+            <input value="{{categoria[1]}}" required type="text" class="form-control mb-3" placeholder="Nombre" name="nombre" id="nombre">
             <label for="descripcion">Descripción:</label>
-            <input value="{{categoria[2]}}" required type="text" class="form-control" placeholder="Descripción" name="descripcion" id="descripcion">
+            <input value="{{categoria[2]}}" required type="text" class="form-control mb-3" placeholder="Descripción" name="descripcion" id="descripcion">
+            <label for="estado" class="form-label">Estado</label>
+            <select name="estado" id="estado" class="form-select mb-4" style="width: 200px;">
+                {% if categoria[3] == 1 %}
+                <option value="SI" selected>Vigente</option>
+                <option value="NO">No vigente</option>
+                {% else %}
+                <option value="SI">Vigente</option>
+                <option value="NO" selected>No vigente</option>
+                {% endif %}
+            </select>
             <button type="submit" class="btn btn-primary" style="width: 100px;">Guardar</button>
             <a href="{{url_for('categoriasAdmin')}}" class="btn bg-primary-subtle" style="width: 100px;">Volver</a>
         </form>
-    </section>   
+    </section>
 </section>
 {% endblock %}
 

@@ -3,7 +3,7 @@ var productos = []
 fetch('/lista_productos')
 .then(resp => resp.json())
 .then(data => {
-    
+
     productos=data;
 
     mostrar_productos();
@@ -20,7 +20,7 @@ document.getElementById("buscador").addEventListener("keyup", function () {
     filtro_busqueda = productos.filter(function (a) {
         if (a.nombre.toUpperCase().includes(texto_ingresado.toUpperCase())) {
             document.getElementById(a.id).style.display = "block";
-            
+
         }else{
             document.getElementById(a.id).style.display = "none";
         }
@@ -36,7 +36,7 @@ function mostrar_productos() {
         <div class="col pb-3 carta_producto" id="${productos[i].id}" data-mascota= ${productos[i].mascota} data-categoria= ${productos[i].categoria}>
                 <div class="card h-100 text-center shadow">
                     <a href="datos_producto/${productos[i].id}">
-                        <img src="/static/img/${productos[i].imagen}" class="card-img-top img-thumbnail mx-auto d-block object-fit-contain" style="height: 300px;width: 300px;" alt="{{producto[1]}}">
+                        <img src="/static/img/${productos[i].imagen}" class="card-img-top img-thumbnail mx-auto d-block object-fit-contain" style="height: 300px;width: 300px;" alt=${productos[i].nombre}>
                     </a>
                     <div class="card-body">
                         <h5 class="card-title fs-3 mb-4">${productos[i].nombre}</h5>
@@ -80,7 +80,7 @@ function filtrar_productos_mascota() {
 
     if (todos_seleccionados){
         var a = document.querySelectorAll('.carta_producto');
-        
+
         a.forEach(div => {
             div.style.display = 'block';
         });
@@ -114,7 +114,7 @@ function filtrar_productos_categoria() {
 
     if (todos_seleccionados){
         var a = document.querySelectorAll('.carta_producto');
-        
+
         a.forEach(div => {
             div.style.display = 'block';
         });
@@ -139,7 +139,7 @@ function agregar_carrito(id){
         datos_producto = productos[i];
         if (id==datos_producto.id){
             // Obtener la información del producto que se desea agregar al carrito
-            var imagenProducto = `/static/img/${datos_producto.imagen}`;
+            var imagenProducto = `./static/img/${datos_producto.imagen}`;
             var nombreProducto = datos_producto.nombre;
             var precioProducto = parseFloat(datos_producto.precio);
             // Crear un objeto para representar el producto
@@ -171,7 +171,7 @@ function agregar_carrito(id){
             /* var numcarrito = localStorage.getItem("carrito");
             var numcarritoJson = JSON.parse(numcarrito);
             document.getElementById("numCarrito").innerHTML=numcarritoJson.length; */
-          
+
                 }
     }
 

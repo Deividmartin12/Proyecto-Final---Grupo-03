@@ -16,16 +16,16 @@
                 <label for="direccion" class="form-label">Direccion</label>
                 <input value="{{cliente[4]}}" required type="text" class="form-control mb-3" name="direccion" id="direccion" placeholder="">
                 <label for="cliente_dni" class="form-label">DNI</label>
-                <input value="{{cliente[4]}}" required type="text" class="form-control mb-3" name="cliente_dni" id="cliente_dni" placeholder="">
+                <input value="{{cliente[5]}}" required type="text" class="form-control mb-3" name="cliente_dni" id="cliente_dni" placeholder="">
                 <label for="password" class="form-label">Password</label>
-                <input value="{{cliente[4]}}" required type="text" class="form-control mb-3" name="password" id="password" placeholder="">              
-               
+                <input value="{{cliente[6]}}" required type="text" class="form-control mb-3" name="password" id="password" placeholder="">
+
             <div class="pt-4">
                 <button type="submit" class="btn btn-primary" style="width: 100px;">Guardar</button>
             <a href="{{url_for('formulario_clientes')}}" class="btn bg-primary-subtle" style="width: 100px;">Volver</a>
             </div>
         </form>
-    </section>   
+    </section>
 </section>
 
 {% endblock %}
@@ -35,6 +35,6 @@
     <option value="{{mascota[1]}}" selected>{{producto[7]}}</option>
     {% else %}
     <option value="{{mascota[1]}}">{{producto[7]}}</option>
-    {% endif %}           
+    {% endif %}
     {% endfor %}
 </select> -->

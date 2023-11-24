@@ -76,8 +76,14 @@
                         </ul>
                     </nav>
                     <div class="iconos">
-                        <a href=""><i class="fa-solid fa-magnifying-glass fa-xl icon"></i></a>
-                        <a href="{{url_for('login')}}"><i class="fa-solid fa-user fa-xl icon d-none d-lg-inline-block"></i></a>
+
+                    <a href="{{url_for('login')}}"><i class="fa-solid fa-user fa-xl icon d-none d-lg-inline-block"></i></a>
+
+
+
+                        <!-- FIN !-->
+
+
                         <a href="{{url_for('carrito')}}"><i class="fa-solid fa-cart-shopping fa-xl icon">
                             <span class="badge text-bg-danger" id="numCarrito"></span>
                         </i></a>
@@ -134,9 +140,12 @@
                         <a href=""><img src="/static/img/instagram 1.png" alt=""></a>
                         <a href="https://www.facebook.com/veterinaria.mipequenosebastian" target="_blank"><img src="/static/img/facebook 1.png" alt=""></a>
                         <a href=""><img src="/static/img/gorjeo 1.png" alt=""></a>
-                        <a href="{{url_for('login_empleado')}}" class="text-dark">
+                        <!--<a href="{{url_for('login_empleado')}}" class="text-dark">
                             <p><Strong>Login empleado</Strong></p>
-                        </a>
+                        </a>-->
+                        <!--<a href="{{url_for('interfaz_admin')}}" class="text-dark">
+                            <p><Strong>Login empleado</Strong></p>
+                        </a>-->
                     </div>
 
                 </div>
@@ -147,7 +156,54 @@
         </div>
     </footer>
 
-    <script src="{{url_for('static', filename='js/bootstrap.bundle.js')}}"></script> 
+
+
+
+
+<script>
+
+document.getElementById('icono').addEventListener('click', function(event) {
+  event.stopPropagation();
+  var opciones = document.getElementById('opciones');
+  if (opciones.style.display === 'block') {
+    opciones.style.display = 'none';
+  } else {
+    opciones.style.display = 'block';
+  }
+});
+
+document.addEventListener('click', function() {
+  var opciones = document.getElementById('opciones');
+  if (opciones.style.display === 'block') {
+    opciones.style.display = 'none';
+  }
+});
+
+document.getElementById('opciones').addEventListener('click', function(event) {
+  event.stopPropagation();
+});
+
+document.getElementById('opcionEmpleado').addEventListener('click', function(event) {
+  event.preventDefault();
+  // Acción al hacer clic en la opción de Empleado
+  alert('Elegiste la opción Empleado');
+});
+
+document.getElementById('opcionCliente').addEventListener('click', function(event) {
+  event.preventDefault();
+  // Acción al hacer clic en la opción de Cliente
+  alert('Elegiste la opción Cliente');
+});
+
+</script>
+
+
+
+
+
+
+
+    <script src="{{url_for('static', filename='js/bootstrap.bundle.js')}}"></script>
 </body>
 
 </html>
@@ -155,7 +211,7 @@
     document.addEventListener("DOMContentLoaded", function(){
     var numcarrito = localStorage.getItem("carrito");
     var numcarritoJson = JSON.parse(numcarrito);
-    
+
     document.getElementById("numCarrito").innerHTML=numcarritoJson.length;
     });
 </script>
