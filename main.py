@@ -534,6 +534,10 @@ def pago():
 def mis_ordenes():
     return render_template("misOrdenes.html")
 
+@app.route("/admin_det_ped")
+def det_pedido():
+    return render_template("detallesPedido.html")
+
 
 
 
