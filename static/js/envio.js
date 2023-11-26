@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function() {
             location.reload()
         } else {
           console.log(data.mensaje)
-          alert('Error al guardar', data.mensaje)
+          alert(data.mensaje)
         }
     }
   });

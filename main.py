@@ -1042,7 +1042,7 @@ def transaccion():
         'metodo_id': metodo_id,
         'total': total
     }
-    
+
     try:
         guardado = controlador_pedido.transaccion(data)
 

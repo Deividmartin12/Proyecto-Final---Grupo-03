@@ -116,6 +116,6 @@ def transaccion(productos):
     except Exception as e:
         print("Error: {}".format(e.__str__()))
         conexion.rollback()
-        return False
+        raise e
     finally:
         conexion.close()
