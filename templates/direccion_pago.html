@@ -101,7 +101,7 @@
                                         <label for="validationTooltip03" class="form-label">Método de pago</label>
                                         <select class="form-control" name="" id="">
                                             {% for metodo in metodos_pago %}
-                                            <option value="{{metodo['metodo_id']}}">{{ metodo['nombre']}}</option>
+                                            <option value="{{metodo[0]}}">{{ metodo[1]}}</option>
                                             {% endfor %}
                                         </select>
                                     </div>
