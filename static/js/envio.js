@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var metodo_id = metodosPago.options[metodosPago.selectedIndex].value;
         const origen = new URL(window.location.href).origin;
 
-        const URL_ = `${origen}/venta`;
+        const URL_ = `${origen}/transaccion`;
         const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
         let total = 0;
         carrito.forEach(e => {

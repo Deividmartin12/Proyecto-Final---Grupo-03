@@ -1031,7 +1031,7 @@ def metodo_venta():
 
     return jsonify(carrito)
 
-@app.route('/venta', methods=['POST'])
+@app.route('/transaccion', methods=['POST'])
 def venta():
     carrito = json.loads(request.body.decode())
     
