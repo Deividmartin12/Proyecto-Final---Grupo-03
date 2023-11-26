@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function() {
           total += e.precio * e.cantidad;
         })
 
-        const response = await fetch(URL_, {
+        const response = await fetch("/transaccion" {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
