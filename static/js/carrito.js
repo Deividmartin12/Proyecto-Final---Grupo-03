@@ -1,8 +1,13 @@
 document.addEventListener("DOMContentLoaded", function() {
   document.querySelectorAll('a[name="boton_agregar_carrito"]').forEach(boton => {
     boton.addEventListener('click',mostrar_num_carrito);
-})
+  })
     // Obtener el elemento del carrito
+    var btnpagar = document.querySelector(".btnProPago");
+    btnpagar.addEventListener("click", async () => {
+      await proceder_pago();
+    });
+
     var carritoElement = document.getElementById("carrito");
   
     // Obtener el carrito del almacenamiento local
@@ -156,8 +161,26 @@ document.addEventListener("DOMContentLoaded", function() {
     actualizarTotal();
   });
 
+
   function mostrar_num_carrito(event){
     var numcarrito = localStorage.getItem("carrito");
     var numcarritoJson = JSON.parse(numcarrito);
     document.getElementById("numCarrito").innerHTML=numcarritoJson.length;
-}
+  }
+
+  async function proceder_pago() {
+    
+    
+    //Llamamos api
+    const url = '';
+
+    const response = await fetch(url)
+    const data = reponse.json()
+    
+    if(data.guardado) {
+
+    } else {
+      console.log(data.error)
+      alert('Error al guardar', data.error)
+    }
+  }

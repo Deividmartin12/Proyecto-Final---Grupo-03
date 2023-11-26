@@ -122,3 +122,26 @@ def transaccion(datos):
     finally:
         cursor.close()
         conexion.close()
+
+def transaccion(productos):
+
+    try:
+
+        conexion = obtenerConexion()
+        cursor = conexion.cursor()
+
+        conexion.begin()
+        for data in productos:
+            precio = data["precio"]
+            cantidad = data["cantidad"]
+            pass
+
+    except Exception as e:
+        print("Error: {}".format(e.__str__()))
+        conexion.rollback()
+    finally:
+        cursor.close()
+        conexion.close()
+    
+
+

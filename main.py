@@ -275,6 +275,8 @@ def api_obtener_mascotas():
     respuesta["code"] = 1
     respuesta["message"] = "Listado de datos correcto"
     return jsonify(respuesta)
+
+
 @app.route("/api_insertar_mascota", methods=["POST"])
 @jwt_required()
 def api_insertar_mascota():
@@ -1030,7 +1032,14 @@ def metodo_venta():
 
     return jsonify(carrito)
 
-
+@app.route('/venta', methods=['POST'])
+def venta():
+    carrito = json.loads(request.body.decode())
+    
+    try:
+        pass
+    except Exception as e:
+        return jsonify({'guardado':False,'error': str(e)})
 
 #####################     INTERFAZ ADMIN     ############################
 @app.route("/index_admin")

@@ -144,6 +144,7 @@ function agregar_carrito(id){
             var precioProducto = parseFloat(datos_producto.precio);
             // Crear un objeto para representar el producto
             var producto = {
+                idproducto: id,
                 imagen: imagenProducto,
                 nombre: nombreProducto,
                 precio: precioProducto
