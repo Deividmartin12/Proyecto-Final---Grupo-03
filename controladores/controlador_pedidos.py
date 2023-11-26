@@ -95,7 +95,7 @@ def transaccion(productos):
         idpedido = obtener_ultimo_idpedido()
         
         with conexion.cursor() as cursor:
-            queryPedido = 'insert into pedido(pedido_id,cliente_id,fecha_pedido,estado_pedido) values(%s,%s,CURRENT_TIMESTAMP, %s)'
+            queryPedido = 'insert into pedido(pedido_id,usuario_id,fecha_pedido,estado_pedido) values(%s,%s,CURRENT_TIMESTAMP, %s)'
             cursor.execute(queryPedido,(idpedido,1,'R'))
 
         with conexion.cursor() as cursor:
@@ -108,7 +108,7 @@ def transaccion(productos):
                 cursor.execute(queryDetallePedido,(idpedido,idproducto,cantidad,precio_unitario))
 
         with conexion.cursor() as cursor:
-            queryComprobante = 'insert into comprobantes(pedido_id, fecha_emision,monto_total,tipo_comprobante, Metodo_pagometodo_id) values(%s,CURRENT_TIMESTAMP,%s,%s,%s)'
+            queryComprobante = 'insert into comprobantes(pedido_id, fechaE,monto_total,tipo_comprobante, Metodo_pago) values(%s,CURRENT_TIMESTAMP,%s,%s,%s)'
             cursor.execute(queryComprobante,(idpedido,productos['total'],'B',productos['metodo_id']))
 
         conexion.commit()
