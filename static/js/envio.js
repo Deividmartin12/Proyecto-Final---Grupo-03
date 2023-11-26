@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function() {
           })
         })
 
-        const data = await reponse.json()
+        const data = await response.json()
         
         if(data.guardado) {
             alert(data.mensaje)
