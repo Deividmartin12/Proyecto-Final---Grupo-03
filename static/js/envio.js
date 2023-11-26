@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Obtener el contenedor de los elementos del carrito
     var carritoElementos = document.getElementById("carritoElementos");
-    var guardarPedido = document.querySelector('.pago-bd')
-    guardarPedido.addEventListener('click', async () => {
+    var guardarPedido = document.querySelector('#pago-bd')
+    guardarPedido.addEventListener('click', async (e) => {
+      e.preventDefault()
       await guardar()
     })
     // Obtener el carrito del almacenamiento local
