@@ -3,13 +3,8 @@ document.addEventListener("DOMContentLoaded", function() {
     boton.addEventListener('click',mostrar_num_carrito);
   })
     // Obtener el elemento del carrito
-    var btnpagar = document.querySelector(".btnProPago");
-    btnpagar.addEventListener("click", async () => {
-      await proceder_pago();
-    });
-
     var carritoElement = document.getElementById("carrito");
-  
+
     // Obtener el carrito del almacenamiento local
     var carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
