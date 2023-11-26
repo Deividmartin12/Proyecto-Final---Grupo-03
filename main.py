@@ -275,8 +275,6 @@ def api_obtener_mascotas():
     respuesta["code"] = 1
     respuesta["message"] = "Listado de datos correcto"
     return jsonify(respuesta)
-
-
 @app.route("/api_insertar_mascota", methods=["POST"])
 @jwt_required()
 def api_insertar_mascota():
@@ -689,7 +687,8 @@ def guardar_categoria():
 
 @app.route("/direccion_pago")
 def direccion_pago():
-    return render_template("direccion_pago.html")
+    metodos_pago = controlador_metodos_pago.obtener_metodos_pago()
+    return render_template("direccion_pago.html", metodos_pago=metodos_pago)
 
 @app.route("/eliminar_categoria", methods=["POST"])
 def eliminar_categoria():
@@ -1037,9 +1036,14 @@ def venta():
     carrito = json.loads(request.body.decode())
     
     try:
-        pass
+        guardado = controlador_pedido.transaccion(carrito)
+
+        if guardado:
+            return jsonify({'guardado':True, 'mensaje': 'Venta realizada correctamente'})
+        else:
+            return jsonify({'guardado':False, 'mensaje': 'Error al realizar la venta'})
     except Exception as e:
-        return jsonify({'guardado':False,'error': str(e)})
+        return jsonify({'guardado':False,'mensaje': str(e)})
 
 #####################     INTERFAZ ADMIN     ############################
 @app.route("/index_admin")

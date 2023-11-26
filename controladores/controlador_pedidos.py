@@ -19,6 +19,14 @@ def obtener_pedidos():
     conexion.close()
     return pedidos
 
+def obtener_ultimo_idpedido():
+    conexion = obtenerConexion()
+    idpedido = []
+    with conexion.cursor() as cursor:
+        cursor.execute("SELECT coalesce(max(idDetalleOrden),0)+1 as idpedido FROM pedido")
+        idpedido = cursor.fetchone()
+    conexion.close()
+    return idpedido[0]
 
 def obtener_clientes():
     conexion = obtenerConexion()
@@ -80,68 +88,34 @@ def actualizar_pedido(fecha_pedido, estado_pedido, cliente_id, id):
     conexion.close()
 
 
-def transaccion(datos):
+def transaccion(productos):
     try:
         conexion = obtenerConexion()
-        cursor = conexion.cursor()
+        
+        idpedido = obtener_ultimo_idpedido()
+        
+        with conexion.cursor() as cursor:
+            queryPedido = 'insert into pedido(pedido_id,cliente_id,fecha_pedido,estado_pedido) values(%s,%s,CURRENT_TIMESTAMP, %s)'
+            cursor.execute(queryPedido,(idpedido,1,0,'P'))
 
-        conexion.start_transaction()
+        with conexion.cursor() as cursor:
+            for data in productos['carrito']:
+                idproducto = data['idproducto']
+                precio_unitario = data["precio"]
+                cantidad = data["cantidad"]
 
-        estado_pedido = datos["estado_pedido"]
-        cliente_id = datos["cliente_id"]
-        cursor.execute("INSERT pedido(fecha_pedido, estado_pedido, cliente_id) VALUES (CURRENT_DATE, %s, %s)",
-                       (estado_pedido, cliente_id))
+                queryDetallePedido = 'insert into detalle_pedido(pedido_id,producto_id,cantidad,precio_unitario) values(%s,%s,%s,%s)'
+                cursor.execute(queryDetallePedido,(idpedido,idproducto,cantidad,precio_unitario))
 
-        monto_total = 0
-        for detalle in datos["detalle_pedido"]:
-            producto_id = detalle["producto_id"]
-            cantidad = detalle["cantidad"]
-            prod = controlador_producto.obtener_producto_por_id(producto_id)
-            if cantidad>prod[4]:
-                precio_unitario = detalle["precio_unitario"]
-                monto_total += precio_unitario
-                cursor.execute("INSERT detalle_pedido(pedido_id,producto_id,cantidad,precio_unitario) VALUES (%s,%s,%s,%s)",
-                           (pedido_id,producto_id,cantidad,precio_unitario))
-            else:
-                conexion.rollback()
-                return False
-
-        tipo_comprobante = datos["tipo_comprobante"]
-        metodo_id = datos["metodo_id"]
-        cursor.execute("INSERT comprobantes(fecha_hora_emision,monto_total,tipo_comprobante,pedido_id,metodo_id) VALUES (CURRENT_TIMESTAMP,%s,%s,%s,%s)",
-                       (monto_total,tipo_comprobante,pedido_id,metodo_id))
+        with conexion.cursor() as cursor:
+            queryComprobante = "insert into comprobantes(pedido_id, fecha_emision,monto_total,tipo_comprobante, Metodo_pagometodo_id) values(%s,CURRENT_TIMESTAMP,%s,%s,%s)"
+            cursor.execute(queryComprobante,(idpedido,productos['total'],'B',productos['metodo_id']))
 
         conexion.commit()
         return True
-
-    except mysql.connector.Error as err:
-        print("Error: {}".format(err))
-        conexion.rollback()
-        return False
-
-    finally:
-        cursor.close()
-        conexion.close()
-
-def transaccion(productos):
-
-    try:
-
-        conexion = obtenerConexion()
-        cursor = conexion.cursor()
-
-        conexion.begin()
-        for data in productos:
-            precio = data["precio"]
-            cantidad = data["cantidad"]
-            pass
-
     except Exception as e:
         print("Error: {}".format(e.__str__()))
         conexion.rollback()
+        return False
     finally:
-        cursor.close()
         conexion.close()
-    
-
-

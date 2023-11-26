@@ -1,7 +1,10 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Obtener el contenedor de los elementos del carrito
     var carritoElementos = document.getElementById("carritoElementos");
-  
+    var guardarPedido = document.querySelector('.pago-bd')
+    guardarPedido.addEventListener('click', async () => {
+      await guardar()
+    })
     // Obtener el carrito del almacenamiento local
     var carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
@@ -61,5 +64,42 @@ document.addEventListener("DOMContentLoaded", function() {
       totalPago.textContent = "S/. " +(envio + total);
 
     });
+
+
+    async function guardar() {
+        var metodosPago = document.getElementById("metodosPago");
+        var metodo_id = metodosPago.options[metodosPago.selectedIndex].value;
+        const origen = new URL(window.location.href).origin;
+
+        const URL_ = `${origen}/venta`;
+        const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+        let total = 0;
+        carrito.forEach(e => {
+          total += e.precio * e.cantidad;
+        })
+
+        const response = await fetch(URL_, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            carrito: carrito,
+            metodo_id: metodo_id,
+            total: total
+          })
+        })
+
+        const data = await reponse.json()
+        
+        if(data.guardado) {
+            alert(data.mensaje)
+            localStorage.clear()
+            location.reload()
+        } else {
+          console.log(data.mensaje)
+          alert('Error al guardar', data.mensaje)
+        }
+    }
   });
   

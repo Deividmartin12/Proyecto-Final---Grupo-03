@@ -97,7 +97,14 @@
                                             Este campo es obligatorio.
                                         </div>
                                     </div>
-
+                                    <div class="col-md-12 position-relative">
+                                        <label for="validationTooltip03" class="form-label">Destinatario</label>
+                                        <select class="form-control" name="" id="">
+                                            {% for metodo in metodos_pago %}
+                                            <option value="{{metodo.metodo_id}}">{{ metodo.nombre }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
                                     <div class="card mb-3" style="background-color: #D4E8FF">
                                         <div class="card-body">
                                             <h5 class="card-title">Método de entrega</h5>
@@ -107,7 +114,7 @@
                                                 existir retrasos en tu pedido. (S/. 15.00)</p>
                                         </div>
                                     </div>
-                                    <a href="{{url_for('pago')}} " class="btn btn-primary">Ir al pago</a>
+                                    <a href="{{url_for('pago')}} " id="pago-bd" class="btn btn-primary">Ir al pago</a>
                                 </form>
                             </div>
                         </div>

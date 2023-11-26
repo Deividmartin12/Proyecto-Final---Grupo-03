@@ -168,19 +168,4 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("numCarrito").innerHTML=numcarritoJson.length;
   }
 
-  async function proceder_pago() {
-    
-    
-    //Llamamos api
-    const url = '';
-
-    const response = await fetch(url)
-    const data = reponse.json()
-    
-    if(data.guardado) {
-
-    } else {
-      console.log(data.error)
-      alert('Error al guardar', data.error)
-    }
-  }
+  
