@@ -1032,11 +1032,19 @@ def metodo_venta():
     return jsonify(carrito)
 
 @app.route('/transaccion', methods=['POST'])
-def venta():
-    carrito = json.loads(request.body.decode())
+def transaccion():
+    carrito = request.json["carrito"]
+    metodo_id = request.json["metodo_id"]
+    total = request.json["total"]
+
+    data = {
+        'carrito': carrito,
+        'metodo_id': metodo_id,
+        'total': total
+    }
     
     try:
-        guardado = controlador_pedido.transaccion(carrito)
+        guardado = controlador_pedido.transaccion(data)
 
         if guardado:
             return jsonify({'guardado':True, 'mensaje': 'Venta realizada correctamente'})

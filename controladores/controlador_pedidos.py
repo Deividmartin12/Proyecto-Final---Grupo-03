@@ -23,7 +23,7 @@ def obtener_ultimo_idpedido():
     conexion = obtenerConexion()
     idpedido = []
     with conexion.cursor() as cursor:
-        cursor.execute("SELECT coalesce(max(idDetalleOrden),0)+1 as idpedido FROM pedido")
+        cursor.execute("SELECT coalesce(max(pedido_id),0)+1 as idpedido FROM pedido")
         idpedido = cursor.fetchone()
     conexion.close()
     return idpedido[0]
@@ -96,7 +96,7 @@ def transaccion(productos):
         
         with conexion.cursor() as cursor:
             queryPedido = 'insert into pedido(pedido_id,cliente_id,fecha_pedido,estado_pedido) values(%s,%s,CURRENT_TIMESTAMP, %s)'
-            cursor.execute(queryPedido,(idpedido,1,0,'P'))
+            cursor.execute(queryPedido,(idpedido,1,'R'))
 
         with conexion.cursor() as cursor:
             for data in productos['carrito']:
@@ -108,7 +108,7 @@ def transaccion(productos):
                 cursor.execute(queryDetallePedido,(idpedido,idproducto,cantidad,precio_unitario))
 
         with conexion.cursor() as cursor:
-            queryComprobante = "insert into comprobantes(pedido_id, fecha_emision,monto_total,tipo_comprobante, Metodo_pagometodo_id) values(%s,CURRENT_TIMESTAMP,%s,%s,%s)"
+            queryComprobante = 'insert into comprobantes(pedido_id, fecha_emision,monto_total,tipo_comprobante, Metodo_pagometodo_id) values(%s,CURRENT_TIMESTAMP,%s,%s,%s)'
             cursor.execute(queryComprobante,(idpedido,productos['total'],'B',productos['metodo_id']))
 
         conexion.commit()
