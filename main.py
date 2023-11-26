@@ -687,7 +687,7 @@ def guardar_categoria():
 
 @app.route("/direccion_pago")
 def direccion_pago():
-    metodos_pago = controlador_metodos_pago.obtener_metodos_pago()
+    metodos_pago = controlador_metodoP.obtener_metodos_pago()
     return render_template("direccion_pago.html", metodos_pago=metodos_pago)
 
 @app.route("/eliminar_categoria", methods=["POST"])
