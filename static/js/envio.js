@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Obtener el contenedor de los elementos del carrito
     var carritoElementos = document.getElementById("carritoElementos");
     var guardarPedido = document.querySelector('#pago-bd')
-    guardarPedido.addEventListener('click', async (e) => {
+    guardarPedido.addEventListener('click', async e => {
       e.preventDefault()
       await guardar()
     })
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function() {
           total += e.precio * e.cantidad;
         })
 
-        const response = await fetch("/transaccion" {
+        const response = await fetch("/transaccion", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
