@@ -1,42 +1,32 @@
-{% extends "maestra_admin.html" %}
+{% extends "maestra_adminX.html" %}
 {% block titulo %}Detalle pedido{% endblock %}
 {%block admin_cont %}
 
-<section>
-
-    <div class="bs-primary">
-        Detalle producto
+<section class="section p-5">
+    <div class="col-11">
+        <h2 class="is-size-3">Detalle Pedido</h2>
+        <table class="table table-hover table-group-divider table align-middle">
+            <thead class="table-light">
+                <tr class="text-center">
+                    <th scope="col" class="border">Pedido id</th>
+                    <th scope="col" class="border">Producto</th>
+                    <th scope="col" class="border">Cantidad</th>
+                    <th scope="col" class="border">Precio Unitario</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                {% for detalle in detalle_pedido %}
+                <tr>
+                    <td class="border text-end">{{detalle[0]}}</td>
+                    <td class="border text-start">{{detalle[1]}}</td>
+                    <td class="col-3 border text-start">{{detalle[2]}}</td>
+                    <td class="border text-end">{{detalle[3]}}</td>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Pedido_id</th>
-                <th>Producto_id</th>
-                <th>Cantidad</th>
-                <th>precio</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for det_ped in det_peds %}
-            <tr>
-                <td>{{det_ped[1]}}</td>
-                <td>{{det_ped[2]}}</td>
-                <td>{{det_ped[3]}}</td>
-                <td>{{det_ped[4]}}</td>
-                <td>
-                    {# Pasar el id (lo que hay en disco[0] #}
-                    <a href="{{url_for('editar_disco', id=disco[0])}}" class="button is-info">Editar</a>
-                </td>
-                <td>
-                    <form action="{{url_for('eliminar_disco')}}" method="POST">
-                        <input type="hidden" name="id" value="{{disco[0]}}">
-                        <button class="button is-danger">Eliminar</button>
-                    </form>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
 </section>
 
 {% endblock %}

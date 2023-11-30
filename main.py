@@ -371,8 +371,8 @@ def api_insertar_mascota():
     respuesta["code"] = 3
     respuesta["message"] = "Guardado correcto"
     return jsonify(respuesta)
-@app.route("/api_actualizar_mascota", methods=["POST"])
 
+@app.route("/api_actualizar_mascota", methods=["POST"])
 @jwt_required()
 def api_actualizar_mascota():
     respuesta = dict()
