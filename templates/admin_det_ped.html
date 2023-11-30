@@ -15,13 +15,12 @@
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                {% for det_ped in det_ped %}
+                {% for detalle in det_ped %}
                 <tr>
-                    <td class="border text-end">{{det_ped[0]}}</td>
-                    <td class="border text-start">{{det_ped[1]}}</td>
-                    <td class="col-3 border text-start">{{det_ped[2]}}</td>
-                    <td class="border text-end">{{det_ped[3]}}</td>
-                    </td>
+                    <td class="border text-end">{{detalle[0]}}</td>
+                    <td class="border text-start">{{detalle[1]}}</td>
+                    <td class="col-3 border text-start">{{detalle[2]}}</td>
+                    <td class="border text-end">{{detalle[3]}}</td>
                 </tr>
                 {% endfor %}
             </tbody>
