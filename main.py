@@ -12,6 +12,7 @@ import controladores.controlador_pedidos as controlador_pedido
 import controladores.controlador_cliente as controlador_cliente
 import controladores.controlador_comprobantes as controlador_comprobante
 import controladores.controlador_metodoP as controlador_metodos_pago
+import controladores.controlador_detalle_pedido as controlador_detalle_pedido
 
 import clases.comprobante as clase_comprobante
 import clases.metodopago as clase_metodo_pago
@@ -766,8 +767,20 @@ def mis_ordenes():
 
 @app.route("/admin_det_ped")
 def det_pedido():
-    return render_template("admin_det_ped.html")
-
+    try:
+        username = request.cookies.get('username')
+        token = request.cookies.get('token')
+        usuario = controlador_usuario.obtener_usuario_por_username(username)
+        if username is None:
+            return render_template("login.html")
+        if token == usuario[9] and usuario[10] == 1 and usuario[11]==True:
+            det_ped = controlador_detalle_pedido.obtener_det_pedido()
+            return render_template("admin_det_ped.html", det_ped=det_ped)
+        return render_template("login.html")
+    except:
+        return render_template("login.html")    
+    
+    
 
 
 
