@@ -766,7 +766,7 @@ def mis_ordenes():
 
 @app.route("/admin_det_ped")
 def det_pedido():
-    return render_template("detallesPedido.html")
+    return render_template("admin_det_ped.html")
 
 
 
