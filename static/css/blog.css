@@ -1,0 +1,121 @@
+@charset "UTF-8";
+
+section {
+  margin: 0px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+section section, section aside {
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 30px;
+}
+section .titulo2 {
+  font-family: Source Sans 3;
+  font-weight: bold;
+  font-size: 25px;
+  margin: 20px;
+}
+section .titulo3 {
+  font-family: Source Sans 3;
+  font-weight: bold;
+  font-size: 25px;
+  margin-bottom: 30px;
+  margin-top: 10px;
+  text-decoration: underline;
+}
+section .infoBlog {
+  background-color: rgb(245, 245, 245);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  margin: 10px;
+  padding: 10px;
+}
+section .customDiv {
+  width: 300px;
+  text-align: justify;
+  font-family: Source Sans 3;
+  font-weight: bold;
+}
+section #botonLeerMas, section .boton {
+  background-color: #3370DE;
+  border: none;
+  border-radius: 10px;
+  margin: 10px;
+  color: white;
+  font-family: Source Sans 3;
+  font-weight: bold;
+}
+section .boton {
+  width: 80px;
+  height: 30px;
+}
+section #botonLeerMas:hover, section .boton:hover {
+  box-shadow: 0px 0px 10px #283F7F;
+}
+section ul {
+  list-style-type: none;
+}
+section ul a {
+  text-decoration: none;
+  color: black;
+  font-family: Source Sans 3;
+  font-weight: bold;
+}
+section ul li {
+  margin-bottom: 10px;
+}
+section .p1 {
+  margin: 0px;
+  font-family: Source Sans 3;
+}
+section .title {
+  font-weight: bold;
+}
+section .size {
+  font-weight: bold;
+  font-size: 12px;
+}
+section .precio {
+  color: rgb(148, 148, 148);
+  font-weight: bold;
+}
+section .infoProd {
+  margin: 40px;
+}
+section .caja {
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+.titulo {
+  padding: 10px;
+  padding-left: 40px;
+  background-color: #D4E8FF;
+  height: 60px;
+  color: black;
+  font-family: Source Sans 3;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.desarrolladora{
+  background-color: #283F7F;
+  padding: 10px;
+  color: white;
+  font-family: Source Sans 3;
+  border-top: 2px solid white;
+  font-weight: bold;
+}
+
+.desarrolladora a{
+  color: white;
+  font-family: Source Sans 3;
+  text-decoration: none;
+}
+
+.desarrolladora a:hover{
+  transform: scale(120%);
+}
+
+/*# sourceMappingURL=blog.css.map */

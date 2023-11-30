@@ -1,0 +1,66 @@
+
+
+#qsomos, #mision, #vision, #valores {
+    background: rgba(237, 241, 246, 1);
+    color: rgba(40, 63, 127, 1);
+    margin-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+#txt-qsomos, #txt-mision, #txt-vision, #txt-valores{
+    font-size: 1.5rem;
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    margin-bottom: 20px;
+    text-align: left;
+
+}
+
+#titulo {
+    color: rgba(40, 63, 127, 1);
+    border-bottom: 1.5px solid;
+}
+
+.titulo {
+    padding: 10px;
+    padding-left: 40px;
+    background-color: #D4E8FF;
+    height: 60px;
+    color: black;
+    font-family: Source Sans 3;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  section {
+    color: #283F7F;
+    font-family: Source Sans 3;
+    margin: 0px;
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+
+  .desarrolladora{
+    background-color: #283F7F;
+    padding: 10px;
+    color: white;
+    font-family: Source Sans 3;
+    border-top: 2px solid white;
+    font-weight: bold;
+  }
+  
+  .desarrolladora a{
+    color: white;
+    font-family: Source Sans 3;
+    text-decoration: none;
+  }
+  
+  .desarrolladora a:hover{
+    transform: scale(120%);
+  }
+  
