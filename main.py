@@ -780,9 +780,6 @@ def det_pedido():
     except:
         return render_template("login.html")    
     
-    
-
-
 
 #####################     MASCOTA     ############################
 @app.route("/mascotas")
