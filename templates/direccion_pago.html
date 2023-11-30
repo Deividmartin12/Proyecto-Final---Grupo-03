@@ -13,14 +13,14 @@
                     <div class="izq">
                         <div class="container-fluid">
                             <a class="navbar-brand" href="#">
-                                <img src="{{url_for('static', filename='img/numero-uno.png')}}" alt="Logo" width="30" height="30"
+                                <img src="{{url_for('static', filename='img/numero-uno.png')}} " alt="Logo" width="30" height="30"
                                     class="d-inline-block align-text-top">
                                 Información de contacto
                             </a>
                             <div class="info">
-                                <p><strong>Correo electronico:</strong> alvaro@gmail.com<br>
-                                    <strong>Nombre del cliente:</strong> Alvaro Javier Yong Bartolini<br>
-                                    <strong>Teléfono:</strong> +51 987654321
+                                <p><strong>Correo electronico:</strong> {{cliente[3]}}<br>
+                                    <strong>Nombre del cliente:</strong> {{cliente[1]}} {{cliente[2]}}<br>
+                                    <strong>Teléfono:</strong>+51 {{cliente[4]}}
                                 </p>
                             </div>
                             <a class="navbar-brand" href="#">
@@ -29,40 +29,15 @@
                                 Envío
                             </a>
                             <div class="info">
+                                <p><strong>Dirección:</strong> {{cliente[5]}}<br>
+                                    <strong>Distrito</strong> Chiclayo<br>
+                                    <strong>Provincia:</strong> Chiclayo, Lambayeque<br>
+                                    <strong>En hasta 5 días hábiles:</strong>
+                                </p>
+                            </div>
+                            <div class="info">
                                 <!-- formulario -->
                                 <form class="row g-3 needs-validation" novalidate>
-                                    <div class="col-md-8 position-relative">
-                                        <label for="validationTooltip04" class="form-label">Departamento</label>
-                                        <select class="form-select" id="validationTooltip04" required>
-                                            <option selected disabled value="">Elige...</option>
-                                            <option>...</option>
-                                        </select>
-                                        <div class="invalid-tooltip">
-                                            Por favor, escoge un departamento válido
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4 position-relative">
-                                        <label for="validationTooltip04" class="form-label">Provincia</label>
-                                        <select class="form-select" id="validationTooltip04" required>
-                                            <option selected disabled value="">Elige...</option>
-                                            <option>...</option>
-                                        </select>
-                                        <div class="invalid-tooltip">
-                                            Por favor, escoge una provincia válida
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12 position-relative">
-                                        <label for="validationTooltip04" class="form-label">Distrito</label>
-                                        <select class="form-select" id="validationTooltip04" required>
-                                            <option selected disabled value="">Elige...</option>
-                                            <option>...</option>
-                                        </select>
-                                        <div class="invalid-tooltip">
-                                            Por favor, escoge una provincia válida
-                                        </div>
-                                    </div>
 
                                     <div class="col-md-12 position-relative">
                                         <label for="validationTooltip03" class="form-label">Calle</label>
