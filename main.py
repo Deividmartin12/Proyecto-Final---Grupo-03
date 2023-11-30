@@ -776,10 +776,13 @@ def det_pedido():
         if token == usuario[9] and usuario[10] == 1 and usuario[11]==True:
             det_ped = controlador_detalle_pedido.obtener_det_pedido()
             print(det_ped)
+            if det_ped is None:
+                print("No se obtuvieron detalles del pedido")
             return render_template("admin_det_ped.html", det_ped=det_ped)
         return render_template("login.html")
-    except:
-        return render_template("login.html")    
+    except Exception as e:
+        print(f"Ocurrió un error: {e}")
+        return render_template("login.html")   
     
 
 #####################     MASCOTA     ############################
