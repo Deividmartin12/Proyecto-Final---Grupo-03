@@ -791,9 +791,7 @@ def control_admin():
     return render_template("maestra_admin.html")
 
 
-@app.route("/admin_det_ped")
-def admin_det_ped():
-    return render_template("admin_det_ped.html")
+
 
 
 @app.route("/Blog")
