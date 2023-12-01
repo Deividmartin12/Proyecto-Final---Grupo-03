@@ -1,11 +1,11 @@
 from bd import obtenerConexion
 
 
-def insertar_producto(nombre, descripcion, precio, stock, categoria_id, mascota_id, link_imagen):
+def insertar_producto(nombre, descripcion, precio, stock, estado,categoria_id, mascota_id, link_imagen):
     conexion = obtenerConexion()
     with conexion.cursor() as cursor:
         cursor.execute("INSERT INTO producto(nombre,descripcion,precio,stock,estado,categoria_id,mascota_id,link_imagen) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)",
-                       (nombre, descripcion, precio, stock, True, categoria_id, mascota_id, link_imagen))
+                       (nombre, descripcion, precio, stock, estado, categoria_id, mascota_id, link_imagen))
     conexion.commit()
     conexion.close()
 

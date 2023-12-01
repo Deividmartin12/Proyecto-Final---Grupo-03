@@ -1148,7 +1148,6 @@ def metodo_insertar_producto():
         nombre, descripcion, precio, stock, estado, categoria_id, mascota_id, link_imagen)
     return redirect("/productos")
 
-
 @app.route("/editar_producto/<int:id>")
 def formulario_editar_producto(id):
     try:
