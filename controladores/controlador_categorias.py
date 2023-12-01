@@ -77,7 +77,7 @@ def actualizar_estadoInterfaz(estado, id):
 def darbaja_categoria(id):
     conexion = obtenerConexion()
     with conexion.cursor() as cursor:
-        cursor.execute("UPDATE categoria SET estado = false WHERE producto_id = %s",
+        cursor.execute("UPDATE categoria SET estado = NOT estado WHERE producto_id = %s",
                        (id))
     conexion.commit()
     conexion.close()

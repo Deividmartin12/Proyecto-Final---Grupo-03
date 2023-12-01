@@ -980,6 +980,12 @@ def actualizar_metodo_pago():
     return redirect("/metodos_pago")
 
 
+@app.route("/darbaja_metodo", methods=["POST"])
+def metodo_darBaja_metodo():
+    id = request.form["id"]
+    controlador_metodoP.darbaja_metodo(id)
+    return redirect("/metodos_pago")
+
 #####################     METODO PAGO     ############################
 #####################     CATEGORIAS    ############################
 @app.route("/agregar_categoria")
@@ -1067,6 +1073,19 @@ def actualizar_categoria():
     controlador_categorias.actualizar_categoria(nombre, descripcion, id)
     controlador_categorias.actualizar_estadoInterfaz(estado, id)
     return redirect("/categoriasAdmin")
+
+
+
+@app.route("/darbaja_categoria", methods=["POST"])
+def metodo_darBaja_categoria():
+    id = request.form["id"]
+    controlador_categorias.darbaja_categoria(id)
+    return redirect("/categoriasAdmin")
+
+
+
+
+
 #####################     CATEGORIAS     ############################
 
 #####################     PRODUCTO     ############################

@@ -50,7 +50,7 @@ def actualizar_metodo_pago(nombre, descripcion, estado, id):
 def darbaja_metodo(id):
     conexion = obtenerConexion()
     with conexion.cursor() as cursor:
-        cursor.execute("UPDATE metodo_pago SET estado = false WHERE producto_id = %s",
+        cursor.execute("UPDATE metodo_pago SET estado = NOT estado WHERE producto_id = %s",
                        (id))
     conexion.commit()
     conexion.close()

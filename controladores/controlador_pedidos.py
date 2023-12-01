@@ -122,3 +122,4 @@ def transaccion(productos):
         raise e
     finally:
         conexion.close()
+

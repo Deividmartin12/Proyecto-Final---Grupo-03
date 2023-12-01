@@ -13,7 +13,7 @@
                     <th scope="col" class="col-3 border">Descripción</th>
                     <th scope="col" class="col-1 border">Estado</th>
                     <th scope="col" class="col-1 border">Editar</th>
-                    <th scope="col" class="col-1 border">Eliminar</th>
+                    <th scope="col" class="col-1 border">Cambiar Estado</th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
@@ -31,10 +31,14 @@
                         <a href="{{url_for('editar_categoria', id=categoria[0])}}" class="btn btn-secondary">Editar</a>
                     </td>
                     <td>
-                        <form action="{{url_for('eliminar_categoria')}}" method="POST">
+                    <td class="text-center border">
+                        <form action="{{url_for('darbaja_Categoria')}}" method="POST"
+                            onsubmit="return confirmarCambiarEstado()">
                             <input type="hidden" name="id" value="{{categoria[0]}}">
-                            <button class="btn btn-danger">Eliminar</button>
+                            <button class="btn btn-danger">Cambiar</button>
                         </form>
+                    </td>
+
                     </td>
                 </tr>
                 {% endfor %}
@@ -42,5 +46,12 @@
         </table>
     </div>
 </section>
+<script>
+
+    function confirmarCambiarEstado() {
+        return confirm('¿Estás seguro de que deseas cambiar el estado de la categoria?');
+    }
+</script>
+
 
 {% endblock %}

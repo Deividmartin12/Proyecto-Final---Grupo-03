@@ -14,7 +14,7 @@
                     <th scope="col" class="col-3 border">Descripción</th>
                     <th scope="col" class="col-1 border">Estado</th>
                     <th scope="col" class="col-1 border">Editar</th>
-                    <th scope="col" class="col-1 border">Eliminar</th>
+                    <th scope="col" class="col-1 border">Cambiar Estado</th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
@@ -32,9 +32,10 @@
                         <a href="{{url_for('editar_metodo_pago', id=metodo_pago[0])}}" class="btn btn-secondary">Editar</a>
                     </td>
                     <td>
-                        <form action="{{url_for('eliminar_metodo_pago')}}" method="POST">
+                        <form action="{{url_for('eliminar_metodo_pago')}}" method="POST"
+                            onsubmit="return confirmarCambiarEstado()"></form>>
                             <input type="hidden" name="id" value="{{metodo_pago[0]}}">
-                            <button class="btn btn-danger">Eliminar</button>
+                            <button class="btn btn-danger">Cambiar</button>
                         </form>
                     </td>
                 </tr>
@@ -44,4 +45,10 @@
 
     </div>
 </section>
+<script>
+
+    function confirmarCambiarEstado() {
+        return confirm('¿Estás seguro de que deseas cambiar el estado del metodo de pago?');
+    }
+</script>
 {% endblock %}

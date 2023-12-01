@@ -29,7 +29,7 @@
                     <th scope="col" class="border">Mascota</th>
                     <th scope="col" class="border">Imagen</th>
                     <th scope="col" class="border">Editar</th>
-                    <th scope="col" class="border">Eliminar</th>
+                    <th scope="col" class="border">Cambiar Estado</th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
@@ -48,9 +48,10 @@
                         <a href="{{url_for('formulario_editar_producto', id=producto[0])}}" class="btn btn-secondary">Editar</a>
                     </td>
                     <td class="text-center border">
-                        <form action="{{url_for('metodo_darBaja_producto')}}" method="POST">
+                        <form action="{{url_for('metodo_darBaja_producto')}}" method="POST"
+                            onsubmit="return confirmarCambiarEstado()"></form>>
                             <input type="hidden" name="id" value="{{producto[0]}}">
-                            <button class="btn btn-danger">Dar Baja</button>
+                            <button class="btn btn-danger">Cambiar</button>
                         </form>
                     </td>
                 </tr>
@@ -59,5 +60,12 @@
         </table>
     </div>    
 </section>
+
+<script>
+
+    function confirmarCambiarEstado() {
+        return confirm('¿Estás seguro de que deseas cambiar el estado del producto?');
+    }
+</script>
 
 {% endblock %}
