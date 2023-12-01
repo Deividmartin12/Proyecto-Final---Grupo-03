@@ -769,11 +769,6 @@ def carrito():
     return render_template('carrito.html')
 
 
-@app.route("/categoria")
-def categoria():
-    return render_template('categorias.html')
-
-
 @app.route("/usuario")
 def usuario():
     username = request.cookies.get('username')
@@ -988,6 +983,8 @@ def metodo_darBaja_metodo():
 
 #####################     METODO PAGO     ############################
 #####################     CATEGORIAS    ############################
+
+
 @app.route("/agregar_categoria")
 def formulario_agregar_categoria():
     try:
@@ -1005,18 +1002,9 @@ def formulario_agregar_categoria():
 
 @app.route("/categoriasAdmin")
 def categoriasAdmin():
-    try:
-        username = request.cookies.get('username')
-        token = request.cookies.get('token')
-        usuario = controlador_usuario.obtener_usuario_por_username(username)
-        if username is None:
-            return render_template("login.html")
-        if token == usuario[9] and usuario[10] == 1 and usuario[11] == True:
-            categorias = controlador_categorias.obtener_categorias()
-            return render_template("categoriasAdmin.html", categorias=categorias)
-        return render_template("login.html")
-    except:
-        return render_template("login.html")
+        categorias = controlador_categorias.obtener_categorias()
+        return render_template("categoriasAdmin.html", categorias=categorias)
+      
 
 
 @app.route("/guardar_categoria", methods=["POST"])
@@ -1075,15 +1063,11 @@ def actualizar_categoria():
     return redirect("/categoriasAdmin")
 
 
-
 @app.route("/darbaja_categoria", methods=["POST"])
 def metodo_darBaja_categoria():
     id = request.form["id"]
     controlador_categorias.darbaja_categoria(id)
     return redirect("/categoriasAdmin")
-
-
-
 
 
 #####################     CATEGORIAS     ############################
@@ -1211,6 +1195,7 @@ def metodo_eliminar_producto():
     producto_id = request.form["id"]
     controlador_producto.eliminar_producto(producto_id)
     return redirect("/productos")
+
 
 @app.route("/darbaja_producto", methods=["POST"])
 def metodo_darBaja_producto():
