@@ -15,7 +15,7 @@ def obtener_comprobantes():
     comprobantes = []
     with conexion.cursor() as cursor:
         cursor.execute(
-            "SELECT numero_boleta, fechaE, monto_total, tipo_comprobante, pedido_id, metodo_pago FROM comprobante")
+            "SELECT numero_boleta, fechaE, monto_total, tipo_comprobante, pedido_id, metodo_pago FROM comprobantes")
         comprobantes = cursor.fetchall()
     conexion.close()
     return comprobantes
