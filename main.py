@@ -1208,7 +1208,12 @@ def metodo_actualizar_cliente():
     username = request.form["username"]
 
     password = request.form["password"]
-    controlador_cliente.actualizar_cliente(nombre,email,telefono,direccion,cliente_dni,username,password,cliente_id)
+    
+    h = hashlib.new('sha256')
+    h.update(bytes(password,encoding='utf-8'))
+    encpassword = h.hexdigest()
+    
+    controlador_cliente.actualizar_cliente(nombre,email,telefono,direccion,cliente_dni,username,encpassword,cliente_id)
     return redirect("/clientes")
 
 @app.route("/eliminar_cliente",methods=["POST"])
@@ -1455,7 +1460,12 @@ def metodo_actualizar_administrador():
     admin_dni = request.form["dni"]
     username = request.form["username"]
     password = request.form["password"]
-    controlador_usuario.actualizar_usuario_empleado(nombre,email,telefono,direccion,admin_dni,username,password,admi_id)
+
+    h = hashlib.new('sha256')
+    h.update(bytes(password,encoding='utf-8'))
+    encpassword = h.hexdigest()
+
+    controlador_usuario.actualizar_usuario_empleado(nombre,email,telefono,direccion,admin_dni,username,encpassword,admi_id)
     return redirect("/administradores")
 
 @app.route("/eliminar_administrador",methods=["POST"])
