@@ -58,7 +58,7 @@ def eliminar_pedido(id):
             cursor.execute("DELETE FROM detalle_pedido WHERE pedido_id = %s", (id,))
 
             # Eliminar el pedido de la tabla de pedidos
-            cursor.execute("DELETE FROM pedidos WHERE id = %s", (id,))
+            cursor.execute("DELETE FROM pedido WHERE id = %s", (id,))
         
         # Confirmar los cambios en la base de datos
     conexion.commit()
