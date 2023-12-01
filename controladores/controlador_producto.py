@@ -162,3 +162,11 @@ def actualizar_estado(estado, id):
                        (estado, id))
     conexion.commit()
     conexion.close()
+
+def darbaja_producto(id):
+    conexion = obtenerConexion()
+    with conexion.cursor() as cursor:
+        cursor.execute("UPDATE producto SET estado = false WHERE producto_id = %s",
+                       (id))
+    conexion.commit()
+    conexion.close()

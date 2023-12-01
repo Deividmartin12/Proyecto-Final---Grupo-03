@@ -1193,6 +1193,12 @@ def metodo_eliminar_producto():
     controlador_producto.eliminar_producto(producto_id)
     return redirect("/productos")
 
+@app.route("/darbaja_producto", methods=["POST"])
+def metodo_darBaja_producto():
+    producto_id = request.form["id"]
+    controlador_producto.darbaja_producto(producto_id)
+    return redirect("/productos")
+
 
 @app.route("/lista_productos")
 def lista_productos():
