@@ -1170,7 +1170,7 @@ def formulario_clientes():
             return render_template("login.html")
         if token == usuario[9] and usuario[10] == 1 and usuario[11]==True:
             nombre_busqueda = request.args.get('nombre', '')
-            clientes = controlador_cliente.obtener_clientes(nombre_busqueda)
+            clientes = controlador_cliente.obtener_clientesFormateado(nombre_busqueda)
             return render_template("clientes.html", clientes=clientes)
         
         return render_template("login.html")

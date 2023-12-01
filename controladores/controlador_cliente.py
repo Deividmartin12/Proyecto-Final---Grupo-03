@@ -18,7 +18,7 @@ def actualizar_token(entrada, token):
     conexion.close()
 
 
-def obtener_clientes(nombre_busqueda=None):
+def obtener_clientesFormateado(nombre_busqueda=None):
     conexion = obtenerConexion()
     usuarios = []
     with conexion.cursor() as cursor:
@@ -54,6 +54,15 @@ def obtener_cliente_por_username(username):
     conexion.close()
     return usuario
 
+def obtener_cliente():
+    conexion =obtenerConexion()
+    usuario= None
+    with conexion.cursor() as cursor:
+        cursor.execute(
+            "SELECT id,nombres,apellidos,email,telefono,direccion,dni,username,password,token,tipo_usuario,estado FROM usuario WHERE tipo_usuario = 2")
+        usuario = cursor.fetchone()
+    conexion.close()
+    return usuario
 
 def obtener_cliente_por_dni(dni):
     conexion = obtenerConexion()
