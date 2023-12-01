@@ -87,8 +87,7 @@ document.addEventListener("DOMContentLoaded", function() {
           body: JSON.stringify({
             carrito: carrito,
             metodo_id: metodo_id,
-            username: getCookie('username'),
-            token: getCookie('token')
+            username: getCookie('username')
           })
         })
 

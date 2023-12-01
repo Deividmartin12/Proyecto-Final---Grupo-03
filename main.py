@@ -1401,13 +1401,12 @@ def metodo_venta():
     return jsonify(carrito)
 
 @app.route('/transaccion', methods=['POST'])
-@jwt_required()
 def transaccion():
 
     carrito = request.json["carrito"]
     metodo_id = request.json["metodo_id"]
     username = request.json["username"]
-    token = request.json["token"]
+    token = request.cookies.get('token')
     usuario = controlador_usuario.obtener_usuario_por_username(username)
 
     if token == usuario[9]:
