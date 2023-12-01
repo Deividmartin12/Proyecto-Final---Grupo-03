@@ -1002,9 +1002,24 @@ def formulario_agregar_categoria():
 
 @app.route("/categoriasAdmin")
 def categoriasAdmin():
-        categorias = controlador_categorias.obtener_categorias()
-        return render_template("categoriasAdmin.html", categorias=categorias)
+        
+    try:
+        username = request.cookies.get('username')
+        token = request.cookies.get('token')
+        usuario = controlador_usuario.obtener_usuario_por_username(username)
+        if username is None:
+            return render_template("login.html")
+        if token == usuario[9] and usuario[10] == 1 and usuario[11] == True:
+            categorias = controlador_categorias.obtener_categorias()
+            return render_template("categoriasAdmin.html", categorias=categorias)
       
+        return render_template("login.html")
+    except:
+        return render_template("login.html")
+
+
+
+       
 
 
 @app.route("/guardar_categoria", methods=["POST"])
