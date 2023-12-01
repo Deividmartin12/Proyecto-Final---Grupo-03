@@ -1,4 +1,5 @@
 from bd import obtenerConexion
+import controlador_usuario
 
 def insertar_pedidos(fecha_pedido, estado_pedido, usuario_id):
     conexion = obtenerConexion()
@@ -81,10 +82,14 @@ def transaccion(productos):
         conexion = obtenerConexion()
 
         idpedido = obtener_ultimo_idpedido()
+        total = 0
+
+        user = controlador_usuario.obtener_usuario_por_username(productos["username"])
+        id_user = user[0] 
 
         with conexion.cursor() as cursor:
             queryPedido = 'insert into pedido(pedido_id,usuario_id,fecha_pedido,estado_pedido) values(%s,%s,CURRENT_TIMESTAMP, %s)'
-            cursor.execute(queryPedido,(idpedido,1,'R'))
+            cursor.execute(queryPedido,(idpedido,id_user,'R'))
 
         with conexion.cursor() as cursor:
             for data in productos['carrito']:
@@ -92,12 +97,13 @@ def transaccion(productos):
                 precio_unitario = data["precio"]
                 cantidad = data["cantidad"]
 
+                total += precio_unitario * cantidad
                 queryDetallePedido = 'insert into detalle_pedido(pedido_id,producto_id,cantidad,precio_unitario) values(%s,%s,%s,%s)'
                 cursor.execute(queryDetallePedido,(idpedido,idproducto,cantidad,precio_unitario))
 
         with conexion.cursor() as cursor:
             queryComprobante = 'insert into comprobantes(pedido_id, fechaE,monto_total,tipo_comprobante, Metodo_pago) values(%s,CURRENT_TIMESTAMP,%s,%s,%s)'
-            cursor.execute(queryComprobante,(idpedido,productos['total'],'B',productos['metodo_id']))
+            cursor.execute(queryComprobante,(idpedido,total,'B',productos['metodo_id']))
 
         conexion.commit()
         return True

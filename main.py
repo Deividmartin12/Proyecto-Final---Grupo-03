@@ -1348,13 +1348,13 @@ def transaccion():
     carrito = request.json["carrito"]
     metodo_id = request.json["metodo_id"]
     total = request.json["total"]
+    username = request.json["username"]
 
     data = {
         'carrito': carrito,
         'metodo_id': metodo_id,
-        'total': total
+        'username':username
     }
-
 
     try:
         guardado = controlador_pedido.transaccion(data)

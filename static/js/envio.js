@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function() {
         carrito.forEach(e => {
           total += e.precio * e.cantidad;
         })
-
+        
         const response = await fetch("/transaccion", {
           method: 'POST',
           headers: {
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function() {
           body: JSON.stringify({
             carrito: carrito,
             metodo_id: metodo_id,
-            total: total
+            username: getCookie('username')
           })
         })
 
@@ -101,6 +101,17 @@ document.addEventListener("DOMContentLoaded", function() {
           console.log(data.mensaje)
           alert(data.mensaje)
         }
+    }
+
+    function getCookie(name) {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.startsWith(name + '=')) {
+          return cookie.substring(name.length + 1, cookie.length);
+        }
+      }
+      return null;
     }
   });
   
