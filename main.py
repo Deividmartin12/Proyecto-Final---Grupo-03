@@ -966,8 +966,15 @@ def guardar_categoria():
 
 @app.route("/direccion_pago")
 def direccion_pago():
+    username = request.cookies.get('username')
     metodos_pago = controlador_metodoP.obtener_metodos_pago()
+    if username is not None:
+        usuario = controlador_usuario.obtener_usuario_por_username(username)
+        return render_template("direccion_pago.html", metodos_pago=metodos_pago, usuario=usuario)
+
     return render_template("direccion_pago.html", metodos_pago=metodos_pago)
+    
+    
 
 @app.route("/eliminar_categoria", methods=["POST"])
 def eliminar_categoria():

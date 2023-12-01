@@ -18,9 +18,9 @@
                                 Información de contacto
                             </a>
                             <div class="info">
-                                <p><strong>Correo electronico:</strong> alvaro@gmail.com<br>
-                                    <strong>Nombre del cliente:</strong> Alvaro Javier Yong Bartolini<br>
-                                    <strong>Teléfono:</strong> +51 987654321
+                                <p><strong>Correo electronico:</strong>{{usuario[3]}}<br>
+                                    <strong>Nombre del cliente:</strong>{{usario[1]}} {{usuario[2]}}<br>
+                                    <strong>Teléfono:</strong>{{usuario[4]}}
                                 </p>
                             </div>
                             <a class="navbar-brand" href="#">
@@ -35,37 +35,13 @@
 
                                     <div class="col-md-12 position-relative">
                                         <label for="validationTooltip03" class="form-label">Calle</label>
-                                        <input type="text" class="form-control" id="validationTooltip03" required>
+                                        <input type="text" class="form-control" id="validationTooltip03" required value="{{usuario[5]}}">
                                         <div class="invalid-tooltip">
                                             Este campo es obligatorio.
                                         </div>
                                     </div>
 
-                                    <div class="col-md-12 position-relative">
-                                        <label for="validationTooltip03" class="form-label">Numero</label>
-                                        <input type="text" class="form-control" id="validationTooltip03" required>
-                                        <div class="invalid-tooltip">
-                                            Este campo es obligatorio.
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12 position-relative">
-                                        <label for="validationTooltip03" class="form-label">Información adicional (ej.:
-                                            dpto.
-                                            201)</label>
-                                        <input type="text" class="form-control" id="validationTooltip03" required>
-                                        <div class="invalid-tooltip">
-                                            Este campo es obligatorio.
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12 position-relative">
-                                        <label for="validationTooltip03" class="form-label">Destinatario</label>
-                                        <input type="text" class="form-control" id="validationTooltip03" required>
-                                        <div class="invalid-tooltip">
-                                            Este campo es obligatorio.
-                                        </div>
-                                    </div>
+                                
                                     <div class="col-md-12 position-relative">
                                         <label for="validationTooltip03" class="form-label">Método de pago</label>
                                         <select class="form-control" name="" id="metodosPago">
