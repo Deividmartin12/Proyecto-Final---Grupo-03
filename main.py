@@ -1186,17 +1186,11 @@ def metodo_registro_cliente():
     return redirect("/login")
 
 
-@app.route("/insertar_cliente", methods=["POST"])
-def metodo_insertar_cliente():
-    nombre = request.form["nombre"]
-    email = request.form["email"]
-    telefono = request.form["telefono"]
-    direccion = request.form["direccion"]
-    cliente_dni = request.form["cliente_dni"]
-    password = request.form["password"]
 
-    controlador_cliente.insertar_cliente(nombre,email,telefono,direccion,cliente_dni,password)
-    return redirect("/clientes")
+
+
+
+
 
 @app.route("/editar_cliente/<int:id>")
 def formulario_editar_cliente(id):
@@ -1211,8 +1205,10 @@ def metodo_actualizar_cliente():
     telefono = request.form["telefono"]
     direccion = request.form["direccion"]
     cliente_dni = request.form["cliente_dni"]
+    username = request.form["username"]
+
     password = request.form["password"]
-    controlador_cliente.actualizar_cliente(nombre,email,telefono,direccion,cliente_dni,password,cliente_id)
+    controlador_cliente.actualizar_cliente(nombre,email,telefono,direccion,cliente_dni,username,password,cliente_id)
     return redirect("/clientes")
 
 @app.route("/eliminar_cliente",methods=["POST"])
@@ -1247,14 +1243,40 @@ def lista_clientes():
 
 @app.route("/pedidos")
 def formulario_pedidos():
-    pedidos = controlador_pedido.obtener_pedidos_formateado()
-    return render_template("pedidos.html", pedidos=pedidos)
+    try:
+        username = request.cookies.get('username')
+        token = request.cookies.get('token')
+        usuario = controlador_usuario.obtener_usuario_por_username(username)
+        if username is None:
+            return render_template("login.html")
+        if token == usuario[9] and usuario[10] == 1 and usuario[11]==True:
+            pedidos = controlador_pedido.obtener_pedidos_formateado()
+            return render_template("pedidos.html", pedidos=pedidos)
 
+        return render_template("login.html")
+    except:
+        return render_template("login.html")
+
+
+    
 @app.route("/agregar_pedido")
 def formulario_registrar_pedido():
-    clientes = controlador_pedido.obtener_clientes()
-    return render_template('registrar_pedido.html', clientes=clientes)
+    try:
+        username = request.cookies.get('username')
+        token = request.cookies.get('token')
+        usuario = controlador_usuario.obtener_usuario_por_username(username)
+        if username is None:
+            return render_template("login.html")
+        if token == usuario[9] and usuario[10] == 1 and usuario[11]==True:
+            pedidos = controlador_pedido.obtener_pedidos_formateado()
+            return render_template("pedidos.html", pedidos=pedidos)
 
+        return render_template("login.html")
+    except:
+        return render_template("login.html")
+
+
+   
 @app.route("/insertar_pedido", methods=["POST"])
 def metodo_insertar_pedido():
     fecha_pedido = request.form["fecha_pedido"]
@@ -1290,15 +1312,34 @@ def metodo_eliminar_pedido():
 
 @app.route("/comprobantes")
 def formulario_comprobantes():
-    comprobantes = controlador_comprobante.obtener_comprobantes()
-    return render_template("comprobantes.html", comprobantes=comprobantes)
-
+    try:
+        username = request.cookies.get('username')
+        token = request.cookies.get('token')
+        usuario = controlador_usuario.obtener_usuario_por_username(username)
+        if username is None:
+            return render_template("login.html")
+        if token == usuario[9] and usuario[10] == 1 and usuario[11]==True:
+            comprobantes = controlador_comprobante.obtener_comprobantes()
+            return render_template("comprobantes.html", comprobantes=comprobantes)
+        return render_template("login.html")
+    except:
+        return render_template("login.html")
 
 @app.route("/editar_comprobante/<int:id>")
 def formulario_editar_comprobante(id):
-    comprobante = controlador_comprobante.obtener_comprobante_por_numero(id)
-    return render_template("editar_comprobante.html", comprobante=comprobante)
-
+    try:
+        username = request.cookies.get('username')
+        token = request.cookies.get('token')
+        usuario = controlador_usuario.obtener_usuario_por_username(username)
+        if username is None:
+            return render_template("login.html")
+        if token == usuario[9] and usuario[10] == 1 and usuario[11]==True:
+            comprobante = controlador_comprobante.obtener_comprobante_por_numero(id)
+            return render_template("editar_comprobante.html", comprobante=comprobante)
+        return render_template("login.html")
+    except:
+        return render_template("login.html")
+    
 @app.route("/actualizar_comprobante", methods=["POST"])
 def metodo_actualizar_comprobante():
      numero_boleta = request.form["id"]
@@ -1365,6 +1406,63 @@ def transaccion():
             return jsonify({'guardado':False, 'mensaje': 'Error al realizar la venta'})
     except Exception as e:
         return jsonify({'guardado':False,'mensaje': str(e)})
+########################## ADMINISTRADOR#####################33
+
+@app.route("/administradores")
+def formulario_administrador():
+    administradores = controlador_usuario.obtener_administrador()
+    return render_template("administradores.html", administradores=administradores)
+
+@app.route("/agregar_administrador")
+def formulario_registrar_administrador():
+    return render_template('registrar_administrador.html')
+
+@app.route("/registro_administrador", methods=["POST"])
+def metodo_registro_administrador():
+    nombres = request.form["nombres"]
+    apellidos = request.form["apellidos"]
+    email = request.form["email"]
+    telefono = request.form["telefono"]
+    direccion = request.form["direccion"]
+    dni = request.form["dni"]
+    username = request.form["username"]
+    password = request.form["password"]
+
+    h = hashlib.new('sha256')
+    h.update(bytes(password,encoding='utf-8'))
+    encpassword = h.hexdigest()
+
+    controlador_usuario.registrar_usuario_empleado(nombres,apellidos,email,telefono,direccion,dni,username,encpassword)
+    return redirect("/login")
+
+
+
+
+
+
+@app.route("/editar_administrador/<int:id>")
+def formulario_editar_administrador(id):
+    administrador = controlador_usuario.obtener_usuario_por_id(id)
+    return render_template("editar_administrador.html",administrador=administrador)
+
+@app.route("/actualizar_administrador",methods=["POST"])
+def metodo_actualizar_administrador():
+    admi_id = request.form["id"]
+    nombre = request.form["nombre"]
+    email = request.form["email"]
+    telefono = request.form["telefono"]
+    direccion = request.form["direccion"]
+    admin_dni = request.form["dni"]
+    username = request.form["username"]
+    password = request.form["password"]
+    controlador_usuario.actualizar_usuario_empleado(nombre,email,telefono,direccion,admin_dni,username,password,admi_id)
+    return redirect("/administradores")
+
+@app.route("/eliminar_administrador",methods=["POST"])
+def metodo_eliminar_administrador():
+    admi_id = request.form["id"]
+    controlador_usuario.eliminar_usuario(admi_id)
+    return redirect("/administradores")
 
 #####################     INTERFAZ ADMIN     ############################
 @app.route("/index_admin")

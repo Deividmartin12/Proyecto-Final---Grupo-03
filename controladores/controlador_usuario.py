@@ -83,11 +83,11 @@ def registrar_usuario_empleado(nombres,apellidos,email,telefono,direccion,dni,us
 
 
 
-def obtener_usuarios():
+def obtener_administrador():
     conexion = obtenerConexion()
     usuarios = []
     with conexion.cursor() as cursor:
-        cursor.execute("SELECT id,nombres,apellidos,email,telefono,direccion,dni,username,password,token,tipo_usuario,estado FROM usuario")
+        cursor.execute("SELECT id,nombres,apellidos,email,telefono,direccion,dni,username,password,token,tipo_usuario,estado FROM usuario where tipo_usuario=1")
         usuarios = cursor.fetchall()
     conexion.close()
     return usuarios
@@ -140,11 +140,11 @@ def eliminar_usuario(id):
     conexion.commit()
     conexion.close()
 
-def actualizar_usuario_cliente(id,nombres,apellidos,email,telefono,direccion,dni,estado):
+def actualizar_usuario_cliente(id,nombres,apellidos,email,telefono,direccion,username,dni,estado):
     conexion = obtenerConexion()
     with conexion.cursor() as cursor:
-        cursor.execute("UPDATE usuario SET nombres = %s,apellidos = %s,email = %s,telefono = %s,direccion = %s,dni = %s,estado=%s WHERE id = %s",
-                       (nombres,apellidos,email,telefono,direccion,dni,estado,id))
+        cursor.execute("UPDATE usuario SET nombres = %s,apellidos = %s,email = %s,telefono = %s,direccion = %s,username=%s,dni = %s,estado=%s WHERE id = %s",
+                       (nombres,apellidos,email,telefono,direccion,username,dni,estado,id))
     conexion.commit()
     conexion.close()
 

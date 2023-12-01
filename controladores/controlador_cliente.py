@@ -33,11 +33,11 @@ def obtener_clientes():
     conexion.close()
     return usuarios
 
-def actualizar_cliente(id,nombres,apellidos,email,telefono,direccion,dni,estado):
+def actualizar_cliente(id,nombres,apellidos,email,telefono,direccion,dni,username):
     conexion = obtenerConexion()
     with conexion.cursor() as cursor:
-        cursor.execute("UPDATE usuario SET nombres = %s,apellidos = %s,email = %s,telefono = %s,direccion = %s,dni = %s,estado=%s WHERE id = %s",
-                       (nombres,apellidos,email,telefono,direccion,dni,estado,id))
+        cursor.execute("UPDATE usuario SET nombres = %s,apellidos = %s,email = %s,telefono = %s,direccion = %s,dni = %s,username= %s WHERE id = %s",
+                       (nombres,apellidos,email,telefono,direccion,dni,username,id))
     conexion.commit()
     conexion.close()
 
@@ -59,6 +59,16 @@ def obtener_cliente_por_dni(dni):
     with conexion.cursor() as cursor:
         cursor.execute(
             "SELECT id,nombres,apellidos,email,telefono,direccion,dni,username,password,token,tipo_usuario,estado FROM usuario WHERE dni = %s", (dni,))
+        usuario = cursor.fetchone()
+    conexion.close()
+    return usuario
+
+def obtener_cliente_por_id(id):
+    conexion = obtenerConexion()
+    usuario = None
+    with conexion.cursor() as cursor:
+        cursor.execute(
+            "SELECT dni,nombres,apellidos,email,telefono,direccion,dni,username,password,token,tipo_usuario,estado FROM usuario WHERE id = %s", (id,))
         usuario = cursor.fetchone()
     conexion.close()
     return usuario

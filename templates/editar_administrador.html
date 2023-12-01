@@ -1,0 +1,44 @@
+{% extends "maestra_adminX.html" %}
+{% block titulo %} Editar administrador{% endblock %}
+{% block contenido %}
+
+<section class="p-5">
+    <h3 class="is-size-3 mb-3">Editar administrador</h3>
+    <section class="input-group mb-3">
+        <form action="{{url_for('metodo_actualizar_administrador')}}" method="post">
+            <input type="hidden" name="id" id="id" value="{{administrador[0]}}">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input value="{{administrador[1]}}" required type="text" class="form-control mb-3" name="nombre" id="nombre"
+                placeholder="">
+            <label for="apellido" class="form-label">Apellidos</label>
+            <input value="{{administrador[2]}}" required type="text" class="form-control mb-3" name="nombre" id="nombre"
+                placeholder="">
+            <label for="email" class="form-label">Email</label>
+            <input value="{{administrador[3]}}" required type="text" class="form-control mb-3" name="email" id="email"
+                placeholder="">
+            <label for="telefono" class="form-label">Telefono</label>
+            <input value="{{administrador[4]}}" required type="text" class="form-control mb-3" name="telefono"
+                id="telefono" placeholder="">
+            <label for="direccion" class="form-label">Direccion</label>
+            <input value="{{administrador[5]}}" required type="text" class="form-control mb-3" name="direccion"
+                id="direccion" placeholder="">
+            <label for="dni" class="form-label">DNI</label>
+            <input value="{{administrador[6]}}" required type="text" class="form-control mb-3" name="dni" id="dni"
+                placeholder="">
+            <label for="username" class="form-label">Username</label>
+            <input value="{{administrador[7]}}" required type="text" class="form-control mb-3" name="username" id="username"
+                placeholder="">
+            <label for="password" class="form-label">Password</label>
+            <input value="{{administrador[8]}}" required type="text" class="form-control mb-3" name="password"
+                id="password" placeholder="">
+
+            <div class="pt-4">
+                <button type="submit" class="btn btn-primary" style="width: 100px;">Guardar</button>
+                <a href="{{url_for('formulario_administrador')}}" class="btn bg-primary-subtle"
+                    style="width: 100px;">Volver</a>
+            </div>
+        </form>
+    </section>
+</section>
+
+{% endblock %}
