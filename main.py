@@ -1136,16 +1136,12 @@ def metodo_insertar_producto():
     nombre = request.form["nombre"]
     descripcion = request.form["descripcion"]
     precio = request.form["precio"]
-    stock = request.form["stock"]
-    if request.form["estado"] == 'SI':
-        estado = True
-    else:
-        estado = False
+    stock = request.form["stock"]  
     categoria_id = request.form["categoria_id"]
     mascota_id = request.form["mascota_id"]
     link_imagen = request.form["imagen"]
     controlador_producto.insertar_producto(
-        nombre, descripcion, precio, stock, estado, categoria_id, mascota_id, link_imagen)
+        nombre, descripcion, precio, stock, categoria_id, mascota_id, link_imagen)
     return redirect("/productos")
 
 @app.route("/editar_producto/<int:id>")
