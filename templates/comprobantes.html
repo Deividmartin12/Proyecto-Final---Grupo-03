@@ -5,31 +5,38 @@
 <section class="section">
     <div class="columns">
         <div class="column">
-            <h3 class="is-size-3">Comprobantes</h3>
+            <h2 class="is-size-3">Comprobantes</h2>
             <a href="{{url_for('formulario_agregar_comprobante')}}" class="button is-success">Agregar</a>
             <table class="table">
-                <thead>
-                    <tr>
-                        <th>Fecha de Emision</th>
-                        <th>Monto total</th>
-                        <th>Tipo de comprobante</th>
-                        <th>Id del pedido</th>
-                        <th>Id del metodo de pago</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
+                <thead class="table-light">
+                    <tr class="text-center">
+                        <th scope="col" class="border">Fecha de Emision</th>
+                        <th scope="col" class="border">Monto total</th>
+                        <th scope="col" class="border">Tipo de comprobante</th>
+                        <th scope="col" class="border">Id del pedido</th>
+                        <th scope="col" class="border">Id del metodo de pago</th>
+                        <th scope="col" class="border">Editar</th>
+                        <th scope="col" class="border">Eliminar</th>
+
+
+
                     </tr>
                 </thead>
-                <tbody>
+
+
+                <tbody class="table-group-divider">
                     {% for comprobante in comprobantes %}
                     <tr>
-                        <td>{{comprobante[1]}}</td>
-                        <td>{{comprobante[2]}}</td>
-                        <td>{{comprobante[3]}}</td>
-                        <td>{{comprobante[4]}}</td>
-                        <td>{{comprobante[5]}}</td>
-                        <td>
-                            {# Pasar el id (lo que hay en comprobante[0] #}
-                            <a href="{{url_for('editar_comprobante', id=comprobante[0])}}" class="button is-info">Editar</a>
+                        <td class="border text-start">{{comprobante[1]}}</td>
+                        <td class="border text-start">{{comprobante[2]}}</td>
+                        <td class="border text-start">{{comprobante[3]}}</td>
+                        <td class="border text-start">{{comprobante[4]}}</td>
+                        <td class="border text-start">{{comprobante[5]}}</td>
+                        <td class="border text-start">
+
+                        <td class="text-center border">
+                            <a href="{{url_for('editar_comprobante', id=comprobante[0])}}"
+                                class="button is-info">Editar</a>
                         </td>
                         <td>
                             <form action="{{url_for('eliminar_comprobante')}}" method="POST">
