@@ -763,7 +763,7 @@ def mis_ordenes():
     return render_template("misOrdenes.html")
 
 @app.route("/admin_det_ped")
-def det_pedido():
+def admin_det_ped():
     try:
         username = request.cookies.get('username')
         token = request.cookies.get('token')
