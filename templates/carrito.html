@@ -59,16 +59,20 @@
                 <input type="checkbox">
                 <p>He leído y acepto los <a href="#">terminos y condiciones</a></p>
             </div>
-            <a href="{{url_for('direccion_pago')}}" onclick="(e) => {
-                if(localStorage.length == 0) {
-                    e.preventDefault();
-                    alert('No hay productos en el carrito');
-                }
-            }"><button class="btnProPago">&nbsp;&nbsp;&nbsp;&nbsp;Proceder al Pago
+            <a href="{{url_for('direccion_pago')}}"><button class="btnProPago">&nbsp;&nbsp;&nbsp;&nbsp;Proceder al Pago
                     &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;</button></a>
 
         </div>
     </div>
 </main>
+<script>
+    document.querySelector('.btnProPago').addEventListener('click', e => {
+        if(localStorage.length == 0) {
+            e.preventDefault();
+            alert('No hay productos en el carrito');
+        }
+    })
+</script>
+
 <script src="{{url_for('static', filename='js/carrito.js')}}"></script>
 {% endblock %}
