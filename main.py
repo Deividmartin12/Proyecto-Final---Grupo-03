@@ -1407,14 +1407,13 @@ def transaccion():
     carrito = request.json["carrito"]
     metodo_id = request.json["metodo_id"]
     username = request.json["username"]
-    token = request.cookies.get('token')
+    token = request.json["token"]
     usuario = controlador_usuario.obtener_usuario_por_username(username)
 
     if token == usuario[9]:
         data = {
             'carrito': carrito,
             'metodo_id': metodo_id,
-            'username':username,
             'id_user': usuario[0]
         }
 
