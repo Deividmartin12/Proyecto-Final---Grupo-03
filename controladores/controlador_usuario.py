@@ -76,7 +76,7 @@ def registrar_usuario_cliente(nombres,apellidos,email,telefono,direccion,dni,use
 def registrar_usuario_empleado(nombres,apellidos,email,telefono,direccion,dni,username,password):
     conexion = obtenerConexion()
     with conexion.cursor() as cursor:
-        cursor.execute("INSERT INTO usuario(nombres,apellidos,email,telefono,distrito,direccion,dni,username,password,tipo_usuario,estado) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+        cursor.execute("INSERT INTO usuario(nombres,apellidos,email,telefono,direccion,dni,username,password,tipo_usuario,estado) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
                        (nombres,apellidos,email,telefono,direccion,dni,username,password,1,True))
     conexion.commit()
     conexion.close()
@@ -118,7 +118,7 @@ def obtener_usuario_por_id(id):
     usuario = None
     with conexion.cursor() as cursor:
         cursor.execute(
-            "SELECT id,nombres,apellidos,email,telefono,direccion,dni,username,password,token,tipo_usuario,estado FROM usuario WHERE id = %s", (id,))
+            "SELECT id,nombres,apellidos,email,telefono,direccion,dni,username,password,token,tipo_usuario,estado FROM usuario WHERE id = %s", (id))
         usuario = cursor.fetchone()
     conexion.close()
     return usuario
@@ -148,11 +148,27 @@ def actualizar_usuario_cliente(id,nombres,apellidos,email,telefono,direccion,use
     conexion.commit()
     conexion.close()
 
-def actualizar_usuario_empleado(nombres,apellidos,email,telefono,direccion,dni,username,password,tipo_usuario,estado,id):
+def actualizar_usuario_empleado(nombres,apellidos,email,telefono,direccion,dni,username,password,id):
     conexion = obtenerConexion()
     with conexion.cursor() as cursor:
-        cursor.execute("UPDATE usuario SET nombres = %s,apellidos = %s,email = %s,telefono = %s,direccion = %s,dni = %s,username = %s,password = %s,password = %s,tipo_usuario =%s WHERE id = %s",
-                       (nombres,apellidos,email,telefono,direccion,dni,username,password,tipo_usuario,estado,id))
+        cursor.execute("UPDATE usuario SET nombres = %s,apellidos = %s,email = %s,telefono = %s,direccion = %s,dni = %s,username = %s,password = %s,tipo_usuario =%s WHERE id = %s",
+                       (nombres,apellidos,email,telefono,direccion,dni,username,password,1,id))
+    conexion.commit()
+    conexion.close()
+
+
+def cambiar_permisos(id):
+    conexion = obtenerConexion()
+    
+    with conexion.cursor() as cursor:
+        # Obtener el tipo_usuario actual
+        cursor.execute("SELECT tipo_usuario FROM usuario WHERE id = %s", (id,))
+        tipo_usuario_actual = cursor.fetchone()[0]
+
+        # Cambiar el tipo_usuario
+        nuevo_tipo_usuario = 2 if tipo_usuario_actual == 1 else 1
+        cursor.execute("UPDATE usuario SET tipo_usuario = %s WHERE id = %s", (nuevo_tipo_usuario, id))
+
     conexion.commit()
     conexion.close()
 

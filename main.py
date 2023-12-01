@@ -1208,7 +1208,7 @@ def metodo_actualizar_cliente():
     username = request.form["username"]
 
     password = request.form["password"]
-    
+
     h = hashlib.new('sha256')
     h.update(bytes(password,encoding='utf-8'))
     encpassword = h.hexdigest()
@@ -1453,19 +1453,27 @@ def formulario_editar_administrador(id):
 @app.route("/actualizar_administrador",methods=["POST"])
 def metodo_actualizar_administrador():
     admi_id = request.form["id"]
-    nombre = request.form["nombre"]
+    nombre = request.form["nombres"]
+    apellidos = request.form["apellidos"]
     email = request.form["email"]
     telefono = request.form["telefono"]
     direccion = request.form["direccion"]
     admin_dni = request.form["dni"]
     username = request.form["username"]
     password = request.form["password"]
-
     h = hashlib.new('sha256')
     h.update(bytes(password,encoding='utf-8'))
     encpassword = h.hexdigest()
 
-    controlador_usuario.actualizar_usuario_empleado(nombre,email,telefono,direccion,admin_dni,username,encpassword,admi_id)
+    controlador_usuario.actualizar_usuario_empleado(nombre,apellidos,email,telefono,direccion,admin_dni,username,encpassword,admi_id)
+    return redirect("/administradores")
+
+
+
+@app.route("/cambiar_permisos",methods=["POST"])
+def metodo_cambiar_permisos():
+    admi_id = request.form["id"]
+    controlador_usuario.cambiar_permisos(admi_id)
     return redirect("/administradores")
 
 @app.route("/eliminar_administrador",methods=["POST"])

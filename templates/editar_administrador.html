@@ -7,12 +7,12 @@
     <section class="input-group mb-3">
         <form action="{{url_for('metodo_actualizar_administrador')}}" method="post">
             <input type="hidden" name="id" id="id" value="{{administrador[0]}}">
-            <label for="nombre" class="form-label">Nombre</label>
-            <input value="{{administrador[1]}}" required type="text" class="form-control mb-3" name="nombre" id="nombre"
-                placeholder="">
-            <label for="apellido" class="form-label">Apellidos</label>
-            <input value="{{administrador[2]}}" required type="text" class="form-control mb-3" name="nombre" id="nombre"
-                placeholder="">
+            <label for="nombres" class="form-label">Nombre</label>
+            <input value="{{administrador[1]}}" required type="text" class="form-control mb-3" name="nombres"
+                id="nombres" placeholder="">
+            <label for="apellidos" class="form-label">Apellidos</label>
+            <input value="{{administrador[2]}}" required type="text" class="form-control mb-3" name="apellidos"
+                id="apellidos" placeholder="">
             <label for="email" class="form-label">Email</label>
             <input value="{{administrador[3]}}" required type="text" class="form-control mb-3" name="email" id="email"
                 placeholder="">
@@ -26,12 +26,14 @@
             <input value="{{administrador[6]}}" required type="text" class="form-control mb-3" name="dni" id="dni"
                 placeholder="">
             <label for="username" class="form-label">Username</label>
-            <input value="{{administrador[7]}}" required type="text" class="form-control mb-3" name="username" id="username"
-                placeholder="">
-            <label for="password" class="form-label">Password</label>
-            <input value="{{administrador[8]}}" required type="text" class="form-control mb-3" name="password"
-                id="password" placeholder="">
+            <input value="{{administrador[7]}}" required type="text" class="form-control mb-3" name="username"
+                id="username" placeholder="">
+            <label for="password" class="form-label">Nueva Contraseña</label>
+            <input value="" required type="password" class="form-control mb-3" name="password" id="password" placeholder="">
 
+            <label for="confirmPassword" class="form-label fw-bold">Confirmar contraseña: </label>
+            <input required type="password" class="form-control border-dark-subtle" id="confirmPassword"
+                name="confirmPassword" placeholder="Confirmar contraseña">
             <div class="pt-4">
                 <button type="submit" class="btn btn-primary" style="width: 100px;">Guardar</button>
                 <a href="{{url_for('formulario_administrador')}}" class="btn bg-primary-subtle"
@@ -40,5 +42,21 @@
         </form>
     </section>
 </section>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const passwordInput = document.getElementById("password");
+        const confirmPasswordInput = document.getElementById("confirmPassword");
+
+        confirmPasswordInput.addEventListener("input", function () {
+            if (passwordInput.value !== confirmPasswordInput.value) {
+                confirmPasswordInput.setCustomValidity("Las contraseñas no coinciden");
+            } else {
+                confirmPasswordInput.setCustomValidity("");
+            }
+        });
+    });
+</script>
 
 {% endblock %}
