@@ -1414,7 +1414,8 @@ def transaccion():
         data = {
             'carrito': carrito,
             'metodo_id': metodo_id,
-            'username':username
+            'username':username,
+            'id_user': usuario[0]
         }
 
         try:
