@@ -1437,18 +1437,10 @@ def metodo_eliminar_pedido():
 
 @app.route("/comprobantes")
 def formulario_comprobantes():
-    try:
-        username = request.cookies.get('username')
-        token = request.cookies.get('token')
-        usuario = controlador_usuario.obtener_usuario_por_username(username)
-        if username is None:
-            return render_template("login.html")
-        if token == usuario[9] and usuario[10] == 1 and usuario[11] == True:
-            comprobantes = controlador_comprobante.obtener_comprobantes()
-            return render_template("comprobantes.html", comprobantes=comprobantes)
-        return render_template("login.html")
-    except:
-        return render_template("login.html")
+    comprobantes = controlador_comprobante.obtener_comprobantes()
+    return render_template("comprobantes.html", comprobantes=comprobantes)
+
+        
 
 
 @app.route("/editar_comprobante/<int:id>")
