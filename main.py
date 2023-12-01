@@ -967,9 +967,11 @@ def guardar_categoria():
 @app.route("/direccion_pago")
 def direccion_pago():
     username = request.cookies.get('username')
+    token = request.cookies.get('token')
     metodos_pago = controlador_metodoP.obtener_metodos_pago()
-    if username is not None:
-        usuario = controlador_usuario.obtener_usuario_por_username(username)
+    usuario = controlador_usuario.obtener_usuario_por_username(username)
+
+    if username is not None and token == usuario[9]:
         return render_template("direccion_pago.html", metodos_pago=metodos_pago, usuario=usuario)
     return redirect("/login")
     
