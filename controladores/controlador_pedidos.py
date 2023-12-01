@@ -1,5 +1,5 @@
 from bd import obtenerConexion
-import controlador_usuario
+from controladores import controlador_usuario
 
 def insertar_pedidos(fecha_pedido, estado_pedido, usuario_id):
     conexion = obtenerConexion()
