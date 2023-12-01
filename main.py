@@ -1167,8 +1167,11 @@ def procesar_login_cliente():
 
 @app.route("/clientes")
 def formulario_clientes():
-    clientes = controlador_cliente.obtener_clientes()
+    nombre_busqueda = request.args.get('nombre', '')
+    clientes = controlador_cliente.obtener_clientes(nombre_busqueda)
     return render_template("clientes.html", clientes=clientes)
+
+
 
 @app.route("/agregar_cliente")
 def formulario_registrar_cliente():

@@ -83,14 +83,22 @@ def registrar_usuario_empleado(nombres,apellidos,email,telefono,direccion,dni,us
 
 
 
-def obtener_administrador():
+def obtener_administrador(nombre_busqueda=None):
     conexion = obtenerConexion()
     usuarios = []
     with conexion.cursor() as cursor:
-        cursor.execute("SELECT id,nombres,apellidos,email,telefono,direccion,dni,username,password,token,tipo_usuario,estado FROM usuario where tipo_usuario=1")
+        if nombre_busqueda:
+            # Si se proporciona un nombre, filtrar por él
+            cursor.execute("SELECT id, nombres, apellidos, email, telefono, direccion, dni, username, password, token, tipo_usuario, estado FROM usuario WHERE tipo_usuario=1 AND nombres LIKE %s", ('%' + nombre_busqueda + '%',))
+        else:
+            # Sin búsqueda por nombre, obtener todos los clientes
+            cursor.execute("SELECT id, nombres, apellidos, email, telefono, direccion, dni, username, password, token, tipo_usuario, estado FROM usuario WHERE tipo_usuario=1")
+            
         usuarios = cursor.fetchall()
     conexion.close()
     return usuarios
+
+
 
 
 def obtener_usuario_por_username(username):
