@@ -82,8 +82,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const response = await fetch("/transaccion", {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'JWT ' + getCookie('token'),
+            'Content-Type': 'application/json'
           },
           body: JSON.stringify({
             carrito: carrito,
@@ -100,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function() {
             localStorage.clear()  
             location.reload()
           } else {
-            alert('No se realizo la compra')
+            alert('Compra cancelada')
           } 
         } else {
           console.log(data.mensaje)

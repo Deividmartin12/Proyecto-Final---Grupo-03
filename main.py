@@ -1433,28 +1433,32 @@ def metodo_venta():
     return jsonify(carrito)
 
 @app.route('/transaccion', methods=['POST'])
-@jwt_required()
 def transaccion():
 
     carrito = request.json["carrito"]
     metodo_id = request.json["metodo_id"]
     username = request.json["username"]
+    token = request.cookies.get('token')
+    usuario = controlador_usuario.obtener_usuario_por_username(username)
 
-    data = {
-        'carrito': carrito,
-        'metodo_id': metodo_id,
-        'username':username
-    }
+    if token == usuario[9]:
+        data = {
+            'carrito': carrito,
+            'metodo_id': metodo_id,
+            'id_user': usuario[0]
+        }
 
-    try:
-        guardado = controlador_pedido.transaccion(data)
+        try:
+            guardado = controlador_pedido.transaccion(data)
 
-        if guardado:
-            return jsonify({'guardado':True, 'mensaje': 'Venta realizada correctamente'})
-        else:
-            return jsonify({'guardado':False, 'mensaje': 'Error al realizar la venta'})
-    except Exception as e:
-        return jsonify({'guardado':False,'mensaje': str(e)})
+            if guardado:
+                return jsonify({'guardado':True, 'mensaje': 'Venta realizada correctamente'})
+            else:
+                return jsonify({'guardado':False, 'mensaje': 'Error al realizar la venta'})
+        except Exception as e:
+            return jsonify({'guardado':False,'mensaje': str(e)})
+    
+    return jsonify({'guardado':False, 'mensaje': 'Autenticación incorrecta'})
 ########################## ADMINISTRADOR#####################33
 
 @app.route("/administradores")

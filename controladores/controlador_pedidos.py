@@ -84,8 +84,7 @@ def transaccion(productos):
         idpedido = obtener_ultimo_idpedido()
         total = 0
 
-        user = controlador_usuario.obtener_usuario_por_username(productos["username"])
-        id_user = user[0] 
+        id_user = productos['id_user']
 
         with conexion.cursor() as cursor:
             queryPedido = 'insert into pedido(pedido_id,usuario_id,fecha_pedido,estado_pedido) values(%s,%s,CURRENT_TIMESTAMP, %s)'
