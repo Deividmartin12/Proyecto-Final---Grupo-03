@@ -1393,7 +1393,6 @@ def metodo_venta():
 def transaccion():
     carrito = request.json["carrito"]
     metodo_id = request.json["metodo_id"]
-    total = request.json["total"]
     username = request.json["username"]
 
     data = {
