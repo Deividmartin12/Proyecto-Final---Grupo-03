@@ -5,6 +5,14 @@
 <section class="section p-5">
     <div class="col-11">
         <h2 class="is-size-3">Clientes</h2>
+        <div class="mb-3">
+            <form action="{{url_for('formulario_clientes')}}" method="GET" class="form-inline">
+                <input type="text" name="nombre" id="nombreBusqueda" class="form-control" placeholder="Ingrese el nombre">
+                <button style="margin-left:10px ;" type="submit" class="btn btn-primary">Buscar</button>
+            </form>
+        </div>
+        
+
         <a href="{{url_for('formulario_registrar_cliente')}}" class="btn btn-primary px-4 my-2">Agregar</a>
         <table class="table table-hover table-group-divider table align-middle">
             <thead class="table-light">
