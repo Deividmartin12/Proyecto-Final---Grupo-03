@@ -1,16 +1,16 @@
 {% extends "maestra_adminX.html" %}
-{% block titulo %} Clientes{% endblock %}
+{% block titulo %} Administrador{% endblock %}
 {% block contenido %}
 
 <section class="section p-5">
     <div class="col-11">
-        <h2 class="is-size-3">Clientes</h2>
-        <a href="{{url_for('formulario_registrar_cliente')}}" class="btn btn-primary px-4 my-2">Agregar</a>
+        <h2 class="is-size-3">Administrador</h2>
+        <a href="{{url_for('formulario_registrar_administrador')}}" class="btn btn-primary px-4 my-2">Agregar</a>
         <table class="table table-hover table-group-divider table align-middle">
             <thead class="table-light">
                 <tr class="text-center">
                     <th scope="col" class="border">Nombre</th>
-                    <th scope="col" class="border">apellidos</th>
+                    <th scope="col" class="border">Apellidos</th>
                     <th scope="col" class="border">Email</th>
                     <th scope="col" class="border">Telefono</th>
                     <th scope="col" class="border">Direccion</th>
@@ -18,41 +18,41 @@
                     <th scope="col" class="border">Username</th>
                     <th scope="col" class="border">Editar</th>
                     <th scope="col" class="border">Eliminar</th>
-                    <th scope="col" class="border">Cambiar a Administrador</th>
-
+                    <th scope="col" class="border">Cambiar a Cliente</th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                {% for cliente in clientes %}
+                {% for administrador in administradores %}
                 <tr>
-                    <td class="border text-start">{{cliente[1]}}</td>
-                    <td class="col-3 border text-start">{{cliente[2]}}</td>
-                    <td class="border text-end">{{cliente[3]}}</td>
-                    <td class="border text-start">{{cliente[4]}}</td>
-                    <td class="border text-start">{{cliente[5]}}</td>
-                    <td class="border text-start">{{cliente[6]}}</td>
-                    <td class="border text-start">{{cliente[7]}}</td>
+                    <td class="border text-start">{{administrador[1]}}</td>
+                    <td class="col-3 border text-start">{{administrador[2]}}</td>
+                    <td class="border text-end">{{administrador[3]}}</td>
+                    <td class="border text-start">{{administrador[4]}}</td>
+                    <td class="border text-start">{{administrador[5]}}</td>
+                    <td class="border text-start">{{administrador[6]}}</td>
+                    <td class="border text-start">{{administrador[7]}}</td>
 
                     <td class="border">
-                        <a href="{{url_for('formulario_editar_cliente', id=cliente[0])}}"
+                        <a href="{{url_for('formulario_editar_administrador', id=administrador[0])}}"
                             class="btn btn-secondary">Editar</a>
                     </td>
+
                     <td class="text-center border">
-                        <form action="{{url_for('metodo_eliminar_cliente')}}" method="POST"
-                              onsubmit="return confirmarEliminarUsuario('{{ cliente[1] }}')">
-                            <input type="hidden" name="id" value="{{cliente[0]}}">
+                        <form action="{{url_for('metodo_eliminar_administrador')}}" method="POST"
+                        onsubmit="return confirmarEliminarUsuario(administrador[1])">
+                            <input type="hidden" name="id" value="{{administrador[0]}}">
                             <button class="btn btn-danger">Eliminar</button>
                         </form>
                     </td>
-                    
 
                     <td class="text-center border">
                         <form action="{{url_for('metodo_cambiar_permisos')}}" method="POST"
                             onsubmit="return confirmarCambioPermisos()">
-                            <input type="hidden" name="id" value="{{cliente[0]}}">
+                            <input type="hidden" name="id" value="{{administrador[0]}}">
                             <button class="btn btn-danger">Cambiar</button>
                         </form>
                     </td>
+                    
                 </tr>
                 {% endfor %}
             </tbody>
@@ -60,7 +60,10 @@
     </div>
 </section>
 
+
+
 <script>
+
     function confirmarEliminarUsuario(nombre) {
         return confirm('¿Estás seguro de que deseas eliminar al usuario ' + nombre + '?');
     }
