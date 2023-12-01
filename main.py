@@ -988,6 +988,8 @@ def metodo_darBaja_metodo():
 
 #####################     METODO PAGO     ############################
 #####################     CATEGORIAS    ############################
+
+
 @app.route("/agregar_categoria")
 def formulario_agregar_categoria():
     try:
@@ -1075,15 +1077,11 @@ def actualizar_categoria():
     return redirect("/categoriasAdmin")
 
 
-
 @app.route("/darbaja_categoria", methods=["POST"])
 def metodo_darBaja_categoria():
     id = request.form["id"]
     controlador_categorias.darbaja_categoria(id)
     return redirect("/categoriasAdmin")
-
-
-
 
 
 #####################     CATEGORIAS     ############################
@@ -1211,6 +1209,7 @@ def metodo_eliminar_producto():
     producto_id = request.form["id"]
     controlador_producto.eliminar_producto(producto_id)
     return redirect("/productos")
+
 
 @app.route("/darbaja_producto", methods=["POST"])
 def metodo_darBaja_producto():
