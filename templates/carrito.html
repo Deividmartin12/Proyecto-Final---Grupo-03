@@ -65,5 +65,14 @@
         </div>
     </div>
 </main>
+<script>
+    document.querySelector('.btnProPago').addEventListener('click', e => {
+        if(JSON.parse(localStorage.getItem('carrito')).length == 0) {
+            e.preventDefault();
+            alert('No hay productos en el carrito');
+        }
+    })
+</script>
+
 <script src="{{url_for('static', filename='js/carrito.js')}}"></script>
 {% endblock %}
