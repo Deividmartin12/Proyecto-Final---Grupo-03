@@ -7,7 +7,8 @@
         <h2 class="is-size-3">Administrador</h2>
         <div class="mb-3">
             <form action="{{url_for('formulario_administrador')}}" method="GET" class="form-inline">
-                <input type="text" name="nombre" id="nombreBusqueda" class="form-control" placeholder="Ingrese el nombre">
+                <input type="text" name="nombre" id="nombreBusqueda" class="form-control"
+                    placeholder="Ingrese el nombre">
                 <button style="margin-left:10px ;" type="submit" class="btn btn-primary">Buscar</button>
             </form>
         </div>
@@ -45,7 +46,7 @@
 
                     <td class="text-center border">
                         <form action="{{url_for('metodo_eliminar_administrador')}}" method="POST"
-                        onsubmit="return confirmarEliminarUsuario(administrador[1])">
+                            onsubmit="return confirmarEliminarUsuario(administrador[1])">
                             <input type="hidden" name="id" value="{{administrador[0]}}">
                             <button class="btn btn-danger">Eliminar</button>
                         </form>
@@ -58,7 +59,7 @@
                             <button class="btn btn-danger">Cambiar</button>
                         </form>
                     </td>
-                    
+
                 </tr>
                 {% endfor %}
             </tbody>

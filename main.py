@@ -1470,7 +1470,8 @@ def formulario_administrador():
         if username is None:
             return render_template("login.html")
         if token == usuario[9] and usuario[10] == 1 and usuario[11]==True:
-            administradores = controlador_usuario.obtener_administrador()
+            nombre_busqueda = request.args.get('nombre', '')
+            administradores = controlador_usuario.obtener_administrador(nombre_busqueda)
             return render_template("administradores.html", administradores=administradores)
         return render_template("login.html")
     except:
