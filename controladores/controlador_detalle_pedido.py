@@ -22,12 +22,12 @@ def obtener_det_pedido_por_id(pedido,producto):
 
 def obtener_det_pedido():
     conexion = obtenerConexion()
-    det_peds=[]
+    detalles=[]
     with conexion.cursor() as cursor:
         cursor.execute("SELECT pedido_id, producto_id, cantidad, precio_unitario from detalle_pedido")
-        det_peds= cursor.fetchall()
+        detalles= cursor.fetchall()
     conexion.close()
-    return det_peds
+    return detalles
 
 
 

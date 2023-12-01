@@ -820,21 +820,9 @@ def mis_ordenes():
 
 @app.route("/admin_det_ped")
 def det_pedido():
-    try:
-        username = request.cookies.get('username')
-        token = request.cookies.get('token')
-        usuario = controlador_usuario.obtener_usuario_por_username(username)
-        if username is None:
-            return render_template("login.html")
-        if token == usuario[9] and usuario[10] == 1 and usuario[11] == True:
-            det_ped = controlador_detalle_pedido.obtener_det_pedido()
-            print(det_ped)
-            return render_template("admin_det_ped.html", det_ped=det_ped)
-        return render_template("login.html")
-    except Exception as e:
-        print(f"Ocurrió un error: {e}")
-        return render_template("login.html")
-
+    detalles = controlador_detalle_pedido.obtener_det_pedido()
+    return render_template("admin_det_ped.html", detalles=detalles)
+        
 
 #####################     MASCOTA     ############################
 @app.route("/mascotas")
@@ -1439,8 +1427,6 @@ def metodo_eliminar_pedido():
 def formulario_comprobantes():
     comprobantes = controlador_comprobante.obtener_comprobantes()
     return render_template("comprobantes.html", comprobantes=comprobantes)
-
-        
 
 
 @app.route("/editar_comprobante/<int:id>")

@@ -4,7 +4,7 @@
 
 <section class="section p-5">
     <div class="col-11">
-        <h2 class="is-size-3">Pedidos</h2>
+        <h2 class="is-size-3">Comprobantes</h2>
 
         <table class="table table-hover table-group-divider table align-middle">
             <thead class="table-light">
@@ -14,7 +14,7 @@
                     <th scope="col" class="border">Tipo de comprobante</th>
                     <th scope="col" class="border">Id del pedido</th>
                     <th scope="col" class="border">Id del metodo de pago</th>
-                    <th scope="col" class="border">Editar</th>
+
                     <th scope="col" class="border">Eliminar</th>
 
 
@@ -31,12 +31,8 @@
                     <td class="border text-start">{{comprobante[3]}}</td>
                     <td class="border text-start">{{comprobante[4]}}</td>
                     <td class="border text-start">{{comprobante[5]}}</td>
-                    <td class="border text-start">
 
-                    <td class="text-center border">
-                        <a href="{{url_for('formulario_editar_comprobante', id=comprobante[0])}}"
-                            class="btn btn-secondary">Editar</a>
-                    </td>
+                
                     <td class="text-center border">
                         <form action="{{url_for('metodo_eliminar_comprobante')}}" method="POST">
                             <input type="hidden" name="id" value="{{comprobante[0]}}">

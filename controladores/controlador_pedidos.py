@@ -52,10 +52,20 @@ def obtener_pedidos_formateado():
 def eliminar_pedido(id):
     conexion = obtenerConexion()
     with conexion.cursor() as cursor:
-        cursor.execute("DELETE FROM pedido WHERE pedido_id = %s", (id,))
+            # Eliminar las filas en la tabla de comprobantes
+            cursor.execute("DELETE FROM comprobantes WHERE pedido_id = %s", (id,))
+            
+            cursor.execute("DELETE FROM detalle_pedido WHERE pedido_id = %s", (id,))
+
+            # Eliminar el pedido de la tabla de pedidos
+            cursor.execute("DELETE FROM pedidos WHERE id = %s", (id,))
+        
+        # Confirmar los cambios en la base de datos
     conexion.commit()
     conexion.close()
 
+
+    
 
 def obtener_pedido_por_id(id):
     conexion = obtenerConexion()
