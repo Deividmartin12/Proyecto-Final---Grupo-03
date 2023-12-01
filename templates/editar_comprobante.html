@@ -5,68 +5,70 @@
 <section class="p-5">
     <h3 class="is-size-3 mb-3">Editar comprobante</h3>
     <section class="input-group mb-3">
-        <form action="{{url_for('metodo_actualizar_comprobante')}}" method="post" >
-                <input type="hidden" name="id" id="id"  value="{{comprobantes[0]}}">
-                
-                <label for="fechaE" class="form-label">Fecha</label>
-                <input value="{{comprobantes[1]}}" required type="date" class="form-control mb-3" name="fechaE" id="fechaE" placeholder="">
-               
-                <label for="monto" class="form-label">Monto</label>
-                <input value="{{comprobantes[2]}}" required type="text" class="form-control mb-3" name="monto" id="monto_total" placeholder="">
-                
-                
-                <label for="tipo_comprobante" class="form-label">Tipo de Comprobante</label>
-                <select name="tipo_comprobante" id="tipo_comprobante" class="form-select mb-4" style="width: 200px;">
-                    {% if comprobantes[3] == 'B' %}
-                    <option value="B" selected>Boleta</option>
-                    <option value="F">Factura</option>
-                    {% else %}
-                    <option value="B">Boleta</option>
-                    <option value="F" selected>Factura</option>
-                    {% endif %}
-                </select>
-                
+        <form action="{{url_for('metodo_actualizar_comprobante')}}" method="post">
+            <input type="hidden" name="id" id="id" value="{{comprobantes[0]}}">
 
-                <label for="pedido_id" class="form-label">Pedido</label>
-                <input value="{{comprobantes[4]}}" required type="number" class="form-control mb-3" name="pedido_id" id="pedido_id" placeholder="">
-                
-                
-                
-                <label for="metodo_id" class="form-label">Metodo Pago</label>
-                <select name="metodo_id" id="metodo_id" class="form-select mb-4" style="width: 200px;">
-                    {% if comprobantes[5] == 1 %}
-                    <option value="SI" selected>Vigente</option>
-                    <option value="NO">No vigente</option>
-                    {% else %}
-                    <option value="SI">Vigente</option>
-                    <option value="NO" selected>No vigente</option>
-                    {% endif %}
-                </select>
-                <label for="categoria_id" class="form-label">Categoria</label>
-                <select name="categoria_id" id="categoria_id" class="form-select mb-4" style="width: 200px;">
-                    {% for categoria in categorias %}
-                    {% if categoria[0] == producto[6] %}
-                    <option value="{{categoria[0]}}" selected>{{categoria[1]}}</option>
-                    {% else %}
-                    <option value="{{categoria[0]}}">{{categoria[1]}}</option>
-                    {% endif %}
-                    {% endfor %}
-                </select>
-                <label for="mascota_id" class="form-label">Mascota</label>
-                <select name="mascota_id" id="mascota_id" class="form-select mb-4" style="width: 200px;">
-                    {% for mascota in mascotas %}
-                    {% if mascota[0] == producto[7] %}
-                    <option value="{{mascota[0]}}" selected>{{mascota[1]}}</option>
-                    {% else %}
-                    <option value="{{mascota[0]}}">{{mascota[1]}}</option>
-                    {% endif %}
-                    {% endfor %}
-                </select>
-                <!-- <label for="imagen" class="form-label">Imagen</label>
-                <input value="{{producto[8]}}" required type="file" class="form-control mb-4" name="imagen" id="imagen" placeholder=""> -->
+            <label for="fechaE" class="form-label">Fecha</label>
+            <input value="{{comprobantes[1]}}" required type="date" class="form-control mb-3" name="fechaE" id="fechaE"
+                placeholder="">
+
+            <label for="monto" class="form-label">Monto</label>
+            <input value="{{comprobantes[2]}}" required type="text" class="form-control mb-3" name="monto"
+                id="monto_total" placeholder="">
+
+
+            <label for="tipo_comprobante" class="form-label">Tipo de Comprobante</label>
+            <select name="tipo_comprobante" id="tipo_comprobante" class="form-select mb-4" style="width: 200px;">
+                {% if comprobantes[3] == 'B' %}
+                <option value="B" selected>Boleta</option>
+                <option value="F">Factura</option>
+                {% else %}
+                <option value="B">Boleta</option>
+                <option value="F" selected>Factura</option>
+                {% endif %}
+            </select>
+
+
+            <label for="pedido_id" class="form-label">Pedido</label>
+            <input value="{{comprobantes[4]}}" required type="number" class="form-control mb-3" name="pedido_id"
+                id="pedido_id" placeholder="">
+
+
+
+            <label for="metodo_id" class="form-label">Metodo Pago</label>
+            <select name="metodo_id" id="metodo_id" class="form-select mb-4" style="width: 200px;">
+                {% if comprobantes[5] == 1 %}
+                <option value="SI" selected>Vigente</option>
+                <option value="NO">No vigente</option>
+                {% else %}
+                <option value="SI">Vigente</option>
+                <option value="NO" selected>No vigente</option>
+                {% endif %}
+            </select>
+            <label for="categoria_id" class="form-label">Categoria</label>
+            <select name="categoria_id" id="categoria_id" class="form-select mb-4" style="width: 200px;">
+                {% for categoria in categorias %}
+                {% if categoria[0] == producto[6] %}
+                <option value="{{categoria[0]}}" selected>{{categoria[1]}}</option>
+                {% else %}
+                <option value="{{categoria[0]}}">{{categoria[1]}}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+            <label for="mascota_id" class="form-label">Mascota</label>
+            <select name="mascota_id" id="mascota_id" class="form-select mb-4" style="width: 200px;">
+                {% for mascota in mascotas %}
+                {% if mascota[0] == producto[7] %}
+                <option value="{{mascota[0]}}" selected>{{mascota[1]}}</option>
+                {% else %}
+                <option value="{{mascota[0]}}">{{mascota[1]}}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
             <div class="pt-4">
                 <button type="submit" class="btn btn-primary" style="width: 100px;">Guardar</button>
-            <a href="{{url_for('formulario_productos')}}" class="btn bg-primary-subtle" style="width: 100px;">Volver</a>
+                <a href="{{url_for('formulario_comprobantes')}}" class="btn bg-primary-subtle"
+                    style="width: 100px;">Volver</a>
             </div>
         </form>
     </section>

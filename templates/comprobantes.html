@@ -35,11 +35,11 @@
                         <td class="border text-start">
 
                         <td class="text-center border">
-                            <a href="{{url_for('editar_comprobante', id=comprobante[0])}}"
+                            <a href="{{url_for('formulario_editar_comprobante', id=comprobante[0])}}"
                                 class="button is-info">Editar</a>
                         </td>
                         <td>
-                            <form action="{{url_for('eliminar_comprobante')}}" method="POST">
+                            <form action="{{url_for('metodo_eliminar_comprobante')}}" method="POST">
                                 <input type="hidden" name="id" value="{{comprobante[0]}}">
                                 <button class="button is-danger">Eliminar</button>
                             </form>
